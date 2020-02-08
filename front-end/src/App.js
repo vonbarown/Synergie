@@ -1,11 +1,17 @@
 import React from 'react';
-import { SWitch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
+import { Navbar } from './components/navbar/navBar'
 import './App.css';
+import { Users } from './components/users';
 
 function App() {
   return (
     <div className="App">
-      <h1>App</h1>
+      <Navbar />
+
+      <Switch>
+        <Route to='/users' component={Users}></Route>
+      </Switch>
     </div>
   );
 }

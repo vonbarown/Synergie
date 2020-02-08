@@ -1,0 +1,26 @@
+.navbar {
+  display: flex;
+  gap: 10vw;
+  width: 100vw;
+  border: 1px solid black;
+  justify-content: center;
+  padding: 20px;
+}
+
+.logo {
+  border: 1px solid black;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 20vw;
+}
+
+.links {
+  width: 40vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 90px;
+  border: 1px solid black;
+  padding-left: 100px;
+  padding-right: 100px;
+}
