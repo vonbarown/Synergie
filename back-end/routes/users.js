@@ -28,7 +28,7 @@ router.get('/:id', async (req, res, next) => {
 
     res.json({
       users: byId,
-      message: 'all users retrieved',
+      message: 'user retrieved',
       error: false
     })
   } catch (error) {
@@ -48,7 +48,7 @@ router.post('/', async (req, res, next) => {
 
     res.json({
       users: newUser,
-      message: 'all users retrieved',
+      message: 'a new user added',
       error: false
     })
   } catch (error) {

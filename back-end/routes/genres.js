@@ -22,4 +22,23 @@ router.get('/', async (req, res, next) => {
     }
 });
 
+router.post('/', async (req, res, next) => {
+    try {
+        let newGenre = await queries.addGenre(req.body)
+
+        res.json({
+            genre: newGenre,
+            message: 'new genre added',
+            error: false
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            users: null,
+            message: 'you can\'t perform this operation ',
+            error: true
+        })
+    }
+})
+
 module.exports = router
