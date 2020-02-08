@@ -15,7 +15,7 @@ const Users = (props) => {
                     props.users ? props.users.map(el => {
                         return (
 
-                            <Link id={el.id.videoId} to={`/users/${el.username}`} className='user-profile' key={el.id}>
+                            <Link to={`/users/${el.id}`} className='user-profile' key={el.id}>
                                 <img className='profile-pic' src={el.avatar_url} alt="user-profile" />
                                 <p>{el.username}</p>
                             </Link>
