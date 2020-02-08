@@ -2,8 +2,9 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { fetchUser } from '../store/actions/userActions'
+import UsersComponent from '../components/users/Users'
 
-class User extends React.Component {
+class UsersContainer extends React.Component {
 
 
     componentDidMount() {
@@ -22,8 +23,8 @@ class User extends React.Component {
 
     render() {
         return (
-            <div className='users'>
-
+            <div className='users-container'>
+                <UsersComponent />
             </div>
         )
     }
@@ -41,4 +42,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(User)
+export default connect(null, mapDispatchToProps)(UsersContainer)

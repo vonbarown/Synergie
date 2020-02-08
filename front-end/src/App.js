@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 import { Navbar } from './components/navbar/navBar'
 import './App.css';
-import Users from './containers/usersContainer';
+import UsersContainer from './containers/usersContainer';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Navbar />
 
       <Switch>
-        <Route to='/users' component={Users}></Route>
+        <Route to='/users' component={UsersContainer}></Route>
       </Switch>
     </div>
   );
