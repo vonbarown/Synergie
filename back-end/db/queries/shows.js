@@ -7,7 +7,6 @@ const getAllShows = async () => db.any("SELECT * FROM shows")
 const getShowsById = async (id) => db.any("SELECT * from shows WHERE id = $1", [id])
 
 const addNewShow = async (showObj) => {
-    console.log(showObj.title);
 
     const newShowQStr = `INSERT INTO shows (title, img_url,user_id,genre_id) 
 VALUES($/title/,$/img_url/,$/user_id/,$/genre_id/) RETURNING *`
