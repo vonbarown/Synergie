@@ -6,10 +6,10 @@ export const Navbar = () => {
     return (
         <div className='navbar'>
             <div className='logo'>
-                <h2>TV Watch List App</h2>
+                <Link to='/'><h2>TV Watch List App</h2></Link>
             </div>
             <div className='links'>
-                <Link to='/user'>Users</Link>{" "}
+                <Link to='/users'>Users</Link>{" "}
                 <Link to='/shows'>Shows</Link>{' '}
                 <Link to='/about'>About</Link>
             </div>
