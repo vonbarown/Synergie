@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import { Navbar } from './components/navbar/navBar'
 import './App.css';
 import UsersContainer from './containers/usersContainer';
+import { Home } from './components/Home/Home';
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <Navbar />
 
       <Switch>
-        <Route to='/users' component={UsersContainer}></Route>
+        <Route path='/users' component={UsersContainer}></Route>
+        <Route path='/' component={Home}></Route>
       </Switch>
     </div>
   );
