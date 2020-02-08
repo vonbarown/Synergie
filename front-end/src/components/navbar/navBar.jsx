@@ -5,9 +5,14 @@ import './navbar.css'
 export const Navbar = () => {
     return (
         <div className='navbar'>
-            <div className='logo'>
-                <Link to='/'><h2>TV Watch List App</h2></Link>
-            </div>
+
+            <Link to='/'>
+                <div className='logo'>
+                    <h2>TV Watch List App</h2>
+                </div>
+            </Link>
+
+
             <div className='links'>
                 <Link to='/users'>Users</Link>{" "}
                 <Link to='/shows'>Shows</Link>{' '}
