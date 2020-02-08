@@ -1,0 +1,2 @@
+export const RECEIVE_USERS = 'RECEIVE_USERS'
+export const ADD_COMMENTS = 'ADD_COMMENTS'
