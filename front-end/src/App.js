@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 import { Navbar } from './components/navbar/navBar'
 import './App.css';
-import { Users } from './components/users';
+import Users from './containers/usersContainer';
 
 function App() {
   return (
