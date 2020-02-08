@@ -13,6 +13,7 @@ router.get('/', async (req, res, next) => {
       error: false
     })
   } catch (error) {
+    console.log(error)
     res.status(500).json({
       users: null,
       message: 'you took a wrong turn',
@@ -31,6 +32,7 @@ router.get('/:id', async (req, res, next) => {
       error: false
     })
   } catch (error) {
+    console.log(error)
     res.status(500).json({
       users: null,
       message: 'you took a wrong turn',
@@ -50,6 +52,7 @@ router.post('/', async (req, res, next) => {
       error: false
     })
   } catch (error) {
+    console.log(error)
     res.status(500).json({
       users: null,
       message: 'user could not be added',

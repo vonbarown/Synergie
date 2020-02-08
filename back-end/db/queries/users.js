@@ -10,7 +10,6 @@ const getUsersById = async (id) => {
 }
 
 const addNewUser = async (userObj) => {
-    console.log('userObj', userObj);
 
     const newUserQStr = `INSERT INTO users (username, avatar_url) 
 VALUES($/username/,$/avatar_url/) RETURNING *`
