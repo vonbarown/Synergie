@@ -23,10 +23,12 @@ VALUES($/title/,$/img_url/,$/user_id/,$/genre_id/) RETURNING *`
 
 const getShowsByGenreId = async (genreId) => db.any("SELECT * from shows WHERE genre_id = $1", [genreId])
 
+const getShowsByUserId = async (userId) => db.any("SELECT * from shows WHERE user_id = $1", [userId])
 
 module.exports = {
     getAllShows,
     getShowsById,
     getShowsByGenreId,
+    getShowsByUserId,
     addNewShow
 }

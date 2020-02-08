@@ -59,6 +59,25 @@ router.get('/genre/:genre_id', async (req, res, next) => {
     }
 })
 
+router.get('/user/:user_id', async (req, res, next) => {
+    try {
+        let byUserId = await queries.getShowsByUserId(req.params.user_id)
+
+        res.json({
+            shows: byUserId,
+            message: 'show retrieved',
+            error: false
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            shows: null,
+            message: 'you took a wrong turn',
+            error: true
+        })
+    }
+})
+
 router.post('/', async (req, res, next) => {
     console.log(req.body);
     try {
