@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import './showInfo.css'
 import { connect } from 'react-redux';
-import { loadComments } from '../../store/actions/showsActions'
+import { loadComments, loadUserShows } from '../../store/actions/showsActions'
 import Comments from '../comments/comments'
 class ShowInfoPage extends React.Component {
     state = {
@@ -15,11 +15,11 @@ class ShowInfoPage extends React.Component {
     }
 
     loadSpecificShow = async () => {
+        console.log('specific show', this.props.match.params.id);
+
         try {
             const { data: { shows } } = await axios.get(`/api/shows/${this.props.match.params.id}`)
-            this.setState({
-                specShow: shows
-            })
+            this.props.loadUserShows(shows)
         } catch (error) {
 
         }
@@ -35,11 +35,11 @@ class ShowInfoPage extends React.Component {
     }
 
     render() {
-        console.log(this.state.specShow);
+        console.log('id', this.props.match.params.id);
         return (
             <div className='show-info-page'>
                 {
-                    this.state.specShow.map(el => {
+                    this.props.shows.map(el => {
                         return (
                             <div className='current-show' key={el.id}>
                                 <div className='show-page-data'>
@@ -57,10 +57,18 @@ class ShowInfoPage extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        loadComments: data => dispatch(loadComments(data))
+        shows: state.showsReducer.shows,
     }
 }
 
-export default connect(null, mapDispatchToProps)(ShowInfoPage)
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadComments: data => dispatch(loadComments(data)),
+        loadUserShows: data => dispatch(loadUserShows(data))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowInfoPage)

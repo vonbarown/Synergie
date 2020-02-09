@@ -3,7 +3,7 @@ const db = require('../db')
 
 const getCommentByShowId = async (showId) => {
     const queryStr = `SELECT 
-                    comments.id,user_id,show_id,
+                    comments.id,
                     username,comment_body 
                     FROM
                     comments 

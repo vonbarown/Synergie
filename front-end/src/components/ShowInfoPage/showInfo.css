@@ -17,7 +17,15 @@
 }
 
 .show-page-comments {
+  display: flex;
+  flex-direction: column;
   border: 1px solid black;
   height: 190px;
   margin-bottom: 90px;
+  gap: 10px;
+}
+
+.comment {
+  color: red;
+  border: 1px solid black;
 }
