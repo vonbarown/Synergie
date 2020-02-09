@@ -2,15 +2,17 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { loadAllShows } from '../store/actions/showsActions'
+import Shows from '../components/Shows/Shows'
 
 class UsersContainer extends React.Component {
 
 
     componentDidMount() {
-        this.loadUsers()
+        this.loadShows()
+        // this.loadWatchingList()
     }
 
-    loadUsers = async () => {
+    loadShows = async () => {
         try {
             const { data: { shows } } = await axios.get('/api/shows/')
             this.props.loadAllShows(shows)
@@ -20,10 +22,23 @@ class UsersContainer extends React.Component {
         }
     }
 
+    loadWatchingList = async () => {
+        try {
+            const { data: { shows } } = await axios.get('/api/shows/user/1')
+            // this.props.loadAllShows(shows)
+            console.log(shows);
+
+        } catch (error) {
+            console.log('all shows error', error);
+
+
+        }
+
+    }
     render() {
         return (
             <div className='users-container'>
-                Shows
+                <Shows />
             </div>
         )
     }
