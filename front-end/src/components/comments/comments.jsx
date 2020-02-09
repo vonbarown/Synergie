@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import AddComment from './addComment'
 
 
 const Comments = (props) => {
-    console.log('hit', props.comments);
 
     return (
         <div className='show-page-comments'>
+            <AddComment user_id={props.user_id} video_id={props.video_id} />
             {
                 props.comments.map(el => {
                     return (

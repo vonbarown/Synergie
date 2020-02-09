@@ -15,6 +15,7 @@ const getCommentByShowId = async (showId) => {
 
 
 const addNewComment = async (commentObj) => {
+    console.log(commentObj);
 
     const newCommentQStr = `INSERT INTO comments ( comment_body,user_id,show_id) 
                             VALUES($/comment_body/,$/user_id/,$/show_id/) RETURNING *`

@@ -47,7 +47,7 @@ class ShowInfoPage extends React.Component {
                                     <img className='show-info-page-img' src={el.img_url} alt={el.title} />
                                     <p>{el.genre_name}</p>
                                 </div>
-                                <Comments />
+                                <Comments user_id={this.props.match.params.userId} video_id={this.props.match.params.id} />
                             </div>
                         )
                     })
