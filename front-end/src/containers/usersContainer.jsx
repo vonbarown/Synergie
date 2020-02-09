@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { fetchUser } from '../store/actions/userActions'
+import { fetchUsers } from '../store/actions/userActions'
 import UsersComponent from '../components/users/Users'
 
 class UsersContainer extends React.Component {
@@ -38,7 +38,7 @@ class UsersContainer extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchUser: data => dispatch(fetchUser(data)),
+        fetchUsers: data => dispatch(fetchUsers(data)),
     }
 }
 
