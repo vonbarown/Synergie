@@ -38,6 +38,19 @@ class UserPage extends React.Component {
         return (
             <div className='user-page'>
                 <div className='container'>
+                    <div className='logged-user'>
+                        {
+                            this.props.user.map(el => {
+                                return (
+                                    <div className='user-profile' key={el.id}>
+                                        <img className='profile-pic' src={el.avatar_url} alt={el.username} />
+                                        <p>{el.username}</p>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <h2>Watching</h2>
                     {
                         this.props.shows.map(el => {
                             return (
@@ -57,7 +70,8 @@ class UserPage extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        shows: state.showsReducer.shows
+        shows: state.showsReducer.shows,
+        user: state.usersReducer.user
     }
 }
 
