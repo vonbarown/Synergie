@@ -4,17 +4,17 @@ const queries = require('../db/queries/comments')
 
 router.get('/show/:show_id', async (req, res, next) => {
     try {
-        let shows = await queries.getCommentByShowId(req.params.show_id)
+        let comments = await queries.getCommentByShowId(req.params.show_id)
 
         res.json({
-            shows: shows,
-            message: 'all shows retrieved',
+            comments: comments,
+            message: 'all commentsretrieved',
             error: false
         })
     } catch (error) {
         console.log(error)
         res.status(500).json({
-            shows: null,
+            comments: null,
             message: 'you took a wrong turn',
             error: true
         })

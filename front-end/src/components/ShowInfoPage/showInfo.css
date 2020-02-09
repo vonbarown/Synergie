@@ -8,10 +8,16 @@
   margin-top: 50px;
   border: 1px solid black;
   width: 25vw;
-  height: 60vh;
+  height: 70vh;
   padding: 10px;
 }
 
 .show-info-page-img {
   height: 15pc;
+}
+
+.show-page-comments {
+  border: 1px solid black;
+  height: 190px;
+  margin-bottom: 90px;
 }

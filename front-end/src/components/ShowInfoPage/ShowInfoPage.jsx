@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios';
 import './showInfo.css'
-
+import { connect } from 'react-redux';
+import { loadComments } from '../../store/actions/showsActions'
+import Comments from '../comments/comments'
 class ShowInfoPage extends React.Component {
     state = {
         specShow: []
@@ -9,6 +11,7 @@ class ShowInfoPage extends React.Component {
 
     componentDidMount() {
         this.loadSpecificShow()
+        this.loadComments()
     }
 
     loadSpecificShow = async () => {
@@ -17,6 +20,15 @@ class ShowInfoPage extends React.Component {
             this.setState({
                 specShow: shows
             })
+        } catch (error) {
+
+        }
+    }
+
+    loadComments = async () => {
+        try {
+            const { data: { comments } } = await axios.get(`/api/comments/show/${this.props.match.params.id}`)
+            this.props.loadComments(comments);
         } catch (error) {
 
         }
@@ -35,9 +47,7 @@ class ShowInfoPage extends React.Component {
                                     <img className='show-info-page-img' src={el.img_url} alt={el.title} />
                                     <p>{el.genre_name}</p>
                                 </div>
-                                <div className='show-page-comments'>
-                                    Comments
-                                </div>
+                                <Comments />
                             </div>
                         )
                     })
@@ -47,4 +57,10 @@ class ShowInfoPage extends React.Component {
     }
 }
 
-export default ShowInfoPage
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadComments: data => dispatch(loadComments(data))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(ShowInfoPage)
