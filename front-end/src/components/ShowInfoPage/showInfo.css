@@ -5,10 +5,10 @@
 }
 
 .current-show {
-  margin-top: 50px;
+  margin-top: 10px;
   border: 1px solid black;
   width: 25vw;
-  height: 600px;
+  height: 650px;
   padding: 10px;
 }
 
@@ -28,7 +28,23 @@
 }
 
 .comment {
-  color: red;
   border: 1px solid black;
   text-align: left;
+}
+
+.comment-form {
+  display: flex;
+  gap: 40px;
+}
+
+.comment-submit-button {
+  height: 30px;
+  border-radius: 4px;
+  background-color: grey;
+  color: white;
+  font-size: 20px;
+}
+
+.comment-submit-input {
+  width: 220px;
 }

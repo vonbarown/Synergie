@@ -42,17 +42,14 @@ class AddComment extends React.Component {
         this.loadUserComments()
     }
 
-    // handleClick = () => {
-    //     this.AddComment()
-    // }
 
     render() {
         console.log('user id', this.props.video_id);
 
         return (
-            <form onSubmit={this.AddComment}>
-                <input type="text" onChange={this.handleInput} />
-                <button>Add</button>
+            <form onSubmit={this.AddComment} className='comment-form'>
+                <input className='comment-submit-input' type="text" onChange={this.handleInput} placeholder='Comment' />
+                <button className='comment-submit-button'>Add</button>
             </form>
         )
     }

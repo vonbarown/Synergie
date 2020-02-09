@@ -5,9 +5,6 @@ import { connect } from 'react-redux';
 import { loadComments, loadUserShows } from '../../store/actions/showsActions'
 import Comments from '../comments/comments'
 class ShowInfoPage extends React.Component {
-    state = {
-        specShow: []
-    }
 
     componentDidMount() {
         this.loadSpecificShow()
@@ -46,6 +43,7 @@ class ShowInfoPage extends React.Component {
                                     <h3>Show {el.title} of {el.username}</h3>
                                     <img className='show-info-page-img' src={el.img_url} alt={el.title} />
                                     <p>{el.genre_name}</p>
+                                    <p>{this.props.comments.length} Comments</p>
                                 </div>
                                 <Comments user_id={this.props.match.params.userId} video_id={this.props.match.params.id} />
                             </div>
@@ -60,6 +58,7 @@ class ShowInfoPage extends React.Component {
 const mapStateToProps = (state) => {
     return {
         shows: state.showsReducer.shows,
+        comments: state.showsReducer.comments
     }
 }
 
