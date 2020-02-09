@@ -11,7 +11,7 @@ class ShowInfoPage extends React.Component {
 
     componentDidMount() {
         this.loadSpecificShow()
-        this.loadComments()
+        this.loadUserComments()
     }
 
     loadSpecificShow = async () => {
@@ -25,7 +25,7 @@ class ShowInfoPage extends React.Component {
         }
     }
 
-    loadComments = async () => {
+    loadUserComments = async () => {
         try {
             const { data: { comments } } = await axios.get(`/api/comments/show/${this.props.match.params.id}`)
             this.props.loadComments(comments);

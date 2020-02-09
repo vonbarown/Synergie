@@ -8,18 +8,25 @@ class AddComment extends React.Component {
         comment_body: ''
     }
 
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (this.state.comment_body !== prevState.comment_body) {
+    //         this.loadUserComments()
+    //     }
+    // }
+
     handleInput = e => this.setState({ comment_body: e.target.value })
 
-    loadComments = async () => {
+    loadUserComments = async () => {
         try {
-            const { data: { comments } } = await axios.get(`/api/comments/show/${this.props.match.params.id}`)
+            const { data: { comments } } = await axios.get(`/api/comments/show/${this.props.video_id}`)
             this.props.loadComments(comments);
         } catch (error) {
 
         }
     }
 
-    AddComment = async () => {
+    AddComment = async e => {
+        e.preventDefault()
         const commentObj = {
             comment_body: this.state.comment_body,
             user_id: this.props.user_id,
@@ -32,20 +39,20 @@ class AddComment extends React.Component {
         } catch (error) {
 
         }
-        this.loadComments()
+        this.loadUserComments()
     }
 
-    handleClick = () => {
-        this.AddComment()
-    }
+    // handleClick = () => {
+    //     this.AddComment()
+    // }
 
     render() {
         console.log('user id', this.props.video_id);
 
         return (
-            <form onSubmit={e => e.preventDefault()}>
+            <form onSubmit={this.AddComment}>
                 <input type="text" onChange={this.handleInput} />
-                <button onClick={this.handleClick}>Add</button>
+                <button>Add</button>
             </form>
         )
     }
