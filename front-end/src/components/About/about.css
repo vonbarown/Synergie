@@ -1,0 +1,14 @@
+.blurb {
+  text-align: center;
+  width: 40vw;
+}
+.about {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.signature {
+  font-size: x-large;
+}

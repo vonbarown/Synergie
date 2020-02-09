@@ -25,12 +25,10 @@ export default (state = initialState, action) => {
 
             break
         case LOAD_USER_SHOWS:
-            stateCopy.shows = action.payload
 
-            // stateCopy.shows.filter(el => {
-            //     return 
-            // })
+            stateCopy.shows = action.payload
             break
+
         default:
             break
     }

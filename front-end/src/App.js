@@ -6,6 +6,7 @@ import UsersContainer from './containers/usersContainer';
 import { Home } from './components/Home/Home';
 import UserPage from './components/UserPage/UserPage';
 import showsContainer from './containers/showsContainer';
+import { About } from './components/About/About';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route exact path='/users' component={UsersContainer} />
         <Route path='/users/:id' component={UserPage} />
         <Route exact path='/shows' component={showsContainer} />
+        <Route path='/about' component={About} />
         <Route path='/' component={Home} />
       </Switch>
     </div>
