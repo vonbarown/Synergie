@@ -1,7 +1,16 @@
 const db = require('../db')
 
 
-const getCommentByShowId = async (showId) => db.any("SELECT * from comments WHERE show_id = $1", [showId])
+const getCommentByShowId = async (showId) => {
+    const queryStr = `SELECT comments.id,comment_body,user_id,show_id,
+                        COUNT(*) AS numOfComments 
+                        FROM
+                        comments 
+                        WHERE show_id = $1
+                        GROUP BY comments.id,comment_body,user_id,show_id
+                        `
+    return db.any(queryStr, [showId])
+}
 
 
 const addNewComment = async (commentObj) => {
