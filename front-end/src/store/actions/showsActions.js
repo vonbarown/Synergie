@@ -1,8 +1,8 @@
-import { LOAD_SHOWS } from './actionTypes';
+import { LOAD_USER_SHOWS } from './actionTypes';
 
-export const loadShows = (payload) => {
+export const loadUserShows = (payload) => {
     return {
-        type: LOAD_SHOWS,
+        type: LOAD_USER_SHOWS,
         payload
     };
 };

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { loadUser } from '../../store/actions/userActions'
-import { loadShows } from '../../store/actions/showsActions'
+import { loadUserShows } from '../../store/actions/showsActions'
 import { connect } from 'react-redux'
 import './userPage.css'
 import { Link } from 'react-router-dom'
@@ -27,7 +27,7 @@ class UserPage extends React.Component {
     loadShows = async () => {
         try {
             const { data: { shows } } = await axios.get(`/api/shows/user/${this.props.match.params.id}`)
-            this.props.loadShows(shows)
+            this.props.loadUserShows(shows)
         } catch (error) {
 
         }
@@ -82,7 +82,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         loadUser: data => dispatch(loadUser(data)),
-        loadShows: data => dispatch(loadShows(data))
+        loadUserShows: data => dispatch(loadUserShows(data))
     }
 }
 
