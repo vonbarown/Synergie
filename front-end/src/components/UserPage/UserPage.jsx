@@ -1,12 +1,14 @@
 import React from 'react'
 import axios from 'axios'
 import { loadUser } from '../../store/actions/userActions'
+import { loadShows } from '../../store/actions/showsActions'
 import { connect } from 'react-redux'
 
 class UserPage extends React.Component {
 
     componentDidMount() {
         this.loadUser()
+        this.loadShows()
     }
 
     loadUser = async () => {
@@ -18,6 +20,15 @@ class UserPage extends React.Component {
 
         }
 
+    }
+
+    loadShows = async () => {
+        try {
+            const { data: { shows } } = await axios.get(`/api/shows/user/${this.props.match.params.id}`)
+            this.props.loadShows(shows)
+        } catch (error) {
+
+        }
     }
 
     render() {
@@ -34,6 +45,7 @@ class UserPage extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         loadUser: data => dispatch(loadUser(data)),
+        loadShows: data => dispatch(loadShows(data))
     }
 }
 
