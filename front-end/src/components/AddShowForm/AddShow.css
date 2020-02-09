@@ -1,0 +1,12 @@
+.add-show-form-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.add-show-form {
+  margin-top: 20px;
+  border: 1px solid black;
+  height: 70vh;
+  width: 40vw;
+}
