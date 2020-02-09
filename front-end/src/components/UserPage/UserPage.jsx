@@ -57,8 +57,10 @@ class UserPage extends React.Component {
                             return (
                                 <div className='movie' key={el.id}>
                                     <img className='show-img' src={el.img_url} alt={el.title} />
-                                    <p>{el.title}</p>
-                                    <p>{el.genre_id}</p>
+                                    <div className='show-data'>
+                                        <p>{el.title}</p>
+                                        <p>{el.genre_name}</p>
+                                    </div>
                                 </div>
                             )
                         })
