@@ -8,7 +8,7 @@ router.get('/show/:show_id', async (req, res, next) => {
 
         res.json({
             comments: comments,
-            message: 'all commentsretrieved',
+            message: 'all comments retrieved',
             error: false
         })
     } catch (error) {

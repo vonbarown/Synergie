@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 
 const Comments = (props) => {
+    console.log('hit', props.comments);
+
     return (
         <div className='show-page-comments'>
             {
@@ -21,7 +23,7 @@ const Comments = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        comments: state.showsReducer.comments,
+        comments: state.showsReducer.comments
     }
 }
 

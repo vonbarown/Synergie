@@ -35,7 +35,7 @@ class ShowInfoPage extends React.Component {
     }
 
     render() {
-        console.log('id', this.props.match.params.id);
+        console.log('show id', this.props.match.params.id);
         return (
             <div className='show-info-page'>
                 {
