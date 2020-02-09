@@ -3,6 +3,7 @@ import axios from 'axios'
 import { loadUser } from '../../store/actions/userActions'
 import { loadShows } from '../../store/actions/showsActions'
 import { connect } from 'react-redux'
+import './userPage.css'
 
 class UserPage extends React.Component {
 
@@ -35,10 +36,28 @@ class UserPage extends React.Component {
         console.log(this.props.match.params.id);
 
         return (
-            <div>
-                user page
-        </div>
+            <div className='user-page'>
+                <div className='container'>
+                    {
+                        this.props.shows.map(el => {
+                            return (
+                                <div className='movie' key={el.id}>
+                                    <img className='show-img' src={el.img_url} alt={el.title} />
+                                    <p>{el.title}</p>
+                                    <p>{el.genre_id}</p>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            </div>
         )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        shows: state.showsReducer.shows
     }
 }
 
@@ -49,4 +68,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(UserPage)
+export default connect(mapStateToProps, mapDispatchToProps)(UserPage)

@@ -9,7 +9,7 @@ const Users = (props) => {
 
     return (
         <div className='users'>
-            <div className='user-links'>
+            <div className='container'>
                 <h2>Users</h2>
                 {
                     props.users ? props.users.map(el => {
