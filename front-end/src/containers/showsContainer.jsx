@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { loadAllShows } from '../store/actions/showsActions'
-import UsersComponent from '../components/users/Users'
 
 class UsersContainer extends React.Component {
 
@@ -16,7 +15,7 @@ class UsersContainer extends React.Component {
             const { data: { shows } } = await axios.get('/api/shows/')
             this.props.loadAllShows(shows)
         } catch (error) {
-            console.log('usersAll error', error);
+            console.log('all shows error', error);
 
         }
     }
