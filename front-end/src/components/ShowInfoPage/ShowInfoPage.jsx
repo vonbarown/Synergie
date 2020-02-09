@@ -35,6 +35,9 @@ class ShowInfoPage extends React.Component {
                                     <img className='show-info-page-img' src={el.img_url} alt={el.title} />
                                     <p>{el.genre_name}</p>
                                 </div>
+                                <div className='show-page-comments'>
+                                    Comments
+                                </div>
                             </div>
                         )
                     })

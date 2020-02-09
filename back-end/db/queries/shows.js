@@ -8,9 +8,7 @@ const getShowsById = async (id) => {
     const queryStr = `SELECT 
                         shows.id,title,img_url,user_id,
                         genre_id,genre_name, username
-
                         FROM shows 
-
                         INNER JOIN genres ON genre_id = genres.id 
                         INNER JOIN users ON user_id = users.id
                         WHERE shows.id = $1`

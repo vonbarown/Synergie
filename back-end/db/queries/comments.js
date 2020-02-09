@@ -2,13 +2,14 @@ const db = require('../db')
 
 
 const getCommentByShowId = async (showId) => {
-    const queryStr = `SELECT comments.id,comment_body,user_id,show_id,
-                        COUNT(*) AS numOfComments 
-                        FROM
-                        comments 
-                        WHERE show_id = $1
-                        GROUP BY comments.id,comment_body,user_id,show_id
-                        `
+    const queryStr = `SELECT 
+                    comments.id,user_id,show_id,
+                    username,comment_body 
+                    FROM
+                    comments 
+                    JOIN users ON user_id = users.id
+                    WHERE show_id = $1`
+
     return db.any(queryStr, [showId])
 }
 

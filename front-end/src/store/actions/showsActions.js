@@ -1,4 +1,4 @@
-import { LOAD_USER_SHOWS, LOAD_SHOWS } from './actionTypes';
+import { LOAD_USER_SHOWS, LOAD_SHOWS, LOAD_COMMENTS } from './actionTypes';
 
 export const loadUserShows = (payload) => {
     return {
@@ -13,3 +13,11 @@ export const loadAllShows = (payload) => {
         payload
     };
 };
+
+
+export const loadComments = (payload) => {
+    return {
+        type: LOAD_COMMENTS,
+        payload
+    }
+}
