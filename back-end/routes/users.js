@@ -27,14 +27,14 @@ router.get('/:id', async (req, res, next) => {
     let byId = await queries.getUsersById(req.params.id)
 
     res.json({
-      users: byId,
+      user: byId,
       message: 'user retrieved',
       error: false
     })
   } catch (error) {
     console.log(error)
     res.status(500).json({
-      users: null,
+      user: null,
       message: 'you took a wrong turn',
       error: true
     })

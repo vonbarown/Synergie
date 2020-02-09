@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios'
+import { loadUser } from '../../store/actions/userActions'
+import { connect } from 'react-redux'
 
-export default class UserPage extends React.Component {
+class UserPage extends React.Component {
 
     componentDidMount() {
         this.loadUser()
@@ -9,8 +11,8 @@ export default class UserPage extends React.Component {
 
     loadUser = async () => {
         try {
-            const { data } = await axios.get(`/api/users/${this.props.match.params.id}`)
-            console.log(data);
+            const { data: { user } } = await axios.get(`/api/users/${this.props.match.params.id}`)
+            this.props.loadUser(user);
 
         } catch (error) {
 
@@ -28,3 +30,11 @@ export default class UserPage extends React.Component {
         )
     }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadUser: data => dispatch(loadUser(data)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(UserPage)
