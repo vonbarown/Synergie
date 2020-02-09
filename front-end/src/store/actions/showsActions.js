@@ -1,4 +1,4 @@
-import { LOAD_USER_SHOWS } from './actionTypes';
+import { LOAD_USER_SHOWS, LOAD_SHOWS } from './actionTypes';
 
 export const loadUserShows = (payload) => {
     return {
@@ -7,3 +7,9 @@ export const loadUserShows = (payload) => {
     };
 };
 
+export const loadAllShows = (payload) => {
+    return {
+        type: LOAD_SHOWS,
+        payload
+    };
+};

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { fetchUsers } from '../store/actions/userActions'
+import { loadAllShows } from '../store/actions/showsActions'
 import UsersComponent from '../components/users/Users'
 
 class UsersContainer extends React.Component {
@@ -13,8 +13,8 @@ class UsersContainer extends React.Component {
 
     loadUsers = async () => {
         try {
-            const { data: { users } } = await axios.get('/api/users/')
-            this.props.fetchUsers(users)
+            const { data: { shows } } = await axios.get('/api/shows/')
+            this.props.loadAllShows(shows)
         } catch (error) {
             console.log('usersAll error', error);
 
@@ -24,7 +24,7 @@ class UsersContainer extends React.Component {
     render() {
         return (
             <div className='users-container'>
-                <UsersComponent />
+                Shows
             </div>
         )
     }
@@ -33,7 +33,7 @@ class UsersContainer extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchUsers: data => dispatch(fetchUsers(data)),
+        loadAllShows: data => dispatch(loadAllShows(data)),
     }
 }
 
