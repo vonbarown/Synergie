@@ -55,7 +55,7 @@ class UserPage extends React.Component {
                     {
                         this.props.shows.map(el => {
                             return (
-                                <Link to={`/show`} className='movie' key={el.id}>
+                                <Link to={`/show/${el.id}/${el.title}`} className='movie' key={el.id}>
                                     <img className='show-img' src={el.img_url} alt={el.title} />
                                     <div className='show-data'>
                                         <p>{el.title}</p>
@@ -67,7 +67,7 @@ class UserPage extends React.Component {
                     }
                 </div>
                 <button>
-                    <Link to={`/${this.props.match.params.id}/addShow`}>Add Show</Link>
+                    <Link to={`/users/${this.props.match.params.id}/addShow`}>Add Show</Link>
                 </button>
             </div>
         )
