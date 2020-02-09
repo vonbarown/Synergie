@@ -1,0 +1,17 @@
+.show-info-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.current-show {
+  margin-top: 50px;
+  border: 1px solid black;
+  width: 25vw;
+  height: 60vh;
+  padding: 10px;
+}
+
+.show-info-page-img {
+  height: 15pc;
+}

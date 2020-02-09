@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import './showInfo.css'
 
 class ShowInfoPage extends React.Component {
     state = {
@@ -13,19 +14,32 @@ class ShowInfoPage extends React.Component {
     loadSpecificShow = async () => {
         try {
             const { data: { shows } } = await axios.get(`/api/shows/${this.props.match.params.id}`)
-            console.log(shows);
-
+            this.setState({
+                specShow: shows
+            })
         } catch (error) {
 
         }
     }
 
     render() {
-        console.log(this.props.match.params.id);
+        console.log(this.state.specShow);
         return (
             <div className='show-info-page'>
-                mask off
-        </div>
+                {
+                    this.state.specShow.map(el => {
+                        return (
+                            <div className='current-show' key={el.id}>
+                                <div className='show-page-data'>
+                                    <h3>Show {el.title} of {el.username}</h3>
+                                    <img className='show-info-page-img' src={el.img_url} alt={el.title} />
+                                    <p>{el.genre_name}</p>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
         )
     }
 }
