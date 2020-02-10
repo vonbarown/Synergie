@@ -51,27 +51,13 @@ INSERT INTO users (username, avatar_url) VALUES ('Pam Beesly', 'https://i1.sndcd
 INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 1, 4);
 INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 2, 4);
-INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 3, 4);
-INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 1, 1);
-INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 3, 1);
-INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 4, 1);
 INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('Naruto Shippūden', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/zAYRe2bJxpWTVrwwmBc00VFkAf4.jpg', 1, 4);
 INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('Naruto Shippūden', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/zAYRe2bJxpWTVrwwmBc00VFkAf4.jpg', 2, 4);
-INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('Greys Anatomy', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/eqgIOObafPJitt8JNh1LuO2fvqu.jpg', 3, 2);
 INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('Greys Anatomy', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/eqgIOObafPJitt8JNh1LuO2fvqu.jpg', 4, 2);
-INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 1, 3);
-INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 4, 3);
 
 -- INSERT ShowWatchers
 INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,1); -- 1
