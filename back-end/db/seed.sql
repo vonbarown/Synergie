@@ -16,10 +16,16 @@ CREATE TABLE genres (
 
 CREATE TABLE shows (
     id SERIAL PRIMARY KEY,
-    title VARCHAR NOT NULL,
+    title VARCHAR UNIQUE NOT NULL,
     img_url VARCHAR NOT NULL,
     user_id INT REFERENCES users(id),
     genre_id INT REFERENCES genres(id)
+);
+
+CREATE TABLE ShowWatchers (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id),
+    show_id INT REFERENCES shows(id)
 );
 
 CREATE TABLE comments (
@@ -66,6 +72,21 @@ INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 1, 3);
 INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 4, 3);
+
+-- INSERT ShowWatchers
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,1); -- 1
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (2,1); -- 2
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (3,1); -- 3
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,2); -- 4
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (3,2); -- 4
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (4,2); -- 4
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,3); -- 4
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (2,3); -- 4
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (3,4); -- 4
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (4,4); -- 4
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,5); -- 4
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (4,5); -- 4
+
 
 -- INSERT COMMENTS
 INSERT INTO comments (comment_body, user_id, show_id)

@@ -27,7 +27,9 @@ const getShowsById = async (id) => {
 const addNewShow = async (showObj) => {
 
     const newShowQStr = `INSERT INTO shows (title, img_url,user_id,genre_id) 
-VALUES($/title/,$/img_url/,$/user_id/,$/genre_id/) RETURNING *`
+VALUES($/title/,$/img_url/,$/user_id/,$/genre_id/) ON CONFLICT 
+
+`
 
     return db.one(newShowQStr, {
         title: showObj.title,
