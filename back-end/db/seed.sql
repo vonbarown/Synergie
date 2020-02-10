@@ -60,18 +60,18 @@ INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 1, 3);
 
 -- INSERT ShowWatchers
-INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,1); -- 1
-INSERT INTO ShowWatchers (user_id,show_id) VALUES (2,1); -- 2
-INSERT INTO ShowWatchers (user_id,show_id) VALUES (3,1); -- 3
-INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,2); -- 4
-INSERT INTO ShowWatchers (user_id,show_id) VALUES (3,2); -- 4
-INSERT INTO ShowWatchers (user_id,show_id) VALUES (4,2); -- 4
-INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,3); -- 4
-INSERT INTO ShowWatchers (user_id,show_id) VALUES (2,3); -- 4
-INSERT INTO ShowWatchers (user_id,show_id) VALUES (3,4); -- 4
-INSERT INTO ShowWatchers (user_id,show_id) VALUES (4,4); -- 4
-INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,5); -- 4
-INSERT INTO ShowWatchers (user_id,show_id) VALUES (4,5); -- 4
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,1);
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (2,1);
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (3,1);
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,2);
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (3,2);
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (4,2);
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,3);
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (2,3);
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (3,4);
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (4,4);
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (1,5);
+INSERT INTO ShowWatchers (user_id,show_id) VALUES (4,5);
 
 
 -- INSERT COMMENTS
