@@ -8,11 +8,9 @@ class AddComment extends React.Component {
         comment_body: ''
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (this.state.comment_body !== prevState.comment_body) {
-    //         this.loadUserComments()
-    //     }
-    // }
+    componentDidMount() {
+        this.loadUserComments()
+    }
 
     handleInput = e => this.setState({ comment_body: e.target.value })
 

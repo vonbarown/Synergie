@@ -5,7 +5,8 @@ class AddShowForm extends React.Component {
     state = {
         img_url: '',
         show_name: '',
-        genres: []
+        genres: [],
+        genre_id: ''
     }
 
     componentDidMount() {
@@ -25,31 +26,52 @@ class AddShowForm extends React.Component {
         }
     }
 
-    handleSelect = e => {
-        console.log(e.target.value);
+    handleInput = e => this.setState({ [e.target.name]: e.target.value })
 
+    addShow = async e => {
+        e.preventDefault()
+        const showObj = {
+            title: this.state.show_name,
+            img_url: this.state.img_url,
+            user_id: this.props.match.params.id,
+            genre_id: this.state.genre_id
+        }
+
+        try {
+            await axios.post(`/api/shows`, showObj)
+        } catch (error) {
+            console.log('add show error', error);
+
+        }
     }
 
+    handleSelect = e => this.setState({ genre_id: parseInt(e.target.value) })
+
+
     render() {
-        console.log(this.state);
+        console.log(this.props.match.params.id);
 
         return (
             <div className='add-show-form-page'>
                 <div className='add-show'>
                     <h1>Add Show</h1>
                     <h2>Form</h2>
-                    <form className='add-show-form'>
+                    <form onSubmit={this.addShow} className='add-show-form'>
                         <div className='url form-element'>
                             <p>Show Image Url</p>
-                            <input type="text" placeholder='url' />
+                            <input name='img_url' className='add-show-input add-show-item'
+                                onChange={this.handleInput}
+                                type="text" placeholder='url' />
                         </div>
                         <div className='name form-element'>
                             <p>Show Name</p>
-                            <input type="text" placeholder='Name' />
+                            <input name='show_name' className='add-show-input add-show-item'
+                                onChange={this.handleInput}
+                                type="text" placeholder='Name' />
                         </div>
                         <div className='genre form-element'>
                             <p>Genre</p>
-                            <select onChange={this.handleSelect}>
+                            <select className='add-show-item' onChange={this.handleSelect}>
                                 <option>---Select A Genre---</option>
                                 {
                                     this.state.genres.map(el => {
@@ -60,6 +82,7 @@ class AddShowForm extends React.Component {
                                 }
                             </select>
                         </div>
+                        <button>Submit</button>
                     </form>
                 </div>
             </div>

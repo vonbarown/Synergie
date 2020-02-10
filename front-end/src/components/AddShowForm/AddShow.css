@@ -7,7 +7,7 @@
 .add-show {
   margin-top: 20px;
   border: 1px solid black;
-  height: 70vh;
+  height: 550px;
   width: 40vw;
 }
 .add-show-form {
@@ -19,4 +19,13 @@
 
 .form-element {
   text-align: left;
+}
+.add-show-item {
+  height: 40px;
+  width: 220px;
+}
+
+.add-show-input {
+  font-size: 20px;
+  border-radius: 4px;
 }

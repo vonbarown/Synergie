@@ -4,7 +4,7 @@ const db = require('../db')
 const getAllShows = async () => {
     const queryStr = `SELECT
                         shows.id,title,img_url,
-                        username,avatar_url
+                        username
                         FROM 
                         shows 
                         JOIN users ON user_id = users.id`
@@ -41,7 +41,7 @@ VALUES($/title/,$/img_url/,$/user_id/,$/genre_id/) RETURNING *`
 const getShowsByGenreId = async (genreId) => db.any("SELECT * from shows WHERE genre_id = $1", [genreId])
 
 const getShowsByUserId = async (userId) => {
-    const queryStr = `SELECT shows.id,title,img_url,genre_name from shows JOIN genres ON genre_id = genres.id AND user_id = $1`
+    const queryStr = `SELECT shows.id,title,img_url,genre_name from shows JOIN genres ON genre_id = genres.id WHERE user_id = $1`
 
     return db.any(queryStr, [userId])
 }
