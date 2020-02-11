@@ -8,7 +8,6 @@ const getAllShows = async () => {
                         showWatchers 
                         INNER JOIN shows ON shows.id = show_id
                         INNER JOIN users ON showWatchers.user_id = users.id
-                        WHERE shows.id = 2
                         `
 
     return db.any(queryStr)
@@ -60,12 +59,14 @@ const getShowsByGenreId = async (genreId) => db.any("SELECT * from shows WHERE g
 
 const getShowsByUserId = async (userId) => {
     const queryStr = `SELECT 
-                    showWatchers.user_id, shows.title, shows.img_url,
-                    shows.id
+                    showWatchers.user_id, shows.title, 
+                    shows.img_url, shows.id, genre_name
                     FROM 
                     showWatchers 
                     INNER JOIN shows ON shows.id = show_id
-                    WHERE showWatchers.user_id = $1`
+                    INNER JOIN genres ON genres.id = genre_id
+                    WHERE showWatchers.user_id = $1
+                    `
 
     return db.any(queryStr, [userId])
 }

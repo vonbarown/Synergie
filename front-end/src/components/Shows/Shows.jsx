@@ -1,6 +1,4 @@
 import React from 'react'
-import { loadUser } from '../../store/actions/userActions'
-import { loadUserShows } from '../../store/actions/showsActions'
 import { connect } from 'react-redux'
 // import './userPage.css'
 import { Link } from 'react-router-dom'
@@ -22,7 +20,11 @@ class Shows extends React.Component {
                                     <div className='show-info'>
                                         <p>{el.title}</p>
                                         <p>{el.genre_id}</p>
-                                        <p>Being Watched by: {el.username}</p>
+                                        <p>Being Watched by:{' '}
+                                            <Link to={`/shows/${el.id}/user/${el.user_id}`}>
+                                                {el.username}
+                                            </Link>
+                                        </p>
                                     </div>
                                 </div>
                             )
