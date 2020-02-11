@@ -12,8 +12,6 @@ class ShowInfoPage extends React.Component {
     }
 
     loadSpecificShow = async () => {
-        console.log('specific show', this.props.match.params.id);
-
         try {
             const { data: { shows } } = await axios.get(`/api/shows/${this.props.match.params.id}`)
             this.props.loadUserShows(shows)
@@ -32,7 +30,6 @@ class ShowInfoPage extends React.Component {
     }
 
     render() {
-        console.log('show id', this.props.match.params.id);
         return (
             <div className='show-info-page'>
                 {

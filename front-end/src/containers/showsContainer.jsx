@@ -44,16 +44,6 @@ class UsersContainer extends React.Component {
         }
     }
 
-    // loadWatchingList = async () => {
-    //     try {
-    //         const { data: { shows } } = await axios.get('/api/shows/user/1')
-    //         // this.props.loadAllShows(shows)
-    //         console.log(shows);
-    //     } catch (error) {
-    //         console.log('all shows error', error);
-    //     }
-    // }
-
     render() {
         return (
             <div className='users-container'>

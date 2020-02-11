@@ -17,7 +17,7 @@ export const Navbar = () => {
                 <Link to='/users'>Users</Link>{" "}
                 <Link to='/shows'>Shows</Link>{' '}
                 <Link to='/about'>About</Link>{' '}
-                <Link to='addShow'>Add Show</Link>
+                <Link to='/addShow'>Add Show</Link>
             </div>
         </div>
     )

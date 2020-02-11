@@ -16,8 +16,6 @@ class AddShowForm extends React.Component {
     fetchGenres = async () => {
         try {
             const { data: { genres } } = await axios.get(`/api/genres`)
-            console.log(genres);
-            // this.props.loadAllGenres(genres)
             this.setState({
                 genres: genres
             })
@@ -49,7 +47,6 @@ class AddShowForm extends React.Component {
 
 
     render() {
-        console.log(this.props.match.params.id);
 
         return (
             <div className='add-show-form-page'>
