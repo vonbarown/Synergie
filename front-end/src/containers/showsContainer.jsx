@@ -12,8 +12,6 @@ class UsersContainer extends React.Component {
     }
 
     makeObj = (data) => {
-
-        // const filteredShows = [];
         let watchList = {}
         for (let i = 0; i < data.length; i++) {
             // debugger;
@@ -22,21 +20,16 @@ class UsersContainer extends React.Component {
             let key = show.title
 
             if (!watchList[key]) {
-                let dupes = {
+                watchList[key] = {
                     title: key,
                     img_url: show.img_url,
-                    watchers: [show.username]
+                    watchers: [{ username: show.username, user_id: show.user_id }]
                 }
-                watchList[key] = dupes
             } else {
-                watchList[key]['watchers'].push(show.username)
+                watchList[key]['watchers'].push({ username: show.username, user_id: show.user_id })
             }
-
-
         }
-
         this.props.loadAllShows(watchList)
-
         // for (let elem in stateCopy.showObj) {
         //     filteredShows.push(stateCopy.showObj[elem])
         // }
