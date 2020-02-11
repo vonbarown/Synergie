@@ -1,0 +1,7 @@
+.container-inner-shows {
+  width: 40vw;
+}
+.show-data {
+  width: 40vw;
+  flex-direction: row;
+}
