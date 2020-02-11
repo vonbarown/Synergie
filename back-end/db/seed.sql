@@ -16,10 +16,16 @@ CREATE TABLE genres (
 
 CREATE TABLE shows (
     id SERIAL PRIMARY KEY,
-    title VARCHAR NOT NULL,
+    title VARCHAR UNIQUE NOT NULL,
     img_url VARCHAR NOT NULL,
     user_id INT REFERENCES users(id),
     genre_id INT REFERENCES genres(id)
+);
+
+CREATE TABLE showWatchers (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id),
+    show_id INT REFERENCES shows(id)
 );
 
 CREATE TABLE comments (
@@ -45,27 +51,28 @@ INSERT INTO users (username, avatar_url) VALUES ('Pam Beesly', 'https://i1.sndcd
 INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 1, 4);
 INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 2, 4);
-INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 3, 4);
-INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 1, 1);
-INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 3, 1);
-INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 4, 1);
 INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('Naruto Shippūden', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/zAYRe2bJxpWTVrwwmBc00VFkAf4.jpg', 1, 4);
 INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('Naruto Shippūden', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/zAYRe2bJxpWTVrwwmBc00VFkAf4.jpg', 2, 4);
-INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('Greys Anatomy', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/eqgIOObafPJitt8JNh1LuO2fvqu.jpg', 3, 2);
 INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('Greys Anatomy', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/eqgIOObafPJitt8JNh1LuO2fvqu.jpg', 4, 2);
-INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 1, 3);
-INSERT INTO shows (title, img_url, user_id, genre_id)
-VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 4, 3);
+
+-- INSERT showWatchers
+INSERT INTO showWatchers (user_id,show_id) VALUES (1,1);
+INSERT INTO showWatchers (user_id,show_id) VALUES (2,1);
+INSERT INTO showWatchers (user_id,show_id) VALUES (3,1);
+INSERT INTO showWatchers (user_id,show_id) VALUES (1,2);
+INSERT INTO showWatchers (user_id,show_id) VALUES (3,2);
+INSERT INTO showWatchers (user_id,show_id) VALUES (4,2);
+INSERT INTO showWatchers (user_id,show_id) VALUES (1,3);
+INSERT INTO showWatchers (user_id,show_id) VALUES (2,3);
+INSERT INTO showWatchers (user_id,show_id) VALUES (3,4);
+INSERT INTO showWatchers (user_id,show_id) VALUES (4,4);
+INSERT INTO showWatchers (user_id,show_id) VALUES (1,5);
+INSERT INTO showWatchers (user_id,show_id) VALUES (4,5);
+
 
 -- INSERT COMMENTS
 INSERT INTO comments (comment_body, user_id, show_id)

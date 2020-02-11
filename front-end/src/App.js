@@ -18,7 +18,7 @@ function App() {
       <Switch>
         <Route exact path='/users' component={UsersContainer} />
         <Route exact path='/users/:id' component={UserPage} />
-        <Route exact path='/users/:id/addShow' component={AddShowForm} />
+        <Route exact path='/addShow' component={AddShowForm} />
         <Route exact path='/shows' component={showsContainer} />
         <Route exact path='/shows/:id/user/:userId' component={ShowInfoPage} />
         <Route exact path='/about' component={About} />

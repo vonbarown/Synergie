@@ -3,11 +3,13 @@ const db = require('../db')
 
 const getAllShows = async () => {
     const queryStr = `SELECT
-                        shows.id,title,img_url,
-                        username
+                        shows.id,title,img_url,showWatchers.user_id, users.username
                         FROM 
-                        shows 
-                        JOIN users ON user_id = users.id`
+                        showWatchers 
+                        INNER JOIN shows ON shows.id = show_id
+                        INNER JOIN users ON showWatchers.user_id = users.id
+                        `
+
     return db.any(queryStr)
 }
 
@@ -27,21 +29,44 @@ const getShowsById = async (id) => {
 const addNewShow = async (showObj) => {
 
     const newShowQStr = `INSERT INTO shows (title, img_url,user_id,genre_id) 
-VALUES($/title/,$/img_url/,$/user_id/,$/genre_id/) RETURNING *`
+                        VALUES($/title/,$/img_url/,$/user_id/,$/genre_id/) RETURNING *
+                        `
 
     return db.one(newShowQStr, {
         title: showObj.title,
         img_url: showObj.img_url,
         user_id: showObj.user_id,
-        genre_id: showObj.genre_id
+        genre_id: showObj.genre_id,
     })
 }
+
+const addNewShowWatcher = async (showObj) => {
+
+    const newShowWatcherQStr = `
+                        INSERT INTO showWatchers (user_id,show_id) 
+                        VALUES($/user_id/,$/show_id/) RETURNING *
+                        `
+
+    return db.one(newShowWatcherQStr, {
+        user_id: Number(showObj.user_id),
+        show_id: Number(showObj.show_id)
+    })
+}
+
 
 
 const getShowsByGenreId = async (genreId) => db.any("SELECT * from shows WHERE genre_id = $1", [genreId])
 
 const getShowsByUserId = async (userId) => {
-    const queryStr = `SELECT shows.id,title,img_url,genre_name from shows JOIN genres ON genre_id = genres.id WHERE user_id = $1`
+    const queryStr = `SELECT 
+                    showWatchers.user_id, shows.title, 
+                    shows.img_url, shows.id, genre_name
+                    FROM 
+                    showWatchers 
+                    INNER JOIN shows ON shows.id = show_id
+                    INNER JOIN genres ON genres.id = genre_id
+                    WHERE showWatchers.user_id = $1
+                    `
 
     return db.any(queryStr, [userId])
 }
@@ -51,5 +76,6 @@ module.exports = {
     getShowsById,
     getShowsByGenreId,
     getShowsByUserId,
-    addNewShow
+    addNewShow,
+    addNewShowWatcher
 }

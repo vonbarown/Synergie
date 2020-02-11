@@ -66,9 +66,7 @@ class UserPage extends React.Component {
                         })
                     }
                 </div>
-                <button>
-                    <Link to={`/users/${this.props.match.params.id}/addShow`}>Add Show</Link>
-                </button>
+
             </div>
         )
     }

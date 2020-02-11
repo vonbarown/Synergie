@@ -9,28 +9,40 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.loadShows()
-        // this.loadWatchingList()
+    }
+
+    makeObj = (data) => {
+        let watchList = {}
+        for (let i = 0; i < data.length; i++) {
+            let show = data[i]
+            let key = show.title
+
+            if (!watchList[key]) {
+                watchList[key] = {
+                    title: key,
+                    img_url: show.img_url,
+                    watchers: [{ username: show.username, user_id: show.user_id }]
+                }
+            } else {
+                watchList[key]['watchers'].push({ username: show.username, user_id: show.user_id })
+            }
+        }
+        this.props.loadAllShows(watchList)
+        // for (let elem in stateCopy.showObj) {
+        //     filteredShows.push(stateCopy.showObj[elem])
+        // }
     }
 
     loadShows = async () => {
+
         try {
             const { data: { shows } } = await axios.get('/api/shows/')
-            this.props.loadAllShows(shows)
+            this.makeObj(shows)
         } catch (error) {
             console.log('all shows error', error);
 
         }
     }
-
-    // loadWatchingList = async () => {
-    //     try {
-    //         const { data: { shows } } = await axios.get('/api/shows/user/1')
-    //         // this.props.loadAllShows(shows)
-    //         console.log(shows);
-    //     } catch (error) {
-    //         console.log('all shows error', error);
-    //     }
-    // }
 
     render() {
         return (
