@@ -5,24 +5,35 @@ import { Link } from 'react-router-dom'
 
 class Shows extends React.Component {
 
-    watchList = () => {
-        for (let elem in this.props.watchList) {
-            console.log(elem);
-            return (
 
-                <p>{elem}</p>
-
-            )
-        }
-    }
 
     render() {
+        let test = Object.keys(this.props.watchList)
+        console.log('testing', test);
+
 
         return (
             <div className='user-page'>
                 <div className='container'>
                     {
-                        this.watchList()
+                        test.map(el => {
+                            console.log(el);
+
+                            return (
+                                <div className='movie' key={el.id}>
+                                    <img className='show-img' src={el} alt={el.title} />
+                                    <div className='show-info'>
+                                        <p>{el}</p>
+                                        <p>{el.genre_id}</p>
+                                        <p>Being Watched by:{'  '}
+                                            <Link to={`/shows/${el.id}/user/${el.user_id}`}>
+                                                {el.username}
+                                            </Link>
+                                        </p>
+                                    </div>
+                                </div>
+                            )
+                        })
                     }
                 </div>
 
@@ -35,7 +46,7 @@ const mapStateToProps = (state) => {
     return {
         shows: state.showsReducer.shows,
         user: state.usersReducer.user,
-        watchList: state.showsReducer.watchList
+        watchList: state.showsReducer.showObj
     }
 }
 

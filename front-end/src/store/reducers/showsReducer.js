@@ -18,24 +18,28 @@ export default (state = initialState, action) => {
             let watchList = {}
 
             for (let i = 0; i < stateCopy.shows.length; i++) {
-                let key = stateCopy.shows[i].title
+                let key = stateCopy.shows[i].img_url
                 if (!watchList[key]) {
                     watchList[key] = []
-                    watchList[key].push(stateCopy.shows[i])
+                    watchList[key].push(stateCopy.shows[i].title, stateCopy.shows[i].username)
 
                 } else {
-                    watchList[key].push(stateCopy.shows[i])
+                    watchList[key].push(stateCopy.shows[i].username)
                 }
 
-                if (!dupes[key]) {
-                    filteredShows.push(stateCopy.shows[i])
-                }
-                dupes[key] = true
+                // if (!dupes[key]) {
+                //     filteredShows.push(stateCopy.shows[i])
+                // }
+                // dupes[key] = true
             }
-            console.log('watchList', watchList);
-
-            stateCopy.shows = filteredShows
             stateCopy.showObj = watchList
+
+            for (let elem in stateCopy.showObj) {
+                filteredShows.push(stateCopy.showObj[elem])
+            }
+            console.log('filtered', filteredShows);
+
+
             break
         case LOAD_USER_SHOWS:
             stateCopy.shows = action.payload
