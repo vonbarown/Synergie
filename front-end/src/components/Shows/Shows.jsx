@@ -20,7 +20,7 @@ class Shows extends React.Component {
                             console.log(el);
 
                             return (
-                                <div className='movie' key={el.id}>
+                                <div className='movie' key={el}>
                                     <img className='show-img' src={el} alt={el.title} />
                                     <div className='show-info'>
                                         <p>{el}</p>
