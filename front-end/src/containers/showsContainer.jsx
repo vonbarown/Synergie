@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { loadAllShows } from '../store/actions/showsActions'
 import Shows from '../components/Shows/Shows'
 
-class UsersContainer extends React.Component {
+class ShowsContainer extends React.Component {
 
 
     componentDidMount() {
@@ -21,10 +21,11 @@ class UsersContainer extends React.Component {
                 watchList[key] = {
                     title: key,
                     img_url: show.img_url,
-                    watchers: [{ username: show.username, user_id: show.user_id }]
+                    id: show.id,
+                    watchers: [{ username: show.username, user_id: show.user_id, show_id: show.id }]
                 }
             } else {
-                watchList[key]['watchers'].push({ username: show.username, user_id: show.user_id })
+                watchList[key]['watchers'].push({ username: show.username, user_id: show.user_id, show_id: show.id })
             }
         }
         this.props.loadAllShows(watchList)
@@ -46,7 +47,7 @@ class UsersContainer extends React.Component {
 
     render() {
         return (
-            <div className='users-container'>
+            <div className='shows-container'>
                 <Shows />
             </div>
         )
@@ -60,4 +61,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(UsersContainer)
+export default connect(null, mapDispatchToProps)(ShowsContainer)
