@@ -33,7 +33,7 @@ class AddShowForm extends React.Component {
         const showObj = {
             title: this.state.show_name,
             img_url: this.state.img_url,
-            user_id: this.props.match.params.id,
+            user_id: 1,
             genre_id: this.state.genre_id
         }
 

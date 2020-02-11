@@ -2,7 +2,8 @@ import { LOAD_USER_SHOWS, LOAD_SHOWS, LOAD_COMMENTS } from '../actions/actionTyp
 
 const initialState = {
     shows: [],
-    comments: []
+    comments: [],
+    showObj: {}
 }
 
 export default (state = initialState, action) => {
@@ -12,22 +13,29 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case LOAD_SHOWS:
             stateCopy.shows = action.payload
+            const dupes = {};
+            const filteredShows = [];
             let watchList = {}
 
             for (let i = 0; i < stateCopy.shows.length; i++) {
                 let key = stateCopy.shows[i].title
                 if (!watchList[key]) {
                     watchList[key] = []
-                    watchList[key].push(stateCopy.shows[i].username)
+                    watchList[key].push(stateCopy.shows[i])
 
                 } else {
-                    watchList[key].push(stateCopy.shows[i].username)
+                    watchList[key].push(stateCopy.shows[i])
                 }
+
+                if (!dupes[key]) {
+                    filteredShows.push(stateCopy.shows[i])
+                }
+                dupes[key] = true
             }
             console.log('watchList', watchList);
 
-            stateCopy.shows = action.payload
-
+            stateCopy.shows = filteredShows
+            stateCopy.showObj = watchList
             break
         case LOAD_USER_SHOWS:
             stateCopy.shows = action.payload

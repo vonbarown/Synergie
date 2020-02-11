@@ -5,7 +5,16 @@ import { Link } from 'react-router-dom'
 
 class Shows extends React.Component {
 
+    watchList = () => {
+        for (let elem in this.props.watchList) {
+            console.log(elem);
+            return (
 
+                <p>{elem}</p>
+
+            )
+        }
+    }
 
     render() {
 
@@ -13,22 +22,7 @@ class Shows extends React.Component {
             <div className='user-page'>
                 <div className='container'>
                     {
-                        this.props.shows.map(el => {
-                            return (
-                                <div className='movie' key={el.id}>
-                                    <img className='show-img' src={el.img_url} alt={el.title} />
-                                    <div className='show-info'>
-                                        <p>{el.title}</p>
-                                        <p>{el.genre_id}</p>
-                                        <p>Being Watched by:{' '}
-                                            <Link to={`/shows/${el.id}/user/${el.user_id}`}>
-                                                {el.username}
-                                            </Link>
-                                        </p>
-                                    </div>
-                                </div>
-                            )
-                        })
+                        this.watchList()
                     }
                 </div>
 
@@ -40,7 +34,8 @@ class Shows extends React.Component {
 const mapStateToProps = (state) => {
     return {
         shows: state.showsReducer.shows,
-        user: state.usersReducer.user
+        user: state.usersReducer.user,
+        watchList: state.showsReducer.watchList
     }
 }
 
