@@ -14,9 +14,7 @@ class UsersContainer extends React.Component {
     makeObj = (data) => {
         let watchList = {}
         for (let i = 0; i < data.length; i++) {
-            // debugger;
             let show = data[i]
-
             let key = show.title
 
             if (!watchList[key]) {
