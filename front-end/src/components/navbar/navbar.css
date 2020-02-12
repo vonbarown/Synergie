@@ -1,17 +1,26 @@
-.navbar {
+nav {
   display: flex;
   gap: 10vw;
   width: 97.1vw;
   border: 1px solid black;
   justify-content: center;
+  align-items: center;
   padding: 20px;
 }
 
+.log-out {
+  border-radius: 4px;
+  height: 20px;
+  background-color: tomato;
+}
 .logo {
   border: 1px solid black;
   padding-left: 50px;
   padding-right: 50px;
   width: 20vw;
+  position: relative;
+  border-radius: 10px;
+  margin-left: -30%;
 }
 
 .links {
