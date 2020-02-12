@@ -6,7 +6,7 @@ const getAllUsers = async () => {
 }
 
 const getUsersById = async (id) => {
-    return db.oneOrNone("SELECT id,username,avatar_url from users WHERE id = $1", [id])
+    return db.any("SELECT id,username,avatar_url from users WHERE id = $1", [id])
 }
 
 const addNewUser = async (userObj) => {
