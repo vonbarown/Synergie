@@ -8,7 +8,7 @@ export const Navbar = () => {
 
             <Link to='/'>
                 <div className='logo'>
-                    <h2>TV Watch List App</h2>
+                    <h2>Synergie</h2>
                 </div>
             </Link>
 
