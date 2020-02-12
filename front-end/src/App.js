@@ -34,6 +34,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar logoutUser={this.logoutUser}
+          isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
         />
 
 
