@@ -13,6 +13,7 @@ import AuthContainer from './containers/authContainer'
 import axios from 'axios'
 import { logOut } from './store/actions/userActions';
 import { connect } from 'react-redux'
+import { PrivateRoute } from './components/AuthComponents/PrivateRoute'
 class App extends React.Component {
 
 
@@ -40,7 +41,7 @@ class App extends React.Component {
         <Switch>
           <Route path='/login' render={this.renderAuthContainer} />
           <Route path='/signup' render={this.renderAuthContainer} />
-          <Route exact path='/users' component={UsersContainer} />
+          <PrivateRoute path='/users' component={UsersContainer} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <Route exact path='/users/:id' component={UserPage} />
           <Route exact path='/addShow' component={AddShowForm} />
           <Route exact path='/shows' component={showsContainer} />
@@ -53,11 +54,11 @@ class App extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//         users: state.usersReducer.users
-//     }
-// }
+const mapStateToProps = (state) => {
+  return {
+    loggedUser: state.usersReducer.loggedUser
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -65,4 +66,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
