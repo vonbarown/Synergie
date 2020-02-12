@@ -3,6 +3,9 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import LoginForm from '../components/AuthComponents/LoginForm'
 import SignupForm from '../components/AuthComponents/SignUpForm'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { setUser } from '../store/actions/userActions'
+
 
 class AuthContainer extends Component {
     state = {
@@ -91,4 +94,16 @@ class AuthContainer extends Component {
     }
 }
 
-export default AuthContainer
+// const mapStateToProps = (state) => {
+//     return {
+//         users: state.usersReducer.users
+//     }
+// }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setUser: data => dispatch(setUser(data)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(AuthContainer)

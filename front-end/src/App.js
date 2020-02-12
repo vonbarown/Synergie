@@ -10,18 +10,31 @@ import { About } from './components/About/About';
 import AddShowForm from './components/AddShowForm/AddShowForm';
 import ShowInfoPage from './components/ShowInfoPage/ShowInfoPage';
 import AuthContainer from './containers/authContainer'
-
+import axios from 'axios'
 class App extends React.Component {
 
 
+  logoutUser = async () => {
+    try {
+      await axios.get('/auth/logout')
+      this.setState({
+        user: null,
+        isUserLoggedIn: false
+      })
+      this.props.history.push('/')
+    } catch (error) {
+      console.log('error', error);
+    }
+  }
 
-  renderAuthContainer = (routeProps) => <AuthContainer setUser={this.setUser}{...routeProps} isUserLoggedIn={this.state.isUserLoggedIn} />
+  renderAuthContainer = (routeProps) => <AuthContainer {...routeProps} />
 
 
   render() {
     return (
       <div className="App">
-        <Navbar />
+        <Navbar logoutUser={this.logoutUser}
+        />
 
 
 
