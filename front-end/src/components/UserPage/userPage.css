@@ -21,6 +21,6 @@
 
 .movie {
   display: flex;
-  gap: 20px;
-  border: 1px solid black;
+  /* gap: 20px; */
+  /* border: 1px solid black; */
 }
