@@ -10,7 +10,7 @@ const getCommentByShowId = async (showId) => {
                     JOIN users ON user_id = users.id
                     WHERE show_id = $1`
 
-    return db.any(queryStr, [showId])
+    return await db.any(queryStr, [showId])
 }
 
 
@@ -20,7 +20,7 @@ const addNewComment = async (commentObj) => {
     const newCommentQStr = `INSERT INTO comments ( comment_body,user_id,show_id) 
                             VALUES($/comment_body/,$/user_id/,$/show_id/) RETURNING *`
 
-    return db.one(newCommentQStr, {
+    return await db.one(newCommentQStr, {
         comment_body: commentObj.comment_body,
         user_id: commentObj.user_id,
         show_id: commentObj.show_id
