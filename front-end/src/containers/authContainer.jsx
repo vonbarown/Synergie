@@ -12,20 +12,20 @@ class AuthContainer extends Component {
         username: '',
         password: ''
     }
-    async componentDidMount() {
-        try {
-            const { data } = await axios.get('/auth/isUserLoggedIn')
-            this.props.setUser(data.payload)
-        } catch (err) {
-            console.log('ERROR', err)
-        }
-    }
+    // async componentDidMount() {
+    //     try {
+    //         const { data } = await axios.get('/auth/isUserLoggedIn')
+    //         this.props.setUser(data.payload)
+    //     } catch (err) {
+    //         console.log('ERROR', err)
+    //     }
+    // }
 
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
     signupUser = async (user) => {
         try {
-            const { data } = await axios.post('/auth/signup', this.state)
+            const { data } = await axios.post('/api/auth/signup', this.state)
 
             this.props.setUser(data.payload)
 
@@ -38,7 +38,7 @@ class AuthContainer extends Component {
 
     loginUser = async () => {
         try {
-            const { data } = await axios.post('/auth/login', this.state)
+            const { data } = await axios.post('/api/auth/login', this.state)
 
             this.props.setUser(data.payload)
             this.props.history.push('/users')

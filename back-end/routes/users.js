@@ -4,7 +4,7 @@ const queries = require('../db/queries/users')
 const { loginRequired } = require('../auth/helpers')
 
 /* GET users listing. */
-router.get('/', async (req, res, next) => {
+router.get('/', loginRequired, async (req, res, next) => {
   try {
     let users = await queries.getAllUsers()
 
@@ -23,7 +23,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', loginRequired, async (req, res, next) => {
   try {
     let byId = await queries.getUsersById(req.params.id)
 
@@ -41,6 +41,7 @@ router.get('/:id', async (req, res, next) => {
     })
   }
 })
+
 
 // router.post('/', async (req, res, next) => {
 //   console.log(req.body);

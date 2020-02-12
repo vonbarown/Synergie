@@ -21,8 +21,14 @@ VALUES($/username/,$/avatar_url/,$/password_digest/) RETURNING id,username,avata
     })
 }
 
+const getUserByUsername = async (username) => {
+    let user = await db.oneOrNone('SELECT * FROM users WHERE username = $1', [username])
+    return user
+}
+
 module.exports = {
     getAllUsers,
     getUsersById,
-    addNewUser
+    addNewUser,
+    getUserByUsername
 }
