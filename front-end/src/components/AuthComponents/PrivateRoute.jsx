@@ -4,9 +4,10 @@ import { Route, Redirect } from 'react-router-dom'
 export const PrivateRoute = (props) => {
     const { component: Component, isUserLoggedIn, ...rest } = props
 
-    const renderComponentOrRedirect = () => {
+    const renderComponentOrRedirect = (routeProps) => {
+
         if (isUserLoggedIn) {
-            return <Component />
+            return <Component {...routeProps} />
         }
         return (
             <Redirect to={{
