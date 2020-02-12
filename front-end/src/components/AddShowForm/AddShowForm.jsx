@@ -35,10 +35,6 @@ class AddShowForm extends React.Component {
             genre_id: this.state.genre_id
         }
 
-        const watchObj = {
-
-        }
-
         try {
             await axios.post(`/api/shows`, showObj)
         } catch (error) {

@@ -40,6 +40,8 @@ router.post('/login', passport.authenticate('local'), async (req, res, next) => 
 })
 
 router.get('/isUserLoggedIn', authHelpers.loginRequired, (req, res) => {
+    console.log('session', req.user);
+
     res.json({
         payload: req.user,
         msg: 'User is logged in'

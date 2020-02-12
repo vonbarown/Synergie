@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SignupForm = ({ username, password, handleChange, signupUser }) => {
+const SignupForm = ({ username, password, handleChange, signupUser, avatar_url }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -16,6 +16,13 @@ const SignupForm = ({ username, password, handleChange, signupUser }) => {
                     name="username"
                     value={username}
                     placeholder="Username"
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    name="img_url"
+                    value={avatar_url}
+                    placeholder="Url"
                     onChange={handleChange}
                 />
                 <input

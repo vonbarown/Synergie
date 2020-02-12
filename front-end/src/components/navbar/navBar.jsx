@@ -17,8 +17,9 @@ export const Navbar = ({ logoutUser }) => {
                 <Link to='/users'>Users</Link>{" "}
                 <Link to='/shows'>Shows</Link>{' '}
                 <Link to='/about'>About</Link>{' '}
-                <Link to='/addShow'>Add Show</Link>
-                <Link to='/login'>Login</Link>
+                <Link to='/addShow'>Add Show</Link>{' '}
+                <Link to='/login'>Login</Link>{' '}
+                <Link to='/signup'>Sign Up</Link>
                 <button onClick={logoutUser}>log-out</button>
             </div>
         </div>

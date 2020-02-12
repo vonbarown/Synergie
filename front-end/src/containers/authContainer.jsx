@@ -10,16 +10,17 @@ import { setUser } from '../store/actions/userActions'
 class AuthContainer extends Component {
     state = {
         username: '',
+        avatar_url: '',
         password: ''
     }
-    // async componentDidMount() {
-    //     try {
-    //         const { data } = await axios.get('/auth/isUserLoggedIn')
-    //         this.props.setUser(data.payload)
-    //     } catch (err) {
-    //         console.log('ERROR', err)
-    //     }
-    // }
+    async componentDidMount() {
+        try {
+            const { data } = await axios.get('/api/auth/isUserLoggedIn')
+            this.props.setUser(data.payload)
+        } catch (err) {
+            console.log('ERROR', err)
+        }
+    }
 
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
 

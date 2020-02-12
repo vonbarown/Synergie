@@ -24,11 +24,11 @@ class Shows extends React.Component {
                                     <div className='show-info'>
                                         <p>{el.title}</p>
                                         <p>{el.genre_id}</p>
-                                        <p className='show-watchers'>Being Watched by:{'  '}
+                                        <div className='show-watchers'>Being Watched by:{'  '}
                                             {
                                                 el.watchers.map(watcher => {
                                                     return (
-                                                        <div className={`watcher-${watcher.user_id}`}>
+                                                        <div className={`watcher-${watcher.user_id}`} key={watcher.user_id}>
                                                             <Link to={`/shows/${watcher.show_id}/user/${watcher.user_id}`}>
                                                                 {watcher.username}
                                                             </Link>{' '}
@@ -36,7 +36,7 @@ class Shows extends React.Component {
                                                     )
                                                 })
                                             }
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             )

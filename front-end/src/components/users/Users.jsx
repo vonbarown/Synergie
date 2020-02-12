@@ -16,10 +16,10 @@ const Users = (props) => {
                 {
 
                     props.users ? props.users.map(el => {
-                        if (props.loggedUser.user.username !== null && props.loggedUser.user.username === el.username) {
-                            loggedIn = 'Logged In'
-                        } else {
-                            loggedIn = ''
+                        if (props.loggedUser.isUserLoggedIn) {
+                            props.loggedUser.user.username === el.username ?
+                                loggedIn = 'Logged In' :
+                                loggedIn = ''
                         }
                         return (
 
