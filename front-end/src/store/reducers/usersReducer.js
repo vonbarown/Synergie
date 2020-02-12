@@ -1,4 +1,4 @@
-import { RECEIVE_USERS, LOAD_USER, LOGIN_USER } from '../actions/actionTypes';
+import { RECEIVE_USERS, LOAD_USER, LOGIN_USER, LOGIN_OUT } from '../actions/actionTypes';
 
 const initialState = {
     users: [],
@@ -24,6 +24,12 @@ export default (state = initialState, action) => {
             stateCopy.loggedUser = {
                 user: action.payload,
                 isUserLoggedIn: true
+            }
+            break
+        case LOGIN_OUT:
+            stateCopy.loggedUser = {
+                user: action.payload,
+                isUserLoggedIn: false
             }
             break
         default:

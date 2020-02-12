@@ -11,16 +11,15 @@ import AddShowForm from './components/AddShowForm/AddShowForm';
 import ShowInfoPage from './components/ShowInfoPage/ShowInfoPage';
 import AuthContainer from './containers/authContainer'
 import axios from 'axios'
+import { logOut } from './store/actions/userActions';
+import { connect } from 'react-redux'
 class App extends React.Component {
 
 
   logoutUser = async () => {
     try {
-      await axios.get('/auth/logout')
-      this.setState({
-        user: null,
-        isUserLoggedIn: false
-      })
+      await axios.get('/api/auth/logout')
+      this.props.logOut(null)
       this.props.history.push('/')
     } catch (error) {
       console.log('error', error);
@@ -54,4 +53,16 @@ class App extends React.Component {
   }
 }
 
-export default App;
+// const mapStateToProps = (state) => {
+//     return {
+//         users: state.usersReducer.users
+//     }
+// }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logOut: data => dispatch(logOut(data)),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App)
