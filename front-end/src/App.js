@@ -42,10 +42,10 @@ class App extends React.Component {
           <Route path='/login' render={this.renderAuthContainer} />
           <Route path='/signup' render={this.renderAuthContainer} />
           <PrivateRoute path='/users' component={UsersContainer} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
-          <Route exact path='/users/:id' component={UserPage} />
-          <Route exact path='/addShow' component={AddShowForm} />
-          <Route exact path='/shows' component={showsContainer} />
-          <Route exact path='/shows/:id/user/:userId' component={ShowInfoPage} />
+          <PrivateRoute path='/users/:id' component={UserPage} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
+          <PrivateRoute path='/addShow' component={AddShowForm} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
+          <PrivateRoute path='/shows' component={showsContainer} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
+          <PrivateRoute path='/shows/:id/user/:userId' component={ShowInfoPage} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <Route exact path='/about' component={About} />
           <Route exact path='/' component={Home} />
         </Switch>
