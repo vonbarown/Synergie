@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const queries = require('../db/queries/users')
+const { loginRequired } = require('../auth/helpers')
 
 /* GET users listing. */
-router.get('/', async (req, res, next) => {
+router.get('/', loginRequired, async (req, res, next) => {
   try {
     let users = await queries.getAllUsers()
 
@@ -41,25 +42,25 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
-  console.log(req.body);
-  try {
-    let newUser = await queries.addNewUser(req.body)
+// router.post('/', async (req, res, next) => {
+//   console.log(req.body);
+//   try {
+//     let newUser = await queries.addNewUser(req.body)
 
-    res.json({
-      users: newUser,
-      message: 'a new user added',
-      error: false
-    })
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({
-      users: null,
-      message: 'user could not be added',
-      error: true
-    })
-  }
-})
+//     res.json({
+//       users: newUser,
+//       message: 'a new user added',
+//       error: false
+//     })
+//   } catch (error) {
+//     console.log(error)
+//     res.status(500).json({
+//       users: null,
+//       message: 'user could not be added',
+//       error: true
+//     })
+//   }
+// })
 
 
 module.exports = router;
