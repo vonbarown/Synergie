@@ -17,7 +17,7 @@ VALUES($/username/,$/avatar_url/,$/password_digest/) RETURNING id,username,avata
     return await db.one(newUserQStr, {
         username: userObj.username,
         avatar_url: userObj.avatar_url,
-        password_digest: userObj.password_digest
+        password_digest: userObj.password
     })
 }
 

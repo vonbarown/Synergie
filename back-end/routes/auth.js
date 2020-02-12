@@ -9,6 +9,7 @@ router.post('/signup', async (req, res, next) => {
 
     const userInfo = {
         username: req.body.username,
+        avatar_url: req.body.avatar_url,
         password: passwordDigest
     }
 
