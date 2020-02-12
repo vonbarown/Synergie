@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import './showPage.css'
+import './showPage.css'
 import { Link } from 'react-router-dom'
 
 class Shows extends React.Component {
@@ -14,7 +14,7 @@ class Shows extends React.Component {
 
         return (
             <div className='user-page'>
-                <div className='container-inner-shows'>
+                <div className='container'>
                     {
                         test.map(el => {
 
@@ -24,13 +24,15 @@ class Shows extends React.Component {
                                     <div className='show-info'>
                                         <p>{el.title}</p>
                                         <p>{el.genre_id}</p>
-                                        <p>Being Watched by:{'  '}
+                                        <p className='show-watchers'>Being Watched by:{'  '}
                                             {
                                                 el.watchers.map(watcher => {
                                                     return (
-                                                        <Link to={`/shows/${watcher.show_id}/user/${watcher.user_id}`}>
-                                                            {watcher.username}
-                                                        </Link>
+                                                        <div className={`watcher-${watcher.user_id}`}>
+                                                            <Link to={`/shows/${watcher.show_id}/user/${watcher.user_id}`}>
+                                                                {watcher.username}
+                                                            </Link>{' '}
+                                                        </div>
                                                     )
                                                 })
                                             }
