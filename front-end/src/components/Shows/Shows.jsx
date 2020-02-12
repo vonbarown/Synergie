@@ -23,7 +23,7 @@ class Shows extends React.Component {
                                     <img className='show-img' src={el.img_url} alt={el.title} />
                                     <div className='show-info'>
                                         <p>{el.title}</p>
-                                        <p>{el.genre_id}</p>
+                                        <p>{el.genre}</p>
                                         <div className='show-watchers'>Being Watched by:{'  '}
                                             {
                                                 el.watchers.map(watcher => {

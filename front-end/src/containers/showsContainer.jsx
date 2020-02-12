@@ -22,6 +22,7 @@ class ShowsContainer extends React.Component {
                     title: key,
                     img_url: show.img_url,
                     id: show.id,
+                    genre: show.genre_name,
                     watchers: [{ username: show.username, user_id: show.user_id, show_id: show.id }]
                 }
             } else {
