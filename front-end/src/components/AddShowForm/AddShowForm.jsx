@@ -1,6 +1,7 @@
 import React from 'react'
 import './AddShow.css'
 import axios from 'axios'
+import { connect } from 'react-redux'
 class AddShowForm extends React.Component {
     state = {
         img_url: '',
@@ -31,7 +32,7 @@ class AddShowForm extends React.Component {
         const showObj = {
             title: this.state.show_name,
             img_url: this.state.img_url,
-            user_id: 1,
+            user_id: this.props.loggedInUser.id,
             genre_id: this.state.genre_id
         }
 
@@ -44,6 +45,7 @@ class AddShowForm extends React.Component {
     }
 
     handleSelect = e => this.setState({ genre_id: parseInt(e.target.value) })
+
 
 
     render() {
@@ -87,4 +89,13 @@ class AddShowForm extends React.Component {
     }
 }
 
-export default AddShowForm
+const mapStateToProps = (state) => {
+    return {
+        loggedInUser: state.usersReducer.loggedUser.user
+    }
+}
+
+
+
+export default connect(mapStateToProps, null)(AddShowForm)
+

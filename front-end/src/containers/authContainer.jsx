@@ -17,6 +17,7 @@ class AuthContainer extends Component {
         try {
             const { data } = await axios.get('/api/auth/isUserLoggedIn')
             this.props.setUser(data.payload)
+            this.props.history.push('/users')
         } catch (err) {
             console.log('ERROR', err)
         }
@@ -94,12 +95,6 @@ class AuthContainer extends Component {
         )
     }
 }
-
-// const mapStateToProps = (state) => {
-//     return {
-//         users: state.usersReducer.users
-//     }
-// }
 
 const mapDispatchToProps = (dispatch) => {
     return {
