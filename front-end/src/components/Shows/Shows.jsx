@@ -28,11 +28,9 @@ class Shows extends React.Component {
                                             {
                                                 el.watchers.map(watcher => {
                                                     return (
-                                                        <div>
-                                                            <Link to={`/shows/${watcher.show_id}/user/${watcher.user_id}`}>
-                                                                {watcher.username}
-                                                            </Link> {' '}
-                                                        </div>
+                                                        <Link to={`/shows/${watcher.show_id}/user/${watcher.user_id}`}>
+                                                            {watcher.username}
+                                                        </Link>
                                                     )
                                                 })
                                             }

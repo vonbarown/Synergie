@@ -81,6 +81,7 @@ router.get('/user/:user_id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         let newShow = await queries.addNewShow(req.body)
+        console.log('new', newShow);
 
         res.json({
             shows: newShow,

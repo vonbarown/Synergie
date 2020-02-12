@@ -5,8 +5,8 @@ const getAllShows = async () => {
     const queryStr = `SELECT
                         shows.id,title,img_url,showWatchers.user_id, users.username
                         FROM 
-                        showWatchers 
-                        INNER JOIN shows ON shows.id = show_id
+                        shows 
+                        INNER JOIN showWatchers ON shows.id = show_id
                         INNER JOIN users ON showWatchers.user_id = users.id
                         `
 
@@ -27,29 +27,35 @@ const getShowsById = async (id) => {
 }
 
 const addNewShow = async (showObj) => {
+    // console.log(showObj);
 
     const newShowQStr = `INSERT INTO shows (title, img_url,user_id,genre_id) 
-                        VALUES($/title/,$/img_url/,$/user_id/,$/genre_id/) RETURNING *
+                        VALUES($/title/,$/img_url/,$/user_id/,$/genre_id/) 
+                        ON CONFLICT (title) DO UPDATE SET title=EXCLUDED.title
+                        RETURNING shows.id
                         `
 
-    return db.one(newShowQStr, {
+    let showId = await db.one(newShowQStr, {
         title: showObj.title,
         img_url: showObj.img_url,
         user_id: showObj.user_id,
         genre_id: showObj.genre_id,
     })
+
+    await addNewShowWatcher({ user_id: showObj.user_id, show_id: showId.id })
+
+    return showId
 }
 
-const addNewShowWatcher = async (showObj) => {
-
+const addNewShowWatcher = async (watcherObj) => {
     const newShowWatcherQStr = `
                         INSERT INTO showWatchers (user_id,show_id) 
                         VALUES($/user_id/,$/show_id/) RETURNING *
                         `
 
     return db.one(newShowWatcherQStr, {
-        user_id: Number(showObj.user_id),
-        show_id: Number(showObj.show_id)
+        user_id: Number(watcherObj.user_id),
+        show_id: Number(watcherObj.show_id)
     })
 }
 
