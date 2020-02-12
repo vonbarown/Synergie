@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const queries = require('../db/queries/shows')
+const { loginRequired } = require('../auth/helpers')
 
-router.get('/', async (req, res, next) => {
+router.get('/', loginRequired, async (req, res, next) => {
     try {
         let shows = await queries.getAllShows()
 
@@ -21,7 +22,7 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', loginRequired, async (req, res, next) => {
     try {
         let byId = await queries.getShowsById(req.params.id)
 
@@ -40,7 +41,7 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-router.get('/genre/:genre_id', async (req, res, next) => {
+router.get('/genre/:genre_id', loginRequired, async (req, res, next) => {
     try {
         let byGenreId = await queries.getShowsByGenreId(req.params.genre_id)
 
@@ -59,7 +60,7 @@ router.get('/genre/:genre_id', async (req, res, next) => {
     }
 })
 
-router.get('/user/:user_id', async (req, res, next) => {
+router.get('/user/:user_id', loginRequired, async (req, res, next) => {
     try {
         let byUserId = await queries.getShowsByUserId(req.params.user_id)
 
@@ -78,7 +79,7 @@ router.get('/user/:user_id', async (req, res, next) => {
     }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', loginRequired, async (req, res, next) => {
     try {
         let newShow = await queries.addNewShow(req.body)
         console.log('new', newShow);

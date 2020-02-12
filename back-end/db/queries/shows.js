@@ -10,7 +10,7 @@ const getAllShows = async () => {
                         INNER JOIN users ON showWatchers.user_id = users.id
                         `
 
-    return db.any(queryStr)
+    return await db.any(queryStr)
 }
 
 
@@ -23,7 +23,7 @@ const getShowsById = async (id) => {
                         INNER JOIN users ON user_id = users.id
                         WHERE shows.id = $1`
 
-    return db.any(queryStr, [id])
+    return await db.any(queryStr, [id])
 }
 
 const addNewShow = async (showObj) => {
@@ -53,7 +53,7 @@ const addNewShowWatcher = async (watcherObj) => {
                         VALUES($/user_id/,$/show_id/) RETURNING *
                         `
 
-    return db.one(newShowWatcherQStr, {
+    return await db.one(newShowWatcherQStr, {
         user_id: Number(watcherObj.user_id),
         show_id: Number(watcherObj.show_id)
     })
@@ -61,7 +61,7 @@ const addNewShowWatcher = async (watcherObj) => {
 
 
 
-const getShowsByGenreId = async (genreId) => db.any("SELECT * from shows WHERE genre_id = $1", [genreId])
+const getShowsByGenreId = async (genreId) => await db.any("SELECT * from shows WHERE genre_id = $1", [genreId])
 
 const getShowsByUserId = async (userId) => {
     const queryStr = `SELECT 
@@ -74,7 +74,7 @@ const getShowsByUserId = async (userId) => {
                     WHERE showWatchers.user_id = $1
                     `
 
-    return db.any(queryStr, [userId])
+    return await db.any(queryStr, [userId])
 }
 
 module.exports = {
