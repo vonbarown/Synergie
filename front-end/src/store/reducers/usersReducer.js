@@ -1,8 +1,9 @@
-import { RECEIVE_USERS, LOAD_USER } from '../actions/actionTypes';
+import { RECEIVE_USERS, LOAD_USER, LOGGED_USER } from '../actions/actionTypes';
 
 const initialState = {
     users: [],
-    user: []
+    user: [],
+    loggedUser: []
 }
 
 export default (state = initialState, action) => {
@@ -15,6 +16,9 @@ export default (state = initialState, action) => {
             break
         case LOAD_USER:
             stateCopy.user = action.payload
+            break
+        case LOGGED_USER:
+            stateCopy.loggedUser = action.payload
             break
         default:
             break

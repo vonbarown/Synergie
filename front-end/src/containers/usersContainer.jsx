@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { fetchUsers } from '../store/actions/userActions'
+import { fetchUsers, loggedInUser } from '../store/actions/userActions'
 import UsersComponent from '../components/users/Users'
 
 class UsersContainer extends React.Component {
@@ -9,6 +9,7 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.loadUsers()
+        this.setLoggedUser()
     }
 
     loadUsers = async () => {
@@ -19,6 +20,13 @@ class UsersContainer extends React.Component {
             console.log('usersAll error', error);
 
         }
+    }
+
+    setLoggedUser = () => {
+        const loggedUser = {
+            username: 'Pam Beesly'
+        }
+        this.props.loggedInUser(loggedUser)
     }
 
     render() {
@@ -39,6 +47,7 @@ class UsersContainer extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchUsers: data => dispatch(fetchUsers(data)),
+        loggedInUser: data => dispatch(loggedInUser(data))
     }
 }
 
