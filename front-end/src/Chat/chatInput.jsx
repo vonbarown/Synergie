@@ -10,7 +10,7 @@ class ChatInput extends React.Component {
                         <div className="row">
                             <div className="input-field col s10">
                                 <i className="prefix mdi-communication-chat" />
-                                <input type="text" placeholder="Type your message" />
+                                <input type="text" className='chat-form-input' placeholder="Type your message" />
                                 <span className="chip left">
                                     <img
                                         src={this.props.loggedUser.avatar_url}
@@ -21,8 +21,7 @@ class ChatInput extends React.Component {
                                 </span>
                             </div>
                             <div className="input-field col s2">
-                                <button type="submit" className="waves-effect waves-light btn-floating btn-large">
-                                    <i className="mdi-content-send" />
+                                <button type="submit" className="chat-submit-btn">
                                     Submit
                                 </button>
                             </div>
