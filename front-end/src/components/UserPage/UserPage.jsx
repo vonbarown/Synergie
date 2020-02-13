@@ -35,17 +35,25 @@ class UserPage extends React.Component {
 
     render() {
         console.log(this.props.match.params.id);
-
+        let loggedIn;
         return (
             <div className='user-page'>
                 <div className='container'>
                     <div className='logged-user'>
                         {
                             this.props.user.map(el => {
+
+                                if (this.props.loggedUser.isUserLoggedIn) {
+                                    this.props.loggedUser.user.username === el.username ?
+                                        loggedIn = 'Logged In' :
+                                        loggedIn = ''
+                                }
+
                                 return (
                                     <div className='user-profile' key={el.id}>
                                         <img className='profile-pic' src={el.avatar_url} alt={el.username} />
                                         <p>{el.username}</p>
+                                        <p>{loggedIn}</p>
                                     </div>
                                 )
                             })
@@ -75,7 +83,8 @@ class UserPage extends React.Component {
 const mapStateToProps = (state) => {
     return {
         shows: state.showsReducer.shows,
-        user: state.usersReducer.user
+        user: state.usersReducer.user,
+        loggedUser: state.usersReducer.loggedUser
     }
 }
 

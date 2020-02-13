@@ -54,7 +54,6 @@ class AddShowForm extends React.Component {
             <div className='add-show-form-page'>
                 <div className='add-show'>
                     <h1 className='page-title'>Add Show</h1>
-                    <h2>Form</h2>
                     <form onSubmit={this.addShow} className='add-show-form'>
                         <div className='url form-element'>
                             <p>Show Image Url</p>
@@ -82,6 +81,7 @@ class AddShowForm extends React.Component {
                             </select>
                         </div>
                         <button className='form-button'>Submit</button>
+                        <br />
                     </form>
                 </div>
             </div>
