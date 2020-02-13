@@ -9,7 +9,13 @@
   justify-content: center;
   align-items: center;
   margin-top: 90px;
-  height: 60vh;
-  width: 40vw;
-  background-color: teal;
+  height: 40vh;
+  width: 20vw;
+  /* background-color: teal; */
+}
+
+.banner {
+  width: 99vw;
+  background-color: rgba(1, 99, 144, 0.308);
+  padding: 15px;
 }
