@@ -74,10 +74,6 @@ class AuthContainer extends Component {
         )
     }
 
-    checkUserLoggedIn = () => {
-
-    }
-
     render() {
         return (
             <div>

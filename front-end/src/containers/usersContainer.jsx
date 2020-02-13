@@ -30,12 +30,6 @@ class UsersContainer extends React.Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//         users: state.usersReducer.users
-//     }
-// }
-
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchUsers: data => dispatch(fetchUsers(data)),
