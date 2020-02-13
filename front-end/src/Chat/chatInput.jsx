@@ -1,6 +1,7 @@
 import React from 'react'
 import './chatinput.css'
-export default class ChatInput extends React.Component {
+import { connect } from 'react-redux';
+class ChatInput extends React.Component {
     render() {
         return (
             <div className='chat-input'>
@@ -11,8 +12,12 @@ export default class ChatInput extends React.Component {
                                 <i className="prefix mdi-communication-chat" />
                                 <input type="text" placeholder="Type your message" />
                                 <span className="chip left">
-                                    <img src="//robohash.org/503483?set=set2&bgset=bg2&size=70x70" />
-                                    <span>Anonymous robot #503483</span>
+                                    <img
+                                        src={this.props.loggedUser.avatar_url}
+                                        alt={`${this.props.loggedUser.username} avatar`}
+                                        className='user-profile-pic'
+                                    />
+                                    <span className='username sink-in'>{this.props.loggedUser.username}</span>
                                 </span>
                             </div>
                             <div className="input-field col s2">
@@ -28,3 +33,10 @@ export default class ChatInput extends React.Component {
         );
     }
 }
+const mapStateToPros = (state) => {
+    return {
+        loggedUser: state.usersReducer.loggedUser.user
+    }
+}
+
+export default connect(mapStateToPros, null)(ChatInput)
