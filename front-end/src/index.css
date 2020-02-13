@@ -22,3 +22,8 @@ code {
   padding: 40px;
   width: 60vw;
 }
+
+.page-title {
+  border-bottom: 1px solid black;
+  font-size: 80px;
+}

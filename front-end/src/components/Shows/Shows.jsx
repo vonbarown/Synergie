@@ -14,6 +14,7 @@ class Shows extends React.Component {
         return (
             <div className='user-page'>
                 <div className='container'>
+                    <h2 className='page-title'>All Shows</h2>
                     {
                         test.map(el => {
 

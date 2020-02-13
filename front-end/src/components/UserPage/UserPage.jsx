@@ -51,7 +51,7 @@ class UserPage extends React.Component {
                             })
                         }
                     </div>
-                    <h2>Watching</h2>
+                    <h2 className='page-title'>Watching</h2>
                     {
                         this.props.shows.map(el => {
                             return (

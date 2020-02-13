@@ -4,12 +4,12 @@
   flex-direction: column;
 }
 
-.add-show {
+/* .add-show {
   margin-top: 20px;
   border: 1px solid black;
   height: 550px;
   width: 40vw;
-}
+} */
 .add-show-form {
   display: flex;
   align-items: center;
