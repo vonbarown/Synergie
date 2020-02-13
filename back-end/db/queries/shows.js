@@ -9,6 +9,7 @@ const getAllShows = async () => {
                         INNER JOIN showWatchers ON shows.id = show_id
                         INNER JOIN users ON showWatchers.user_id = users.id
                         INNER JOIN genres ON genres.id = shows.genre_id
+                        ORDER BY shows.id DESC
                         `
 
     return await db.any(queryStr)
