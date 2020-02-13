@@ -15,6 +15,7 @@ export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
                 <Link to='/users'>Users</Link>
                 <Link to='/shows'>Shows</Link>{' '}
                 <Link to='/addShow'>Add Show</Link>{' '}
+                <Link to='/about'>About</Link>{' '}
                 <button className='log-out' onClick={logoutUser}>log-out</button>
             </nav>
 
