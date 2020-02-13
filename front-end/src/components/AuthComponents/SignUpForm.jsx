@@ -10,13 +10,14 @@ const SignupForm = ({ username, password, handleChange, signupUser, avatar_url }
     return (
         <div>
             <h2> Sign-Up </h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='form-container'>
                 <input
                     type="text"
                     name="username"
                     value={username}
                     placeholder="Username"
                     onChange={handleChange}
+                    className='form-input'
                 />
                 <input
                     type="text"
@@ -24,6 +25,7 @@ const SignupForm = ({ username, password, handleChange, signupUser, avatar_url }
                     value={avatar_url}
                     placeholder="Url"
                     onChange={handleChange}
+                    className='form-input'
                 />
                 <input
                     type="password"
@@ -31,8 +33,9 @@ const SignupForm = ({ username, password, handleChange, signupUser, avatar_url }
                     value={password}
                     placeholder="******"
                     onChange={handleChange}
+                    className='form-input'
                 />
-                <input type="submit" value="Signup" />
+                <input type="submit" value="Signup" className='signup-button form-button' />
             </form>
         </div>
     )

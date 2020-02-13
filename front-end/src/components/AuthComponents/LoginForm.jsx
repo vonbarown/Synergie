@@ -1,4 +1,5 @@
 import React from 'react';
+import './authForms.css'
 
 const LoginForm = ({ username, password, handleChange, loginUser }) => {
 
@@ -10,13 +11,14 @@ const LoginForm = ({ username, password, handleChange, loginUser }) => {
     return (
         <div>
             <h2> Log-In </h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='form-container'>
                 <input
                     type="text"
                     name="username"
                     value={username}
                     placeholder="username"
                     onChange={handleChange}
+                    className='form-input'
                 />
                 <input
                     type="password"
@@ -24,8 +26,9 @@ const LoginForm = ({ username, password, handleChange, loginUser }) => {
                     value={password}
                     placeholder="*******"
                     onChange={handleChange}
+                    className='form-input'
                 />
-                <input type="submit" value="log-in" />
+                <input type="submit" value="log-in" className='login-button form-button' />
             </form>
         </div>
     )
