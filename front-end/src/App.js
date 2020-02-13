@@ -14,6 +14,8 @@ import axios from 'axios'
 import { logOut } from './store/actions/userActions';
 import { connect } from 'react-redux'
 import { PrivateRoute } from './components/AuthComponents/PrivateRoute'
+import ChatInput from './Chat/chatInput'
+import { Profile } from './components/Profile/Profile'
 class App extends React.Component {
 
 
@@ -42,11 +44,13 @@ class App extends React.Component {
         <Switch>
           <Route path='/login' render={this.renderAuthContainer} />
           <Route path='/signup' render={this.renderAuthContainer} />
+          <PrivateRoute path='/profile' component={Profile} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/users/:id' component={UserPage} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/users' component={UsersContainer} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/addShow' component={AddShowForm} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/shows/:id/user/:userId' component={ShowInfoPage} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/shows' component={showsContainer} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
+          <PrivateRoute path='/chat' component={ChatInput} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <Route exact path='/about' component={About} />
           <Route exact path='/' component={Home} />
         </Switch>
