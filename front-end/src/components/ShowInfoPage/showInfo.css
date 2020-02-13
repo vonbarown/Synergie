@@ -3,6 +3,19 @@
   flex-direction: column;
   align-items: center;
 }
+
+.show-info-page-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 40px;
+  width: 60vw;
+  height: 800px;
+  align-items: center;
+}
 .show-data {
   border: 1px solid black;
   border-left: transparent;
@@ -16,21 +29,21 @@
 
 .current-show {
   margin-top: 10px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 25vw;
   height: 650px;
   padding: 10px;
 }
 
 .show-info-page-img {
-  height: 15pc;
+  height: 20pc;
 }
 
 .show-page-comments {
   display: flex;
   flex-direction: column;
   border: 1px solid black;
-  height: 190px;
+  height: 290px;
   margin-bottom: 90px;
   gap: 10px;
   padding: 30px;

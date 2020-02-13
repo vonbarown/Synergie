@@ -11,7 +11,6 @@ class Shows extends React.Component {
         let test = Object.values(this.props.watchList)
         console.log('testing', test);
 
-
         return (
             <div className='user-page'>
                 <div className='container'>

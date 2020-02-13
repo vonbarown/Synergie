@@ -32,21 +32,23 @@ class ShowInfoPage extends React.Component {
     render() {
         return (
             <div className='show-info-page'>
-                {
-                    this.props.shows.map(el => {
-                        return (
-                            <div className='current-show' key={el.id}>
-                                <div className='show-page-data'>
-                                    <h3>Show {el.title} of {el.username}</h3>
-                                    <img className='show-info-page-img' src={el.img_url} alt={el.title} />
-                                    <p>{el.genre_name}</p>
-                                    <p>{this.props.comments.length} Comments</p>
+                <div className='show-info-page-container'>
+                    {
+                        this.props.shows.map(el => {
+                            return (
+                                <div className='current-show' key={el.id}>
+                                    <div className='show-page-data'>
+                                        <h3>Show {el.title} of {el.username}</h3>
+                                        <img className='show-info-page-img' src={el.img_url} alt={el.title} />
+                                        <p>{el.genre_name}</p>
+                                        <p>{this.props.comments.length} Comments</p>
+                                    </div>
+                                    <Comments user_id={this.props.match.params.userId} video_id={this.props.match.params.id} />
                                 </div>
-                                <Comments user_id={this.props.match.params.userId} video_id={this.props.match.params.id} />
-                            </div>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
+                </div>
             </div>
         )
     }

@@ -83,7 +83,7 @@ class AuthContainer extends Component {
             <div>
                 {
                     this.props.isUserLoggedIn
-                        ? <Redirect to='/profile' />
+                        ? <Redirect to='/home' />
                         : (
                             <Switch>
                                 <Route path='/login' component={this.renderLoginForm} />
