@@ -13,7 +13,7 @@ const Comments = (props) => {
                     props.comments.map(el => {
                         return (
                             <div className='comment' key={el.id}>
-                                <Link to={`/users/${el.id}`}>{el.username}</Link>
+                                <Link to={`/users/${el.id}`}>User: {el.username}</Link>
                                 <p>{el.comment_body}</p>
                             </div>
                         )
