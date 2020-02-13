@@ -1,0 +1,10 @@
+.chat-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chat-form {
+  display: flex;
+  flex-direction: column;
+}

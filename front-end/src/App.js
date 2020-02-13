@@ -44,7 +44,7 @@ class App extends React.Component {
         <Switch>
           <Route path='/login' render={this.renderAuthContainer} />
           <Route path='/signup' render={this.renderAuthContainer} />
-          <PrivateRoute path='/profile' component={Profile} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
+          <Route path='/profile' component={Profile} />
           <PrivateRoute path='/users/:id' component={UserPage} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/users' component={UsersContainer} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/addShow' component={AddShowForm} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
