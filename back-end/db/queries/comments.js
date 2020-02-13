@@ -8,7 +8,9 @@ const getCommentByShowId = async (showId) => {
                     FROM
                     comments 
                     JOIN users ON user_id = users.id
-                    WHERE show_id = $1`
+                    WHERE show_id = $1
+                    ORDER BY comments.id DESC
+                    `
 
     return await db.any(queryStr, [showId])
 }

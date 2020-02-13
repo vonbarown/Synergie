@@ -27,7 +27,7 @@ class AddComment extends React.Component {
         e.preventDefault()
         const commentObj = {
             comment_body: this.state.comment_body,
-            user_id: this.props.user_id,
+            user_id: this.props.loggedInUser.id,
             show_id: this.props.video_id
         }
         try {
@@ -53,6 +53,11 @@ class AddComment extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        loggedInUser: state.usersReducer.loggedUser.user
+    }
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -61,4 +66,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(null, mapDispatchToProps)(AddComment)
+export default connect(mapStateToProps, mapDispatchToProps)(AddComment)
