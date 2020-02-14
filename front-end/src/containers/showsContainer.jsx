@@ -3,6 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { loadAllShows } from '../store/actions/showsActions'
 import Shows from '../components/Shows/Shows'
+import ModalContainer from './modalContainer'
 
 class ShowsContainer extends React.Component {
 
@@ -50,6 +51,7 @@ class ShowsContainer extends React.Component {
         return (
             <div className='shows-container'>
                 <Shows />
+                <ModalContainer />
             </div>
         )
     }

@@ -58,3 +58,10 @@
   flex-direction: column;
   align-items: center;
 }
+
+.modal-container {
+  position: relative;
+  display: flex;
+  right: -1250px;
+  top: -1000px;
+}

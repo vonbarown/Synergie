@@ -3,6 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { fetchUsers } from '../store/actions/userActions'
 import UsersComponent from '../components/users/Users'
+import ModalContainer from './modalContainer'
 
 class UsersContainer extends React.Component {
 
@@ -25,6 +26,7 @@ class UsersContainer extends React.Component {
         return (
             <div className='users-container'>
                 <UsersComponent />
+                <ModalContainer />
             </div>
         )
     }
