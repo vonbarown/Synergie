@@ -21,7 +21,7 @@ const SignupForm = ({ username, password, handleChange, signupUser, avatar_url }
                 />
                 <input
                     type="text"
-                    name="img_url"
+                    name="avatar_url"
                     value={avatar_url}
                     placeholder="Url"
                     onChange={handleChange}

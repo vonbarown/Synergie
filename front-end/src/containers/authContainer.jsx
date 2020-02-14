@@ -30,7 +30,7 @@ class AuthContainer extends Component {
             const { data } = await axios.post('/api/auth/signup', this.state)
 
             this.props.setUser(data.payload)
-
+            this.props.history.push('/profile')
         } catch (error) {
             console.log(error);
 
@@ -51,13 +51,14 @@ class AuthContainer extends Component {
     }
 
     renderSignupForm = () => {
-        const { username, password } = this.state
+        const { username, password, avatar_url } = this.state
         return (
             <SignupForm
                 handleChange={this.handleChange}
+                signupUser={this.signupUser}
                 username={username}
                 password={password}
-                signupUser={this.signupUser}
+                avatar_url={avatar_url}
             />
         )
     }
