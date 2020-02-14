@@ -1,12 +1,23 @@
 import React from 'react'
 import './chatinput.css'
 import { connect } from 'react-redux';
+// import { sendMessage } from '../../store/actions/chatActions'
+
 class ChatInput extends React.Component {
+
+
+    handleInput = e => this.setState({ comment_body: e.target.value })
+
+    handleSubmit = e => {
+        e.preventDefault()
+    }
+
+
     render() {
         return (
             <div className='chat-input'>
                 <footer className="teal">
-                    <form className="chat-form">
+                    <form className="chat-form" onSubmit={this.handleSubmit}>
                         <div className="row">
                             <div className="input-field col s10">
                                 <i className="prefix mdi-communication-chat" />
