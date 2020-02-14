@@ -1,0 +1,11 @@
+.collection {
+  margin-bottom: 130px;
+  margin-top: -1px;
+  list-style: none;
+}
+.message-date {
+  color: #585858;
+}
+body {
+  background: #eeeeee;
+}
