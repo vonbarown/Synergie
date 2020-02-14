@@ -24,7 +24,7 @@ class ModalContainer extends React.Component {
         }
         try {
             await axios.post(`api/chat`, chatObj)
-
+            this.fetchChatChannels()
         } catch (error) {
             console.log(error);
 
