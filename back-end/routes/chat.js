@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const queries = require('../db/queries/chat')
-// const { loginRequired } = require('../auth/helpers')
+const { loginRequired } = require('../auth/helpers')
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', loginRequired, async (req, res, next) => {
     try {
         let chat = await queries.getMessagesByChatId(req.params.id)
 
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
-router.get('/user/:id', async (req, res, next) => {
+router.get('/user/:id', loginRequired, async (req, res, next) => {
     try {
         let chat = await queries.getChatByUserId(req.params.id)
 
@@ -41,7 +41,7 @@ router.get('/user/:id', async (req, res, next) => {
     }
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/', loginRequired, async (req, res, next) => {
     try {
         let newChat = await queries.addNewChat(req.body)
         console.log('new', newChat);

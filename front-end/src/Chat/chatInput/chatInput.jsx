@@ -10,35 +10,37 @@ class ChatInput extends React.Component {
         this.refs.txtMessage.focus();
     }
 
-    sendUserMessage = async (msgObj) => {
+    sendUserMessage = async () => {
+
+        const message = this.refs.txtMessage.value;
+
         try {
+            const msgObj = {
+                chatMember_id: this.props.user_id,
+                message_body: message,
+                chat_id: this.props.chatId,
+                time_stamp: new Date().toLocaleString(),
+            };
             await axios.post(`/api/message`, msgObj)
 
         } catch (error) {
+            console.log(error);
 
         }
-    }
 
-    handleSubmit = e => {
-        e.preventDefault()
-
-        const message = this.refs.txtMessage.value;
         if (message.length === 0) {
             return;
         }
+    }
 
-        const messageObj = {
-            chatMember_id: this.props.loggedUser.id,
-            message_body: message,
-            chat_id: this.props.chatId,
-            time_stamp: new Date().toLocaleString(),
-        };
+    handleSubmit = async e => {
+        e.preventDefault()
+
+
 
         try {
 
-
-            this.sendUserMessage(messageObj)
-
+            await this.sendUserMessage()
             // this.props.sendMessage(messageObj)
             this.refs.txtMessage.value = '';
             this.refs.txtMessage.focus();
@@ -51,7 +53,7 @@ class ChatInput extends React.Component {
 
 
     render() {
-        console.log('id', this.props.loggedUser.id);
+        console.log('id', this.props.user_id);
 
         return (
             <div className='chat-input'>

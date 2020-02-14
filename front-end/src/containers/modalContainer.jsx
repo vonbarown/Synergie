@@ -71,7 +71,7 @@ class ModalContainer extends React.Component {
 
                             this.props.chat.map(el => {
                                 return (
-                                    <Link to={`/chat/${el.id}`} key={el.id}>
+                                    <Link to={`/chat/${el.id}/user/${el.user_id}`} key={el.id}>
                                         Chat
                                     </Link>
                                 )

@@ -25,7 +25,7 @@ const ChatApp = (props) => {
     return (
         <>
             <ChatHistory />
-            <ChatInput chatId={props.match.params.chatId} />
+            <ChatInput chatId={props.match.params.chatId} user_id={props.match.params.userId} />
         </>
     )
 }
