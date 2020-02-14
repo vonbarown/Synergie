@@ -18,7 +18,7 @@ class ChatInput extends React.Component {
         }
 
         const messageObj = {
-            Who: this.props.loggedUser.id,
+            Who: this.props.loggedUser.username,
             What: message,
             When: new Date().toLocaleString(),
         };
