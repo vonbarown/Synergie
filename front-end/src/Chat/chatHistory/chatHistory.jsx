@@ -10,16 +10,17 @@ class ChatHistory extends React.Component {
                         return (
                             <div className='collection-item'
                                 key={messages.id}>
-                                <div
-                                    className={
-                                        messages.username !== this.props.loggedUser.user ?
-                                            'message-author' :
-                                            'user-message'
-                                    }
+                                <div className={
+                                    messages.username !== this.props.loggedUser.user ?
+                                        'message-author' :
+                                        'user-message'
+                                }
                                 >
                                     <img className='chat-user-img' src={messages.avatar_url} alt={messages.username} />
-                                    <span className="title">{messages.username}</span>
-                                    <span className="message-date">At {messages.time_stamp}</span>
+                                    <div className='meta-data'>
+                                        <p className="title">{messages.username}</p>
+                                        <p className="message-date">At {messages.time_stamp}</p>
+                                    </div>
                                 </div>
                                 <p className='message-body'>
                                     <i className="prefix mdi-action-alarm" />

@@ -26,13 +26,13 @@ body {
   align-items: center;
   justify-content: flex-start;
   /* flex-direction: row-reverse; */
-  gap: 5px;
+  gap: 9px;
 }
 
 .collection-item {
   display: flex;
   border: 1px solid black;
-  width: 30vw;
+  width: 40vw;
   border-radius: 40px;
   flex-direction: column;
 }
@@ -42,5 +42,13 @@ body {
   align-items: center;
   justify-content: flex-start;
   flex-direction: row-reverse;
-  gap: 5px;
+  gap: 9px;
+}
+
+.meta-data {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 15px;
+  gap: 10px;
+  width: 40vw;
 }
