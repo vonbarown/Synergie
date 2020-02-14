@@ -9,7 +9,7 @@ const getChatByUserId = async (chat_id) => {
             WHERE users.id = $1
         `
 
-    return await db.oneOrNone(chatQryStr, [chat_id])
+    return await db.any(chatQryStr, [chat_id])
 }
 
 

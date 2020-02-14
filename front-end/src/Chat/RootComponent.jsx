@@ -3,7 +3,7 @@ import ChatHistory from './chatHistory/chatHistory'
 import ChatInput from './chatInput/chatInput'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import { loadChat } from '../store/actions/chatActions'
+import { loadChatMessages } from '../store/actions/chatActions'
 
 const RootComponent = (props) => {
 
@@ -12,7 +12,7 @@ const RootComponent = (props) => {
             try {
                 const { data: { payload } } = await axios.get(`/api/chat/${1}`)
                 console.log(payload);
-                props.loadChat(payload);
+                props.loadChatMessages(payload);
 
             } catch (error) {
 
@@ -32,7 +32,7 @@ const RootComponent = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadChat: data => dispatch(loadChat(data))
+        loadChatMessages: data => dispatch(loadChatMessages(data))
     }
 }
 
