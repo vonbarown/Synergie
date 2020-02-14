@@ -19,7 +19,7 @@ const RootComponent = (props) => {
             }
         }
         loadChatMessages()
-    }, [])
+    })
 
 
     return (

@@ -10,9 +10,9 @@ class ChatInput extends React.Component {
         this.refs.txtMessage.focus();
     }
 
-    sendUserMessage = async (messageObj) => {
+    sendUserMessage = async (msgObj) => {
         try {
-            await axios.post(`/api/message`, messageObj)
+            await axios.post(`/api/message`, msgObj)
 
         } catch (error) {
 
