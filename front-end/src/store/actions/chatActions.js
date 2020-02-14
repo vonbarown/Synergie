@@ -1,4 +1,4 @@
-import { SEND_MESSAGE, LOAD_MESSAGE, } from './actionTypes';
+import { SEND_MESSAGE, LOAD_MESSAGE, LOAD_CHAT_CHANNELS } from './actionTypes';
 
 export const sendMessage = (payload) => {
     return {
@@ -7,11 +7,16 @@ export const sendMessage = (payload) => {
     };
 };
 
-export const loadChat = (payload) => {
-    console.log('payload', payload);
-
+export const loadChatMessages = (payload) => {
     return {
         type: LOAD_MESSAGE,
+        payload
+    };
+};
+
+export const loadChat = (payload) => {
+    return {
+        type: LOAD_CHAT_CHANNELS,
         payload
     };
 };
