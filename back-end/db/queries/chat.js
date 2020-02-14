@@ -46,6 +46,8 @@ const addNewChat = async (chatObj) => {
 }
 
 const addNewChatMember = async (chatMemObj) => {
+    console.log('new chat');
+
     const newChatMemberQStr = `
                         INSERT INTO chatMembers (user_id,chat_id) 
                         VALUES($/user_id/,$/chat_id/) 

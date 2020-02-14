@@ -18,6 +18,11 @@ export default class Modal extends React.Component {
                         Close
                     </button>
                 </div>
+                <button
+                    onClick={this.props.addNewChat}
+                >
+                    Add New Chat
+                    </button>{' '}
             </div>
         )
 

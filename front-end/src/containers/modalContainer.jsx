@@ -15,6 +15,22 @@ class ModalContainer extends React.Component {
         this.fetchChatChannels()
     }
 
+    addNewChat = async () => {
+        console.log('hit');
+
+        const chatObj = {
+            chat_type: 'single',
+            user_id: this.props.loggedUser.id
+        }
+        try {
+            await axios.post(`api/chat/add`, chatObj)
+
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+
 
     fetchChatChannels = async () => {
         try {
@@ -22,6 +38,7 @@ class ModalContainer extends React.Component {
             console.log(payload);
             this.props.loadChat(payload)
         } catch (error) {
+            console.log(error);
 
         }
     }
@@ -42,7 +59,11 @@ class ModalContainer extends React.Component {
                         Messages
                 </button>
 
-                    <Modal show={this.state.show} onClose={this.showModal}>
+                    <Modal
+                        show={this.state.show}
+                        onClose={this.showModal}
+                        addNewChat={this.addNewChat}
+                    >
                         {
                             // <Link to='/chat'>
                             //     <button>Chat</button>
