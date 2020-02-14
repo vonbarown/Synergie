@@ -1,19 +1,37 @@
 import React from 'react'
 import './chatinput.css'
 import { connect } from 'react-redux';
-// import { sendMessage } from '../../store/actions/chatActions'
+import { sendMessage } from '../../store/actions/chatActions'
 
 class ChatInput extends React.Component {
 
-
-    handleInput = e => this.setState({ comment_body: e.target.value })
+    componentDidMount() {
+        this.refs.txtMessage.focus();
+    }
 
     handleSubmit = e => {
         e.preventDefault()
+
+        const message = this.refs.txtMessage.value;
+        if (message.length === 0) {
+            return;
+        }
+
+        const messageObj = {
+            Who: this.props.loggedUser.id,
+            What: message,
+            When: new Date().toLocaleString(),
+        };
+
+        this.props.sendMessage(messageObj)
+
+        this.refs.txtMessage.value = '';
+        this.refs.txtMessage.focus();
     }
 
 
     render() {
+
         return (
             <div className='chat-input'>
                 <footer className="teal">
@@ -21,7 +39,7 @@ class ChatInput extends React.Component {
                         <div className="row">
                             <div className="input-field col s10">
                                 <i className="prefix mdi-communication-chat" />
-                                <input type="text" className='chat-form-input' placeholder="Type your message" />
+                                <input ref="txtMessage" type="text" className='chat-form-input' placeholder="Type your message" />
                                 <span className="chip left">
                                     <img
                                         src={this.props.loggedUser.avatar_url}
@@ -49,4 +67,10 @@ const mapStateToPros = (state) => {
     }
 }
 
-export default connect(mapStateToPros, null)(ChatInput)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        sendMessage: data => dispatch(sendMessage(data))
+    }
+}
+
+export default connect(mapStateToPros, mapDispatchToProps)(ChatInput)
