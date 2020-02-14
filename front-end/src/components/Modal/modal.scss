@@ -17,9 +17,6 @@
   }
 
   @supports (offset-rotate: 0deg) {
-    // OLD
-    // offset-rotation: 0deg;
-    // NEW
     offset-rotate: 0deg;
     offset-path: path("M 250,100 S -300,500 -700,-200");
     &.off {
