@@ -18,7 +18,7 @@ class ModalContainer extends React.Component {
 
     fetchChatChannels = async () => {
         try {
-            const { data: { payload } } = await axios.get(`/api/chat/user/${1}`)
+            const { data: { payload } } = await axios.get(`/api/chat/user/${this.props.loggedUser.id}`)
             console.log(payload);
             this.props.loadChat(payload)
         } catch (error) {
@@ -50,7 +50,7 @@ class ModalContainer extends React.Component {
 
                             this.props.chat.map(el => {
                                 return (
-                                    <Link to={`/chat/${1}`} key={el.id}>
+                                    <Link to={`/chat/${el.id}`} key={el.id}>
                                         Chat
                                     </Link>
                                 )

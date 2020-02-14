@@ -39,7 +39,6 @@ class ChatInput extends React.Component {
             this.props.sendUserMessage(messageObj)
 
             // this.props.sendMessage(messageObj)
-
             this.refs.txtMessage.value = '';
             this.refs.txtMessage.focus();
 
