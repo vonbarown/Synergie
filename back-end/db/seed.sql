@@ -45,7 +45,7 @@ CREATE TABLE chat (
 CREATE TABLE chatMembers (
     id SERIAL PRIMARY KEY,
     chat_id INT REFERENCES chat(id),
-    user_id INT REFERENCES users(id)
+    user_id INT UNIQUE REFERENCES  users(id)
 );
 
 CREATE TABLE messages (
@@ -105,20 +105,13 @@ INSERT INTO chat (user_id,chat_type) VALUES (1,'single');
 INSERT INTO chat (user_id,chat_type) VALUES (2,'single');
 INSERT INTO chat (user_id,chat_type) VALUES (3,'single');
 INSERT INTO chat (user_id,chat_type) VALUES (4,'single');
--- INSERT INTO chat (user_id,chat_type) VALUES (3,2);
--- INSERT INTO chat (user_id,chat_type) VALUES (4,2);
--- INSERT INTO chat (user_id,chat_type) VALUES (1,3);
--- INSERT INTO chat (user_id,chat_type) VALUES (2,3);
--- INSERT INTO chat (user_id,chat_type) VALUES (3,4);
--- INSERT INTO chat (user_id,chat_type) VALUES (4,4);
--- INSERT INTO chat (user_id,chat_type) VALUES (1,5);
--- INSERT INTO chat (user_id,chat_type) VALUES (4,5);
 
 -- INSERT chatMembers
 INSERT INTO chatMembers (user_id,chat_id) VALUES (1,3);
 INSERT INTO chatMembers (user_id,chat_id) VALUES (2,1);
 INSERT INTO chatMembers (user_id,chat_id) VALUES (3,4);
 INSERT INTO chatMembers (user_id,chat_id) VALUES (4,2);
+-- INSERT INTO chatMembers (user_id,chat_id) VALUES (3,2);
 
 -- INSERT MESSAGES
 INSERT INTO messages (message_body,chat_id,chatMember_id)

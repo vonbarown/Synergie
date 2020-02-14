@@ -12,6 +12,7 @@ const showsRouter = require('./routes/shows')
 const commentsRouter = require('./routes/comments')
 const authRouter = require('./routes/auth')
 const chatRouter = require('./routes/chat')
+const messageRouter = require('./routes/message')
 
 
 
@@ -37,6 +38,7 @@ app.use('/api/genres', genresRouter)
 app.use('/api/shows', showsRouter)
 app.use('/api/comments', commentsRouter)
 app.use('/api/auth', authRouter)
-app.use('/api/chat/', chatRouter)
+app.use('/api/chat', chatRouter)
+app.use('/api/message', messageRouter)
 
 module.exports = app;
