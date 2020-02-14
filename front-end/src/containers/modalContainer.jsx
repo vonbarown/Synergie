@@ -18,7 +18,7 @@ class ModalContainer extends React.Component {
 
     fetchChatChannels = async () => {
         try {
-            const { data: { payload } } = await axios.get(`/api/chat/user/${this.props.loggedUser.id}`)
+            const { data: { payload } } = await axios.get(`/api/chat/user/${1}`)
             console.log(payload);
             this.props.loadChat(payload)
         } catch (error) {
@@ -43,9 +43,20 @@ class ModalContainer extends React.Component {
                 </button>
 
                     <Modal show={this.state.show} onClose={this.showModal}>
-                        <Link to='/chat'>
-                            <button>Chat</button>
-                        </Link>
+                        {
+                            // <Link to='/chat'>
+                            //     <button>Chat</button>
+                            // </Link>
+
+                            this.props.chat.map(el => {
+                                return (
+                                    <Link to={`/chat/${1}`} key={el.id}>
+                                        Chat
+                                    </Link>
+                                )
+                            })
+                        }
+
                     </Modal>
                 </div>
             </div >
@@ -55,7 +66,8 @@ class ModalContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        loggedUser: state.usersReducer.loggedUser.user
+        loggedUser: state.usersReducer.loggedUser.user,
+        chat: state.chatReducer.chats
     }
 }
 
