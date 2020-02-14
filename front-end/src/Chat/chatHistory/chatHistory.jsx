@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './chatHistory.css'
-export default class ChatHistory extends React.Component {
+import { connect } from 'react-redux';
+class ChatHistory extends React.Component {
     render() {
         return (
             <ul className="collection">
@@ -18,3 +19,11 @@ export default class ChatHistory extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        history: state.chatReducer.history
+    }
+}
+
+export default connect(mapStateToProps, null)(ChatHistory)
