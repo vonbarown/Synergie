@@ -14,7 +14,7 @@ import axios from 'axios'
 import { logOut } from './store/actions/userActions';
 import { connect } from 'react-redux'
 import { PrivateRoute } from './components/AuthComponents/PrivateRoute'
-import { ChatApp } from './Chat/chatApp'
+import { ChatApp } from './Chat/chatApp/chatApp'
 import { Profile } from './components/Profile/Profile'
 class App extends React.Component {
 
