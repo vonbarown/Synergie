@@ -40,7 +40,7 @@ const addNewChat = async (chatObj) => {
         user_id: chatObj.user_id,
     })
 
-    await addNewChatMember({ user_id: chatObj.user_id, chat_id: chatId.id })
+    // await addNewChatMember({ user_id: chatObj.user_id, chat_id: chatId.id })
 
     return chatId
 }

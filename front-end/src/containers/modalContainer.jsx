@@ -23,7 +23,7 @@ class ModalContainer extends React.Component {
             user_id: this.props.loggedUser.id
         }
         try {
-            await axios.post(`api/chat/add`, chatObj)
+            await axios.post(`api/chat`, chatObj)
 
         } catch (error) {
             console.log(error);
