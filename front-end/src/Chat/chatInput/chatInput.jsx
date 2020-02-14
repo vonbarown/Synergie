@@ -10,9 +10,9 @@ class ChatInput extends React.Component {
         this.refs.txtMessage.focus();
     }
 
-    sendUserMessage = async () => {
+    sendUserMessage = async (messageObj) => {
         try {
-            await axios.post(`/api/message`)
+            await axios.post(`/api/message`, messageObj)
 
         } catch (error) {
 
@@ -22,25 +22,29 @@ class ChatInput extends React.Component {
     handleSubmit = e => {
         e.preventDefault()
 
+        const message = this.refs.txtMessage.value;
+        if (message.length === 0) {
+            return;
+        }
+
         try {
-            const message = this.refs.txtMessage.value;
-            if (message.length === 0) {
-                return;
-            }
 
             const messageObj = {
-                Who: this.props.loggedUser.username,
-                What: message,
-                When: new Date().toLocaleString(),
+                chatMember_id: this.props.loggedUser.id,
+                message_body: message,
+                chat_id: messageObj.chat_id,
+                time_stamp: new Date().toLocaleString(),
             };
 
+            this.props.sendUserMessage(messageObj)
 
-            this.props.sendMessage(messageObj)
+            // this.props.sendMessage(messageObj)
 
             this.refs.txtMessage.value = '';
             this.refs.txtMessage.focus();
 
         } catch (error) {
+            console.log('chatInput', error);
 
         }
     }
@@ -87,7 +91,7 @@ const mapStateToPros = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        sendMessage: data => dispatch(sendMessage())
+        sendMessage: data => dispatch(sendMessage(data))
     }
 }
 

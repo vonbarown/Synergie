@@ -7,6 +7,7 @@
   flex-direction: column;
   margin-top: 10px;
   gap: 5px;
+  overflow: scroll;
 }
 .message-date {
   color: #585858;

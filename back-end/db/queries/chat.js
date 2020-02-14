@@ -1,7 +1,19 @@
 const db = require('../db')
 
+const getChatByUserId = async (chat_id) => {
+    chatQryStr = `
+            SELECT chat.id, chat.user_id , users.username
+            FROM 
+            chat 
+            INNER JOIN users on chat.user_id = users.id
+            WHERE users.id = $1
+        `
 
-const getMessagesByChatId = async (id) => {
+    return await db.oneOrNone(chatQryStr, [chat_id])
+}
+
+
+const getMessagesByChatId = async (chat_id) => {
     const queryStr = `SELECT
                         messages.id,messages.message_body,users.username,messages.time_stamp,
                         users.avatar_url
@@ -13,7 +25,7 @@ const getMessagesByChatId = async (id) => {
                         WHERE chat.id = $1
                         `
 
-    return await db.any(queryStr, [id])
+    return await db.any(queryStr, [chat_id])
 }
 
 
@@ -47,6 +59,7 @@ const addNewChatMember = async (chatMemObj) => {
 }
 
 module.exports = {
+    getChatByUserId,
     getMessagesByChatId,
     addNewChat,
 }

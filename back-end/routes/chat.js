@@ -22,6 +22,25 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
+router.get('/user/:id', async (req, res, next) => {
+    try {
+        let chat = await queries.getChatByUserId(req.params.id)
+
+        res.json({
+            payload: chat,
+            message: 'all chat retrieved',
+            error: false
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            payload: null,
+            message: 'you took a wrong turn',
+            error: true
+        })
+    }
+});
+
 router.post('/', async (req, res, next) => {
     try {
         let newChat = await queries.addNewChat(req.body)
