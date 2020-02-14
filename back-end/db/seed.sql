@@ -45,14 +45,15 @@ CREATE TABLE chat (
 CREATE TABLE chatMembers (
     id SERIAL PRIMARY KEY,
     chat_id INT REFERENCES chat(id),
-    user_id INT UNIQUE REFERENCES  users(id)
+    user_id INT REFERENCES  users(id)
 );
 
 CREATE TABLE messages (
     id SERIAL PRIMARY KEY,
     message_body VARCHAR NOT NULL,
     chat_id INT REFERENCES chat(id),
-    chatMember_id INT REFERENCES chatMembers(id)
+    chatMember_id INT REFERENCES chatMembers(id),
+    time_stamp VARCHAR NOT NULL
 );
 
 -- INSERT GENRES
@@ -114,11 +115,11 @@ INSERT INTO chatMembers (user_id,chat_id) VALUES (4,2);
 -- INSERT INTO chatMembers (user_id,chat_id) VALUES (3,2);
 
 -- INSERT MESSAGES
-INSERT INTO messages (message_body,chat_id,chatMember_id)
-VALUES('Hi, how are you',1,4);
-INSERT INTO messages (message_body,chat_id,chatMember_id)
-VALUES('This is just a test',3,1);
-INSERT INTO messages (message_body,chat_id,chatMember_id)
-VALUES('Did you finish the expanse',3,3);
-INSERT INTO messages (message_body,chat_id,chatMember_id)
-VALUES('When will you finish the books',2,2);
+INSERT INTO messages (message_body,chat_id,chatMember_id,time_stamp)
+VALUES('Hi, how are you',1,4,'2/13/2020, 1:36:16 PM');
+INSERT INTO messages (message_body,chat_id,chatMember_id,time_stamp)
+VALUES('This is just a test',3,1,'2/13/2020, 11:46:16 PM');
+INSERT INTO messages (message_body,chat_id,chatMember_id,time_stamp)
+VALUES('Did you finish the expanse',3,3,'2/13/2020, 11:36:16 PM');
+INSERT INTO messages (message_body,chat_id,chatMember_id,time_stamp)
+VALUES('When will you finish the books',2,2,'2/13/2020, 11:40:16 PM');

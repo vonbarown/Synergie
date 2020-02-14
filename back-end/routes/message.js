@@ -5,11 +5,11 @@ const queries = require('../db/queries/message')
 
 router.post('/', async (req, res, next) => {
     try {
-        let newChat = await queries.addNewMessage(req.body)
-        console.log('new', newChat);
+        let newMessage = await queries.addNewMessage(req.body)
+        console.log('new', newMessage);
 
         res.json({
-            payload: newChat,
+            payload: newMessage,
             message: 'message sent',
             error: false
         })
