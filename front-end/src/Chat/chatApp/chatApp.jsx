@@ -1,5 +1,5 @@
 import React from 'react'
-import { RootComponent } from '../RootComponent'
+import RootComponent from '../RootComponent'
 // import PubNub from 'pubnub';
 // import { PubNubProvider, usePubNub } from 'pubnub-react';
 

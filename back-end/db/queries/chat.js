@@ -3,7 +3,8 @@ const db = require('../db')
 
 const getMessagesByChatId = async (id) => {
     const queryStr = `SELECT
-                        messages.id,messages.message_body,users.username
+                        messages.id,messages.message_body,users.username,messages.time_stamp,
+                        users.avatar_url
                         FROM 
                         messages 
                         INNER JOIN chatMembers ON messages.chatMember_id = chatMembers.id

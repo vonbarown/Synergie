@@ -2,6 +2,7 @@ import React from 'react'
 import './chatinput.css'
 import { connect } from 'react-redux';
 import { sendMessage } from '../../store/actions/chatActions'
+import axios from 'axios'
 
 class ChatInput extends React.Component {
 
@@ -9,24 +10,39 @@ class ChatInput extends React.Component {
         this.refs.txtMessage.focus();
     }
 
+    sendUserMessage = async () => {
+        try {
+            await axios.post(`/api/message`)
+
+        } catch (error) {
+
+        }
+    }
+
     handleSubmit = e => {
         e.preventDefault()
 
-        const message = this.refs.txtMessage.value;
-        if (message.length === 0) {
-            return;
+        try {
+            const message = this.refs.txtMessage.value;
+            if (message.length === 0) {
+                return;
+            }
+
+            const messageObj = {
+                Who: this.props.loggedUser.username,
+                What: message,
+                When: new Date().toLocaleString(),
+            };
+
+
+            this.props.sendMessage(messageObj)
+
+            this.refs.txtMessage.value = '';
+            this.refs.txtMessage.focus();
+
+        } catch (error) {
+
         }
-
-        const messageObj = {
-            Who: this.props.loggedUser.username,
-            What: message,
-            When: new Date().toLocaleString(),
-        };
-
-        this.props.sendMessage(messageObj)
-
-        this.refs.txtMessage.value = '';
-        this.refs.txtMessage.focus();
     }
 
 
@@ -61,15 +77,17 @@ class ChatInput extends React.Component {
         );
     }
 }
+
 const mapStateToPros = (state) => {
     return {
         loggedUser: state.usersReducer.loggedUser.user
     }
 }
 
+
 const mapDispatchToProps = (dispatch) => {
     return {
-        sendMessage: data => dispatch(sendMessage(data))
+        sendMessage: data => dispatch(sendMessage())
     }
 }
 

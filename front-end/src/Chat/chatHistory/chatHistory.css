@@ -2,10 +2,34 @@
   margin-bottom: 130px;
   margin-top: -1px;
   list-style: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 5px;
 }
 .message-date {
   color: #585858;
 }
 body {
   background: #eeeeee;
+}
+
+.chat-user-img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
+}
+
+.message-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.collection-item {
+  border: 1px solid black;
+  width: 30vw;
+  border-radius: 10px;
 }
