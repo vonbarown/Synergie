@@ -13,20 +13,21 @@ export default class Profile extends React.Component {
 
     render() {
         return (
-            <div>
-                Profile
-    < br />
-                <Link to='/chat'>
-                    <button>Chat</button>
-                </Link>
-                <br />
-                <br />
+            <div className='profile-page'>
+                <h1>Profile</h1>
+
                 <button
                     onClick={this.showModal}
+                    className='toggle-button'
+                    id="centered-toggle-button"
                 >
                     Messages
                 </button>
-                <Modal show={this.state.show} onClose={this.showModal}>Show Modal</Modal>
+                <Modal show={this.state.show} onClose={this.showModal}>
+                    <Link to='/chat'>
+                        <button>Chat</button>
+                    </Link>
+                </Modal>
             </div >
         )
     }
