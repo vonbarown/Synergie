@@ -11,7 +11,7 @@ const ChatApp = (props) => {
         const loadChatMessages = async () => {
             try {
                 const { data: { payload } } = await axios.get(`/api/chat/${props.match.params.chatId}`)
-                console.log(payload);
+                console.log('history', payload);
                 props.loadChatMessages(payload);
 
             } catch (error) {
@@ -25,7 +25,7 @@ const ChatApp = (props) => {
     return (
         <>
             <ChatHistory />
-            <ChatInput />
+            <ChatInput chatId={props.match.params.chatId} />
         </>
     )
 }

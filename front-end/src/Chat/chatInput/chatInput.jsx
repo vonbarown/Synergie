@@ -27,16 +27,17 @@ class ChatInput extends React.Component {
             return;
         }
 
+        const messageObj = {
+            chatMember_id: this.props.loggedUser.id,
+            message_body: message,
+            chat_id: this.props.chatId,
+            time_stamp: new Date().toLocaleString(),
+        };
+
         try {
 
-            const messageObj = {
-                chatMember_id: this.props.loggedUser.id,
-                message_body: message,
-                chat_id: messageObj.chat_id,
-                time_stamp: new Date().toLocaleString(),
-            };
 
-            this.props.sendUserMessage(messageObj)
+            this.sendUserMessage(messageObj)
 
             // this.props.sendMessage(messageObj)
             this.refs.txtMessage.value = '';
@@ -50,6 +51,7 @@ class ChatInput extends React.Component {
 
 
     render() {
+        console.log('id', this.props.loggedUser.id);
 
         return (
             <div className='chat-input'>
@@ -81,7 +83,7 @@ class ChatInput extends React.Component {
     }
 }
 
-const mapStateToPros = (state) => {
+const mapStateToProps = (state) => {
     return {
         loggedUser: state.usersReducer.loggedUser.user
     }
@@ -94,4 +96,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToPros, mapDispatchToProps)(ChatInput)
+export default connect(mapStateToProps, mapDispatchToProps)(ChatInput)
