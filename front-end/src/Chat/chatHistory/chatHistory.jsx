@@ -8,12 +8,12 @@ class ChatHistory extends React.Component {
                 {
                     this.props.history.map(messages => {
                         return (
-                            <li className="collection-item avatar">
-                                <img src="//robohash.org/107378?set=set2&bgset=bg2&size=70x70" alt="107378" className="circle" />
+                            <li className="collection-item avatar" key={messages.When}>
+                                <img src="//robohash.org/107378?set=set2&bgset=bg2&size=70x70" alt={messages.Who} className="circle" />
                                 <span className="title">{messages.Who}</span>
                                 <p>
                                     <i className="prefix mdi-action-alarm" />
-                                    <span className="message-date">{messages.When}</span>
+                                    <span className="message-date">At {messages.When}</span>
                                     <br />
                                     <span>{messages.What}</span>
                                 </p>

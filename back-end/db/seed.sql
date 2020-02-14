@@ -36,6 +36,25 @@ CREATE TABLE comments (
     show_id INT REFERENCES shows(id)
 );
 
+CREATE TABLE chat (
+    id SERIAL PRIMARY KEY,
+    chat_type VARCHAR NOT NULL,
+    user_id INT REFERENCES users(id)
+);
+
+CREATE TABLE chatMembers (
+    id SERIAL PRIMARY KEY,
+    chat_id INT REFERENCES chat(id),
+    user_id INT REFERENCES users(id)
+);
+
+CREATE TABLE messages (
+    id SERIAL PRIMARY KEY,
+    message_body VARCHAR NOT NULL,
+    chat_id INT REFERENCES chat(id),
+    chatMember_id INT REFERENCES chatMembers(id)
+);
+
 -- INSERT GENRES
 INSERT INTO genres (genre_name) VALUES ('Adventure'); -- 1
 INSERT INTO genres (genre_name) VALUES ('Drama'); -- 2
@@ -81,3 +100,32 @@ VALUES ('BEST SHOW EVER!!', 1, 1);
 INSERT INTO comments (comment_body, user_id, show_id)
 VALUES ('Of course you would think so Jon', 2, 1);
 
+-- INSERT chat
+INSERT INTO chat (user_id,chat_type) VALUES (1,'single');
+INSERT INTO chat (user_id,chat_type) VALUES (2,'single');
+INSERT INTO chat (user_id,chat_type) VALUES (3,'single');
+INSERT INTO chat (user_id,chat_type) VALUES (4,'single');
+-- INSERT INTO chat (user_id,chat_type) VALUES (3,2);
+-- INSERT INTO chat (user_id,chat_type) VALUES (4,2);
+-- INSERT INTO chat (user_id,chat_type) VALUES (1,3);
+-- INSERT INTO chat (user_id,chat_type) VALUES (2,3);
+-- INSERT INTO chat (user_id,chat_type) VALUES (3,4);
+-- INSERT INTO chat (user_id,chat_type) VALUES (4,4);
+-- INSERT INTO chat (user_id,chat_type) VALUES (1,5);
+-- INSERT INTO chat (user_id,chat_type) VALUES (4,5);
+
+-- INSERT chatMembers
+INSERT INTO chatMembers (user_id,chat_id) VALUES (1,3);
+INSERT INTO chatMembers (user_id,chat_id) VALUES (2,1);
+INSERT INTO chatMembers (user_id,chat_id) VALUES (3,4);
+INSERT INTO chatMembers (user_id,chat_id) VALUES (4,2);
+
+-- INSERT MESSAGES
+INSERT INTO messages (message_body,chat_id,chatMember_id)
+VALUES('Hi, how are you',1,4);
+INSERT INTO messages (message_body,chat_id,chatMember_id)
+VALUES('This is just a test',3,1);
+INSERT INTO messages (message_body,chat_id,chatMember_id)
+VALUES('Did you finish the expanse',3,3);
+INSERT INTO messages (message_body,chat_id,chatMember_id)
+VALUES('When will you finish the books',2,2);
