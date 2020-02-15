@@ -5,13 +5,6 @@ import Layout from '../Layout/Layout'
 
 class ChatApp extends React.Component {
 
-
-    componentDidMount() {
-        this.initSocket()
-    }
-
-
-
     render() {
         return (
             <Layout title='Synergie Chat App' />
