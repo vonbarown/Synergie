@@ -1,12 +1,21 @@
 import React from 'react'
-
+import Layout from '../Layout/Layout'
 class ChatApp extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            socket: null
+        }
+    }
+
+    initSocket = () => {
+        const socket = 
+    }
 
     render() {
         return (
-            <div className='chat-app-container'>
-                Chat
-            </div>
+            <Layout title='Synergie Chat App' />
         )
     }
 }
