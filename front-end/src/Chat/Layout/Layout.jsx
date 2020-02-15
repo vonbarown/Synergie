@@ -11,7 +11,7 @@ class Layout extends React.Component {
     render() {
 
         const { title, socket } = this.props
-        console.log('socket', socket);
+        // console.log('socket', socket);
 
         return (
             <div className='layout-container'>

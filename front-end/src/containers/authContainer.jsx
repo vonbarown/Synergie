@@ -3,10 +3,12 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import LoginForm from '../components/AuthComponents/LoginForm'
 import SignupForm from '../components/AuthComponents/SignUpForm'
 import axios from 'axios'
+import io from 'socket.io-client'
 import { connect } from 'react-redux'
 import { setUser } from '../store/actions/userActions'
 
-
+import { fetchSocket } from '../store/actions/chatActions'
+const socketUrl = 'http://localhost:8282/'
 class AuthContainer extends Component {
     state = {
         username: '',
@@ -21,6 +23,17 @@ class AuthContainer extends Component {
         } catch (err) {
             console.log('ERROR', err)
         }
+        this.initSocket()
+    }
+
+    initSocket = () => {
+        const { fetchSocket } = this.props
+        const socket = io(socketUrl)
+        socket.on('connect', () => {
+            console.log('connected');
+
+        })
+        fetchSocket(socket)
     }
 
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
@@ -96,6 +109,8 @@ class AuthContainer extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         setUser: data => dispatch(setUser(data)),
+        fetchSocket: data => dispatch(fetchSocket(data))
+
     }
 }
 
