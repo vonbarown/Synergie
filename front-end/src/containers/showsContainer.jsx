@@ -24,10 +24,17 @@ class ShowsContainer extends React.Component {
                     img_url: show.img_url,
                     id: show.id,
                     genre: show.genre_name,
-                    watchers: [{ username: show.username, user_id: show.user_id, show_id: show.id }]
+                    watchers: [{
+                        username: show.username, user_id: show.user_id,
+                        show_id: show.id, avatar_url: show.avatar_url
+                    }]
                 }
             } else {
-                watchList[key]['watchers'].push({ username: show.username, user_id: show.user_id, show_id: show.id })
+                watchList[key]['watchers'].push({
+                    username: show.username,
+                    user_id: show.user_id, show_id: show.id,
+                    avatar_url: show.avatar_url
+                })
             }
         }
         this.props.loadAllShows(watchList)

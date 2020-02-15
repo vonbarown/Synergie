@@ -32,6 +32,10 @@ class Shows extends React.Component {
                                                     return (
                                                         <div className={`watcher-${watcher.user_id}`} key={watcher.user_id}>
                                                             <Link to={`/shows/${watcher.show_id}/user/${watcher.user_id}`}>
+                                                                <img className='watcher-img'
+                                                                    src={watcher.avatar_url}
+                                                                    alt={watcher.username}
+                                                                />
                                                                 {watcher.username}
                                                             </Link>{' '}
                                                         </div>

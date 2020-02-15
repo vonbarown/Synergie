@@ -5,10 +5,6 @@ import './layout.css'
 
 class Layout extends React.Component {
 
-    // state = {
-
-    // }
-
     componentDidMount() {
         this.refs.txtMessage.focus();
 
@@ -41,8 +37,7 @@ class Layout extends React.Component {
 
     render() {
 
-        const { title, socket, user } = this.props
-        // console.log('socket', socket);
+        const { title, user } = this.props
 
         return (
             <div className='layout-container'>

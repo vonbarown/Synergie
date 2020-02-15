@@ -3,7 +3,8 @@ const db = require('../db')
 
 const getAllShows = async () => {
     const queryStr = `SELECT
-                        shows.id,title,img_url,showWatchers.user_id, users.username,genres.genre_name
+                        shows.id,title,img_url,showWatchers.user_id, users.username,genres.genre_name,
+                        users.avatar_url
                         FROM 
                         shows 
                         INNER JOIN showWatchers ON shows.id = show_id
