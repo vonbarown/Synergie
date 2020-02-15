@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
 
     switch (action.type) {
         case LOAD_MESSAGE:
-            stateCopy.history = action.payload
+            stateCopy.history.push(action.payload)
             break
         case FETCH_SOCKET:
             stateCopy.socket = action.payload
