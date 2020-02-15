@@ -19,7 +19,7 @@ class AuthContainer extends Component {
         try {
             const { data } = await axios.get('/api/auth/isUserLoggedIn')
             this.props.setUser(data.payload)
-            this.props.history.push('/profile')
+            this.props.history.push('/')
         } catch (err) {
             console.log('ERROR', err)
         }
@@ -39,10 +39,12 @@ class AuthContainer extends Component {
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
     signupUser = async (user) => {
+        const { setUser, socket } = this.props
         try {
-            const { data } = await axios.post('/api/auth/signup', this.state)
+            const { data: { payload } } = await axios.post('/api/auth/signup', this.state)
 
-            this.props.setUser(data.payload)
+            setUser(payload)
+            socket.emit('user', payload.username)
             this.props.history.push('/profile')
         } catch (error) {
             console.log(error);
@@ -52,10 +54,13 @@ class AuthContainer extends Component {
     }
 
     loginUser = async () => {
-        try {
-            const { data } = await axios.post('/api/auth/login', this.state)
+        const { setUser, socket } = this.props
 
-            this.props.setUser(data.payload)
+        try {
+            const { data: { payload } } = await axios.post('/api/auth/login', this.state)
+
+            setUser(payload)
+            socket.emit('user', payload.username)
             this.props.history.push('/profile')
         } catch (error) {
             console.log(error);
@@ -106,6 +111,12 @@ class AuthContainer extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        socket: state.chatReducer.socket
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         setUser: data => dispatch(setUser(data)),
@@ -114,4 +125,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(AuthContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer)
