@@ -16,7 +16,7 @@ class ChatInput extends React.Component {
 
         try {
             const msgObj = {
-                chat_member_id: this.props.user_id,
+                user_id: this.props.user_id,
                 message_body: message,
                 chat_id: this.props.chatId,
                 time_stamp: new Date().toLocaleString(),

@@ -16,11 +16,10 @@ const getChatByUserId = async (chat_id) => {
 const getMessagesByChatId = async (chat_id) => {
     const queryStr = `SELECT
                         messages.id,messages.message_body,users.username,messages.time_stamp,
-                        users.avatar_url
+                        users.avatar_url,users.id AS contact_id
                         FROM 
                         messages 
-                        INNER JOIN chatMembers ON messages.chatMember_id = chatMembers.id
-                        INNER JOIN users ON chatMembers.user_id = users.id
+                        INNER JOIN users ON messages.user_id = users.id
                         INNER JOIN chat ON messages.chat_id = chat.id
                         WHERE chat.id = $1
                         `
@@ -35,7 +34,7 @@ const addNewChat = async (chatObj) => {
                         RETURNING chat.id
                         `
 
-    let chatId = await db.one(newShowQStr, {
+    let chatId = await db.oneOrNone(newShowQStr, {
         chat_type: chatObj.chat_type,
         user_id: chatObj.user_id,
     })
@@ -51,7 +50,6 @@ const addNewChatMember = async (chatMemObj) => {
     const newChatMemberQStr = `
                         INSERT INTO chatMembers (user_id,chat_id) 
                         VALUES($/user_id/,$/chat_id/) 
-                        ON CONFLICT (user_id) DO NOTHING
                         `
 
     return await db.one(newChatMemberQStr, {

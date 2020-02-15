@@ -3,7 +3,7 @@ const router = express.Router();
 const queries = require('../db/queries/chat')
 const { loginRequired } = require('../auth/helpers')
 
-router.get('/:id', loginRequired, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
     try {
         let chat = await queries.getMessagesByChatId(req.params.id)
 
