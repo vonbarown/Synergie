@@ -1,4 +1,4 @@
-import { SEND_MESSAGE, LOAD_MESSAGE, LOAD_CHAT_CHANNELS } from '../actions/actionTypes';
+import { LOAD_MESSAGE, LOAD_CHAT_CHANNELS } from '../actions/actionTypes';
 
 const initialState = {
     history: [],

@@ -5,7 +5,7 @@ const socketApi = {};
 socketApi.io = io;
 
 io.on('connection', function (socket) {
-    console.log('A user connected');
+    console.log('connected to socket', socket.id);
 });
 
 socketApi.sendNotification = function () {
