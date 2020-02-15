@@ -29,14 +29,15 @@ const getMessagesByChatId = async (chat_id) => {
 
 
 const addNewChat = async (chatObj) => {
-    const newShowQStr = `INSERT INTO chat (chat_type,user_id) 
-                        VALUES($/chat_type/,$/user_id/) 
-                        RETURNING chat.id
+    const newShowQStr = `INSERT INTO chat (chat_type,user_id,contact_id) 
+                        VALUES($/chat_type/,$/user_id/,$/contact_id/) 
+                        RETURNING *
                         `
 
     let chatId = await db.oneOrNone(newShowQStr, {
         chat_type: chatObj.chat_type,
         user_id: chatObj.user_id,
+        contact_id: chatObj.contact_id
     })
 
     // await addNewChatMember({ user_id: chatObj.user_id, chat_id: chatId.id })

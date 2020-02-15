@@ -42,8 +42,13 @@ router.get('/user/:id', loginRequired, async (req, res, next) => {
 });
 
 router.post('/', loginRequired, async (req, res, next) => {
+    let contact_id = [Number(req.body.contact_id)]
+
+    let bodyCopy = Object.assign({}, req.body)
+    bodyCopy.contact_id = contact_id
+
     try {
-        let newChat = await queries.addNewChat(req.body)
+        let newChat = await queries.addNewChat(bodyCopy)
         console.log('new', newChat);
 
         res.json({

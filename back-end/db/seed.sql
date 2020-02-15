@@ -40,7 +40,7 @@ CREATE TABLE chat (
     id SERIAL PRIMARY KEY,
     chat_type VARCHAR NOT NULL,
     user_id INT REFERENCES users(id),
-    contact_id INT REFERENCES users(id)
+    contact_id INT[]
 );
 
 -- CREATE TABLE chatMembers (
@@ -103,10 +103,10 @@ INSERT INTO comments (comment_body, user_id, show_id)
 VALUES ('Of course you would think so Jon', 2, 1);
 
 -- INSERT chat
-INSERT INTO chat (user_id,chat_type,contact_id) VALUES (1,'single',4);
-INSERT INTO chat (user_id,chat_type,contact_id) VALUES (2,'single',3);
-INSERT INTO chat (user_id,chat_type,contact_id) VALUES (3,'single',1);
-INSERT INTO chat (user_id,chat_type,contact_id) VALUES (4,'single',2);
+INSERT INTO chat (user_id,chat_type,contact_id) VALUES (1,'single',ARRAY[4]);
+INSERT INTO chat (user_id,chat_type,contact_id) VALUES (2,'single',ARRAY[3]);
+INSERT INTO chat (user_id,chat_type,contact_id) VALUES (3,'single',ARRAY[1]);
+INSERT INTO chat (user_id,chat_type,contact_id) VALUES (4,'single',ARRAY[2]);
 
 -- INSERT chatMembers
 -- INSERT INTO chatMembers (user_id,chat_id) VALUES (1,3);
