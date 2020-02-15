@@ -4,9 +4,15 @@ const socketApi = {};
 
 socketApi.io = io;
 
-io.on('connection', function (socket) {
-    console.log('connected to socket', socket.id);
+io.on('connection', (socket) => {
+    console.log('a user is connected');
+
+    socket.on('disconnect', () => {
+        console.log('a user disconnected');
+
+    })
 });
+
 
 socketApi.sendNotification = function () {
     io.sockets.emit('hello', { msg: 'Hello World!' });
