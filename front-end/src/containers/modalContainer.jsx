@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Modal from '../components/Modal/modal'
 import { connect } from 'react-redux';
-import { loadChat } from '../store/actions/chatActions'
+// import { loadChat } from '../store/actions/chatActions'
 import axios from 'axios'
 
 class ModalContainer extends React.Component {
@@ -12,7 +12,7 @@ class ModalContainer extends React.Component {
 
 
     componentDidMount() {
-        this.fetchChatChannels()
+        // this.fetchChatChannels()
     }
 
     addNewChat = async () => {
@@ -93,11 +93,11 @@ const mapStateToProps = (state) => {
 }
 
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        loadChat: data => dispatch(loadChat(data))
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         loadChat: data => dispatch(loadChat(data))
+//     }
+// }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalContainer)
+export default connect(mapStateToProps)(ModalContainer)

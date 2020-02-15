@@ -1,4 +1,4 @@
-import { SEND_MESSAGE, LOAD_MESSAGE, LOAD_CHAT_CHANNELS } from './actionTypes';
+import { SEND_MESSAGE, LOAD_MESSAGE, FETCH_SOCKET } from './actionTypes';
 
 export const sendMessage = (payload) => {
     return {
@@ -14,9 +14,9 @@ export const loadChatMessages = (payload) => {
     };
 };
 
-export const loadChat = (payload) => {
+export const fetchSocket = (payload) => {
     return {
-        type: LOAD_CHAT_CHANNELS,
+        type: FETCH_SOCKET,
         payload
     };
 };

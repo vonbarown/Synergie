@@ -1,8 +1,9 @@
-import { LOAD_MESSAGE, LOAD_CHAT_CHANNELS } from '../actions/actionTypes';
+import { LOAD_MESSAGE, FETCH_SOCKET } from '../actions/actionTypes';
 
 const initialState = {
     history: [],
-    chats: []
+    chats: [],
+    socket: null
 }
 
 export default (state = initialState, action) => {
@@ -13,8 +14,8 @@ export default (state = initialState, action) => {
         case LOAD_MESSAGE:
             stateCopy.history = action.payload
             break
-        case LOAD_CHAT_CHANNELS:
-            stateCopy.chats = action.payload
+        case FETCH_SOCKET:
+            stateCopy.socket = action.payload
             break
         default:
             break
