@@ -1,5 +1,6 @@
 import React from 'react'
 import io from 'socket.io-client'
+import { connect } from 'react-redux'
 const socketUrl = 'http://localhost:8282/'
 class Layout extends React.Component {
 
@@ -25,9 +26,17 @@ class Layout extends React.Component {
         this.setState({ socket: socket })
     }
 
+    setUser = () => {
+        const { socket } = this.state
+        const { user } = this.props
+
+        socket.emit(user)
+    }
+
 
     render() {
-        const { title } = this.props
+
+        const { title, user } = this.props
 
         return (
             <div className='layout-container'>
@@ -37,4 +46,11 @@ class Layout extends React.Component {
     }
 }
 
-export default Layout
+const mapStateToProps = (state) => {
+    return {
+        user: state.usersReducer.loggedUser.user
+    }
+}
+
+
+export default connect(mapStateToProps, null)(Layout)

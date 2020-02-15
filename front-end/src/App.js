@@ -50,7 +50,7 @@ class App extends React.Component {
           <PrivateRoute path='/addShow' component={AddShowForm} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/shows/:id/user/:userId' component={ShowInfoPage} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/shows' component={showsContainer} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
-          <Route path='/chat' component={ChatApp} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
+          <PrivateRoute path='/chat' component={ChatApp} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <Route exact path='/about' component={About} />
           <Route exact path='/' component={Home} />
         </Switch>
