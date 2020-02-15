@@ -3,7 +3,7 @@ import ChatHistory from './chatHistory/chatHistory'
 import ChatInput from './chatInput/chatInput'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import { loadChatMessages } from '../store/actions/chatActions'
+import { loadChatMessages } from '../../store/actions/chatActions'
 
 const RootComponent = (props) => {
 
