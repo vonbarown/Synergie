@@ -8,6 +8,8 @@
   transform: scale(1);
   opacity: 1;
   visibility: visible;
+  z-index: 90;
+  border-radius: 10px;
   &.off {
     opacity: 0;
     visibility: hidden;
@@ -18,7 +20,7 @@
 
   @supports (offset-rotate: 0deg) {
     offset-rotate: 0deg;
-    offset-path: path("M 250,100 S -300,500 -700,-200");
+    offset-path: path("M 250,100 S -300,00 -700,-200");
     &.off {
       offset-distance: 100%;
     }
@@ -52,7 +54,10 @@
 #centered-toggle-button {
   position: absolute;
 }
-
+.modal-show-img {
+  width: 30vw;
+  border-radius: 10px;
+}
 // .modal-container {
 //   position: relative;
 //   display: flex;
