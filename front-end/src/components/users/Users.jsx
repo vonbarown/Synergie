@@ -1,18 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-
+import { animateScroll as scroll } from 'react-scroll'
 import './users.css'
 
 
+let loggedIn
 const Users = (props) => {
-    let loggedIn
+
 
 
     return (
         <div className='users'>
+            <h2 className='page-title'>Users</h2>
             <div className='container'>
-                <h2 className='page-title'>Users</h2>
                 {
 
                     props.users ? props.users.map(el => {
@@ -33,7 +34,7 @@ const Users = (props) => {
                     }) : null
                 }
             </div>
-
+            <button className='scroll' onClick={() => scroll.scrollToTop()}>Scroll To Top</button>
         </div>
     )
 }

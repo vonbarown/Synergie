@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import './showPage.css'
 import { Link } from 'react-router-dom'
+import { animateScroll as scroll } from 'react-scroll'
 
 class Shows extends React.Component {
 
@@ -49,7 +50,7 @@ class Shows extends React.Component {
                         })
                     }
                 </div>
-
+                <button className='scroll' onClick={() => scroll.scrollToTop()}>Scroll To Top</button>
             </div>
         )
     }
