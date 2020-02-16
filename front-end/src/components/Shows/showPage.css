@@ -6,8 +6,8 @@
   flex-direction: row;
 }
 .show-img {
-  height: 220px;
-  width: 15vw;
+  height: 250px;
+  width: 18vw;
   border-radius: 20px;
 }
 
@@ -17,7 +17,7 @@
   align-items: center;
   border: 1px solid black;
   width: 40vw;
-  height: 23vh;
+  height: 26vh;
   border-radius: 10px;
   border-left: transparent;
   border-start-start-radius: 0px;

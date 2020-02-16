@@ -3,6 +3,7 @@ import React from 'react'
 import ModalContainer from '../../containers/modalContainer'
 import './profile.css'
 import { connect } from 'react-redux'
+import UpdateProfileForm from './UpdateProfileForm'
 
 class Profile extends React.Component {
 
@@ -11,13 +12,20 @@ class Profile extends React.Component {
         const { loggedUser } = this.props
         return (
             <div className='profile-page'>
-                <h1>Welcome {loggedUser.username}</h1>
-                <h3>What are you binging?</h3>
-                <img className='profile-page-img'
-                    src={loggedUser.avatar_url}
-                    alt={loggedUser.username}
-                />
-                <ModalContainer />
+                <div className='profile-header'>
+                    <img className='profile-page-img'
+                        src={loggedUser.avatar_url}
+                        alt={loggedUser.username}
+                    />
+                    <div className='sub-header'>
+                        <h1>Welcome {loggedUser.username}</h1>
+                        <h3>What are you binging?</h3>
+                    </div>
+                </div>
+                <UpdateProfileForm />
+                {
+                    <ModalContainer />
+                }
             </div >
         )
     }
