@@ -2,7 +2,14 @@ const db = require('../db')
 
 
 const getAllUsers = async () => {
-    return await db.any("SELECT id,username,avatar_url FROM users")
+    let allUsers = `SELECT 
+                    id,username,avatar_url 
+                    FROM 
+                    users
+                    ORDER BY username ASC
+                    `
+
+    return await db.any(allUsers)
 }
 
 const getUsersById = async (id) => {
