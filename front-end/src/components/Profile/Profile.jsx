@@ -14,7 +14,7 @@ class Profile extends React.Component {
             <div className='profile-page'>
                 <div className='profile-header'>
                     <img className='profile-page-img'
-                        l src={loggedUser.avatar_url}
+                        src={loggedUser.avatar_url}
                         alt={loggedUser.username}
                     />
                     <div className='sub-header'>
