@@ -57,32 +57,4 @@ router.get('/logout', authHelpers.loginRequired, (req, res, next) => {
     })
 })
 
-router.patch('/:id', async (req, res, next) => {
-    const passwordDigest = await authHelpers.hashPassword(req.body.password)
-
-    const userUpdateInfo = {
-        username: req.body.username,
-        avatar_url: req.body.avatar_url,
-        password: passwordDigest
-    }
-
-    try {
-        let updatedUser = await userQueries.addNewUser(userUpdateInfo, req.params.id)
-        res.json({
-            payload: updatedUser,
-            message: 'update successful',
-            error: false
-        })
-    } catch (error) {
-        console.log("error", error)
-        res.status(500).json({
-            payload: null,
-            msg: 'Failed to add update profile',
-            error: true
-        })
-    }
-
-
-})
-
 module.exports = router;

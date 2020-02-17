@@ -5,7 +5,7 @@ class UpdateProfileForm extends Component {
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={e => e.preventDefault()}>
                     <div className='change-profile-input'>
                         <p>Change Username:</p>
                         <input type="text" placeholder={this.props.loggedUser.username} className='form-input' />
