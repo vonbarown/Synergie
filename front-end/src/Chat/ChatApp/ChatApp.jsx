@@ -1,17 +1,43 @@
 import React from 'react'
 import Layout from '../Layout/Layout'
-// import { connect } from 'react-redux'
-
+import { connect } from 'react-redux'
+import ChatHistory from '../chatHistory/chatHistory'
+import { loadChatMessages } from '../../store/actions/chatActions'
+import axios from 'axios'
 
 class ChatApp extends React.Component {
 
+    componentDidMount() {
+        this.loadChatMessages()
+    }
+
+    loadChatMessages = async () => {
+        try {
+            const { data: { payload } } = await axios.get(`/api/chat/2`)
+            console.log('history', payload);
+            this.props.loadChatMessages(payload);
+
+        } catch (error) {
+
+        }
+    }
+
+
     render() {
         return (
-            <Layout title='Synergie Chat App' />
+            <div>
+                <ChatHistory />
+                <Layout title='Synergie Chat App' />
+            </div>
         )
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadChatMessages: data => dispatch(loadChatMessages(data))
+    }
+}
 
 
-export default ChatApp
+export default connect(null, mapDispatchToProps)(ChatApp)
