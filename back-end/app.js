@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -25,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '../front-end/build')));
 app.use(session({
-    secret: "STILL_NOT_A_GOOD_SECRET",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true
 }))

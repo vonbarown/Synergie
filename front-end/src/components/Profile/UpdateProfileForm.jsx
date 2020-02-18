@@ -62,7 +62,12 @@ class UpdateProfileForm extends Component {
                         <p>Change Password:</p>
                         <input type="text" placeholder='Password' className='form-input' />
                     </div>
-                    <button onClick={this.changeUserInfo}></button>
+                    <button
+                        onClick={this.changeUserInfo}
+                        className='form-button'
+                    >
+                        Update
+                        </button>
                 </form>
             </div>
         )
