@@ -12,8 +12,7 @@ const genresRouter = require('./routes/genres')
 const showsRouter = require('./routes/shows')
 const commentsRouter = require('./routes/comments')
 const authRouter = require('./routes/auth')
-const chatRouter = require('./routes/chat')
-const messageRouter = require('./routes/message')
+const networkRouter = require('./routes/network')
 
 
 
@@ -42,8 +41,8 @@ app.use('/api/genres', genresRouter)
 app.use('/api/shows', showsRouter)
 app.use('/api/comments', commentsRouter)
 app.use('/api/auth', authRouter)
-app.use('/api/chat', chatRouter)
-app.use('/api/message', messageRouter)
+app.use('/api/network', networkRouter)
+// app.use('/api/message', messageRouter)
 
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../front-end/build/index.html'))

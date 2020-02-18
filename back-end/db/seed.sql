@@ -36,26 +36,12 @@ CREATE TABLE comments (
     show_id INT REFERENCES shows(id)
 );
 
-CREATE TABLE chat (
+CREATE TABLE network (
     id SERIAL PRIMARY KEY,
-    chat_type VARCHAR NOT NULL,
-    user_id INT REFERENCES users(id),
-    contact_id INT[]
+    user_id INT REFERENCES  users(id),
+    contact_id INT UNIQUE NOT NULL
 );
 
--- CREATE TABLE chatMembers (
---     id SERIAL PRIMARY KEY,
---     chat_id INT REFERENCES chat(id),
---     user_id INT REFERENCES  users(id)
--- );
-
-CREATE TABLE messages (
-    id SERIAL PRIMARY KEY,
-    message_body VARCHAR NOT NULL,
-    chat_id INT REFERENCES chat(id),
-    user_id INT REFERENCES users(id),
-    time_stamp VARCHAR NOT NULL
-);
 
 -- INSERT GENRES
 INSERT INTO genres (genre_name) VALUES ('Adventure'); -- 1
@@ -96,35 +82,8 @@ INSERT INTO showWatchers (user_id,show_id) VALUES (1,5);
 INSERT INTO showWatchers (user_id,show_id) VALUES (4,5);
 
 
--- INSERT COMMENTS
-INSERT INTO comments (comment_body, user_id, show_id)
-VALUES ('BEST SHOW EVER!!', 1, 1);
-INSERT INTO comments (comment_body, user_id, show_id)
-VALUES ('Of course you would think so Jon', 2, 1);
-
--- INSERT chat
-INSERT INTO chat (user_id,chat_type,contact_id) VALUES (1,'single',ARRAY[4]);
-INSERT INTO chat (user_id,chat_type,contact_id) VALUES (2,'single',ARRAY[3]);
-INSERT INTO chat (user_id,chat_type,contact_id) VALUES (3,'single',ARRAY[1]);
-INSERT INTO chat (user_id,chat_type,contact_id) VALUES (4,'single',ARRAY[2]);
-
--- INSERT chatMembers
--- INSERT INTO chatMembers (user_id,chat_id) VALUES (1,3);
--- INSERT INTO chatMembers (user_id,chat_id) VALUES (2,1);
--- INSERT INTO chatMembers (user_id,chat_id) VALUES (3,4);
--- INSERT INTO chatMembers (user_id,chat_id) VALUES (4,2);
--- INSERT INTO chatMembers (user_id,chat_id) VALUES (3,2);
-
--- INSERT MESSAGES
-INSERT INTO messages (message_body,chat_id,user_id,time_stamp)
-VALUES('Hi, how are you',1,4,'2/13/2020, 1:36:16 PM');
-INSERT INTO messages (message_body,chat_id,user_id,time_stamp)
-VALUES('This is just a test',3,1,'2/13/2020, 11:46:16 PM');
-INSERT INTO messages (message_body,chat_id,user_id,time_stamp)
-VALUES('Did you finish the expanse',3,3,'2/13/2020, 11:36:16 PM');
-INSERT INTO messages (message_body,chat_id,user_id,time_stamp)
-VALUES('When will you finish the books',2,2,'2/13/2020, 11:40:16 PM');
-INSERT INTO messages (message_body,chat_id,user_id,time_stamp)
-VALUES('When will you finish the books George.....?',2,2,'2/13/2020, 11:40:16 PM');
-INSERT INTO messages (message_body,chat_id,user_id,time_stamp)
-VALUES('Did you finish the expanse',2,3,'2/13/2020, 11:36:16 PM');
+-- INSERT network
+INSERT INTO network (user_id,contact_id) VALUES (1,3);
+INSERT INTO network (user_id,contact_id) VALUES (2,1);
+INSERT INTO network (user_id,contact_id) VALUES (3,4);
+INSERT INTO network (user_id,contact_id) VALUES (4,2);

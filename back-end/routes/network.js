@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const queries = require('../db/queries/chat')
+const queries = require('../db/queries/network')
 const { loginRequired } = require('../auth/helpers')
 
 router.get('/:id', async (req, res, next) => {
     try {
-        let chat = await queries.getMessagesByChatId(req.params.id)
+        let network = await queries.getNetworkByUserId(req.params.id)
 
         res.json({
-            payload: chat,
-            message: 'all chat retrieved',
+            payload: network,
+            message: 'network retrieved',
             error: false
         })
     } catch (error) {
@@ -42,17 +42,13 @@ router.get('/user/:id', loginRequired, async (req, res, next) => {
 });
 
 router.post('/', loginRequired, async (req, res, next) => {
-    let contact_id = [Number(req.body.contact_id)]
-
-    let bodyCopy = Object.assign({}, req.body)
-    bodyCopy.contact_id = contact_id
 
     try {
-        let newChat = await queries.addNewChat(bodyCopy)
-        console.log('new', newChat);
+        let newNetwork = await queries.addNewNetwork(req.body)
+        console.log('new', newNetwork);
 
         res.json({
-            payload: newChat,
+            payload: newNetwork,
             message: 'new chat instance created',
             error: false
         })
