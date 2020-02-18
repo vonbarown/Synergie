@@ -17,12 +17,17 @@ class UpdateProfileForm extends Component {
     changeUserInfo = async (e) => {
         const { updateProfile, setUser } = this.props
         e.preventDefault()
-        const { data: payload } = await axios.patch(`/api/auth/${this.props.loggedUser.id}`, {
-            username: this.state.username,
-            avatar_url: this.state.avatar_url
-        })
-        updateProfile()
-        setUser(payload)
+        try {
+            const { data: { payload } } = await axios.patch(`/api/auth/${this.props.loggedUser.id}`, {
+                username: this.state.username,
+                avatar_url: this.state.avatar_url
+            })
+            updateProfile()
+            setUser(payload)
+        } catch (error) {
+            console.log('update error', error);
+
+        }
     }
 
 

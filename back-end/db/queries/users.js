@@ -13,7 +13,7 @@ const getAllUsers = async () => {
 }
 
 const getUsersById = async (id) => {
-    return await db.any("SELECT id,username,avatar_url from users WHERE id = $1", [id])
+    return await db.oneOrNone("SELECT id,username,avatar_url from users WHERE id = $1", [id])
 }
 
 const addNewUser = async (userObj) => {
@@ -40,13 +40,13 @@ const getUserByUsername = async (username) => {
 const updateUserInfo = async (userObj, id) => {
 
     if (userObj.username) {
-        return await db.one(`UPDATE users 
+        return await db.oneOrNone(`UPDATE users 
                             SET username = $1 
                             WHERE id = $2
                             RETURNING  id,username,avatar_url`, [userObj.username, Number(id)])
 
     } else if (userObj.avatar_url) {
-        return await db.none(`UPDATE users 
+        return await db.oneOrNone(`UPDATE users 
                             SET avatar_url = $1
                             WHERE id = $2
                             RETURNING id,username,avatar_url`, [userObj.avatar_url, Number(id)])

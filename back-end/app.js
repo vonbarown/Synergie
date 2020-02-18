@@ -23,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../front-end/build')));
 app.use(session({
     secret: "STILL_NOT_A_GOOD_SECRET",
     resave: false,
@@ -42,5 +43,9 @@ app.use('/api/comments', commentsRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/chat', chatRouter)
 app.use('/api/message', messageRouter)
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../front-end/build/index.html'))
+})
 
 module.exports = app;
