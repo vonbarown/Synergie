@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import ChatHistory from '../../chatHistory/chatHistory'
+import ChatHistory from '../../Network/Network'
 import ChatInput from '../../chatInput/chatInput'
 import { connect } from 'react-redux'
 import axios from 'axios'

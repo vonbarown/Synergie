@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../Layout/Layout'
 import { connect } from 'react-redux'
-import ChatHistory from '../chatHistory/chatHistory'
+import Network from '../Network/Network'
 import { loadChatMessages } from '../../store/actions/chatActions'
 import axios from 'axios'
 
@@ -26,7 +26,7 @@ class ChatApp extends React.Component {
     render() {
         return (
             <div>
-                <ChatHistory />
+                <Network />
                 <Layout title='Synergie Chat App' />
             </div>
         )
