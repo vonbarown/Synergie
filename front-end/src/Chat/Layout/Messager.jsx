@@ -1,7 +1,5 @@
 import React, { Fragment, Component } from 'react'
 import { connect } from 'react-redux'
-import { loadChatMessages } from '../../store/actions/chatActions'
-import './messager.css'
 import Talk from 'talkjs'
 import { appId } from '../../secret'
 
@@ -26,41 +24,17 @@ class Messager extends Component {
             .catch(e => console.error(e));
     }
 
-    setUser = () => {
-        const { user, socket } = this.props
-        socket.emit(user)
-    }
-
-    handleSubmit = e => {
-        e.preventDefault()
-
-        const message = this.refs.txtMessage.value;
-        const { socket } = this.props
-
-        socket.emit('chat message', message)
-        this.sendMessage()
-        this.refs.txtMessage.value = '';
-        this.refs.txtMessage.focus();
-
-        return false
-    }
-
-    sendMessage = () => {
-        this.props.socket.on('chat message', (msg) => {
-            this.props.loadChatMessages(msg)
-        })
-    }
-
-
     render() {
 
-        const { title, user } = this.props
-
         return (
-            <div className='message-container'>
-                <Fragment>
-                    <div style={{ height: '500px' }} className="inbox-container" ref={c => this.container = c}>Loading...</div>
-                </Fragment>
+            <div className='message-page' style={{
+                marginTop: '65px'
+            }}>
+                <div className='message-container'>
+                    <Fragment>
+                        <div style={{ height: '600px' }} className="inbox-container" ref={c => this.container = c}>Loading...</div>
+                    </Fragment>
+                </div>
             </div>
         )
     }
@@ -69,14 +43,8 @@ class Messager extends Component {
 const mapStateToProps = (state) => {
     return {
         user: state.usersReducer.loggedUser.user,
-        socket: state.chatReducer.socket
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        loadChatMessages: data => dispatch(loadChatMessages(data))
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Messager)
+export default connect(mapStateToProps, null)(Messager)
