@@ -13,7 +13,7 @@ class ChatApp extends React.Component {
 
     loadChatMessages = async () => {
         try {
-            const { data: { payload } } = await axios.get(`/api/chat/${this.props.match.params.chatId}`)
+            const { data: { payload } } = await axios.get(`/api/network/1`)
             console.log('history', payload);
             this.props.loadChatMessages(payload);
 
@@ -27,9 +27,18 @@ class ChatApp extends React.Component {
         return (
             <div>
                 <Network />
-                <Layout title='Synergie Chat App' />
+                {
+
+                    // <Layout title='Synergie Chat App' />
+                }
             </div>
         )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        loggedUser: state.usersReducer.loggedUser.user
     }
 }
 
@@ -40,4 +49,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(null, mapDispatchToProps)(ChatApp)
+export default connect(mapStateToProps, mapDispatchToProps)(ChatApp)

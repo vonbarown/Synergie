@@ -39,7 +39,8 @@ CREATE TABLE comments (
 CREATE TABLE network (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES  users(id),
-    contact_id INT UNIQUE NOT NULL
+    contact_id INT UNIQUE NOT NULL,
+    role VARCHAR
 );
 
 
@@ -83,7 +84,7 @@ INSERT INTO showWatchers (user_id,show_id) VALUES (4,5);
 
 
 -- INSERT network
-INSERT INTO network (user_id,contact_id) VALUES (1,3);
-INSERT INTO network (user_id,contact_id) VALUES (2,1);
-INSERT INTO network (user_id,contact_id) VALUES (3,4);
-INSERT INTO network (user_id,contact_id) VALUES (4,2);
+INSERT INTO network (user_id,contact_id,role) VALUES (1,3,'Member');
+INSERT INTO network (user_id,contact_id,role) VALUES (2,1,'Member');
+INSERT INTO network (user_id,contact_id,role) VALUES (3,4,'Member');
+INSERT INTO network (user_id,contact_id,role) VALUES (4,2,'Member');

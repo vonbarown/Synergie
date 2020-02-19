@@ -1,76 +1,92 @@
 import * as React from 'react';
 import './network.css'
 import { connect } from 'react-redux';
-import Talk from
+import Talk from 'talkjs';
 
-    class Network extends React.Component {
+class Network extends React.Component {
 
 
-        handleClick(userId) {
+    handleClick = (userId) => {
+        const { loggedUser, network } = this.props;
 
-            /* Retrieve the two users that will participate in the conversation */
-            const { currentUser } = this.state;
-            const user = dummyUsers.find(user => user.id === userId)
+        const user = network.find(user => user.user_id === userId)
+        loggedUser.role = 'Member'
+        loggedUser.name = loggedUser.username
+        loggedUser.photoUrl = loggedUser.avatar_url
+        console.log('logged', loggedUser);
 
-            /* Session initialization code */
-            Talk.ready
-                .then(() => {
-                    /* Create the two users that will participate in the conversation */
-                    const me = new Talk.User(currentUser);
-                    const other = new Talk.User(user)
 
-                    /* Create a talk session if this does not exist. Remember to replace tthe APP ID with the one on your dashboard */
-                    if (!window.talkSession) {
-                        window.talkSession = new Talk.Session({
-                            appId: "YOUR_APP_ID",
-                            me: me
-                        });
+        Talk.ready
+            .then(() => {
+                const me = new Talk.User(loggedUser);
+                const other = new Talk.User(user.user_id)
+
+                if (!window.talkSession) {
+                    window.talkSession = new Talk.Session({
+                        appId: 'tA7pW3ah',
+                        me: me
+                    });
+                }
+
+                const conversationId = Talk.oneOnOneId(me, other);
+                const conversation = window.talkSession.getOrCreateConversation(conversationId);
+
+                conversation.setParticipant(me);
+                conversation.setParticipant(other);
+
+                this.chatbox = window.talkSession.createChatbox(conversation);
+                this.chatbox.mount(this.container);
+            })
+            .catch(e => console.error(e));
+    }
+    render() {
+        const { loggedUser } = this.props
+        return (
+            <div className='collection'>
+                <div className="current-user-container">
+                    {loggedUser &&
+                        <div>
+                            <picture className="current-user-picture">
+                                <img alt={loggedUser.username} src={loggedUser.avatar_url} />
+                            </picture>
+                            <div className="user-info">
+                                <h3>{loggedUser.username}</h3>
+                            </div>
+                        </div>
                     }
-
-                    /* Get a conversation ID or create one */
-                    const conversationId = Talk.oneOnOneId(me, other);
-                    const conversation = window.talkSession.getOrCreateConversation(conversationId);
-
-                    /* Set participants of the conversations */
-                    conversation.setParticipant(me);
-                    conversation.setParticipant(other);
-
-                    /* Create and mount chatbox in container */
-                    this.chatbox = window.talkSession.createChatbox(conversation);
-                    this.chatbox.mount(this.container);
-                })
-                .catch(e => console.error(e));
-        }
-        render() {
-            return (
-                <div className='collection'>
+                </div>
+                <div className='users-container'>
                     {
                         this.props.network.map(contact => {
                             return (
-                                <div className='collection-item'
-                                    key={contact.id}>
-                                    <div className='contact-info'>
-                                        <img className='chat-user-img' src={contact.avatar_url} alt={contact.username} />
-                                        <div className='meta-data'>
+                                <div className='user'
+                                    key={contact.user_id}>
+                                    <div className='user-info-container'>
+                                        <img className='chat-user-img ' src={contact.avatar_url} alt={contact.username} />
+                                        <div className='user-info'>
                                             <p className="title">{contact.username}</p>
                                         </div>
                                     </div>
                                     <div className='user-action'>
-                                        <button>Message</button>
+                                        <button onClick={(userId) => this.handleClick(contact.user_id)}>Message</button>
                                     </div>
                                 </div>
                             )
                         })
                     }
+                    <div className="chatbox-container" ref={c => this.container = c}>
+                        <div id="talkjs-container" style={{ height: "300px" }}><i></i></div>
+                    </div>
                 </div>
-            )
-        }
+            </div>
+        )
     }
+}
 
 const mapStateToProps = (state) => {
     return {
         network: state.chatReducer.network,
-        loggedUser: state.usersReducer.user
+        loggedUser: state.usersReducer.loggedUser.user
     }
 }
 
