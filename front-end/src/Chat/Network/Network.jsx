@@ -2,6 +2,7 @@ import * as React from 'react';
 import './network.css'
 import { connect } from 'react-redux';
 import Talk from 'talkjs';
+import { appId } from '../../secret'
 
 class Network extends React.Component {
 
@@ -10,9 +11,7 @@ class Network extends React.Component {
         const { loggedUser, network } = this.props;
 
         const user = network.find(user => user.user_id === userId)
-        loggedUser.role = 'Member'
-        loggedUser.name = loggedUser.username
-        loggedUser.photoUrl = loggedUser.avatar_url
+
         console.log('logged', loggedUser);
 
 
@@ -23,7 +22,7 @@ class Network extends React.Component {
 
                 if (!window.talkSession) {
                     window.talkSession = new Talk.Session({
-                        appId: 'tA7pW3ah',
+                        appId: appId,
                         me: me
                     });
                 }

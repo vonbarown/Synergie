@@ -21,6 +21,12 @@ export default (state = initialState, action) => {
             stateCopy.user = action.payload
             break
         case LOGIN_USER:
+            let user = action.payload
+
+            user.name = user.username
+            user.photoUrl = user.avatar_url
+            user.role = 'Member'
+
             stateCopy.loggedUser = {
                 user: action.payload,
                 isUserLoggedIn: true

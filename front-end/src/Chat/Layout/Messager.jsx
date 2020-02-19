@@ -1,14 +1,31 @@
-import React from 'react'
+import React, { Fragment, Component } from 'react'
 import { connect } from 'react-redux'
 import { loadChatMessages } from '../../store/actions/chatActions'
 import './messager.css'
+import Talk from 'talkjs'
+import { appId } from '../../secret'
 
-class Messager extends React.Component {
+class Messager extends Component {
 
     componentDidMount() {
-        this.refs.txtMessage.focus();
+        Talk.ready
+            .then(() => {
+                const me = new Talk.User(this.props.user);
 
+                if (!window.talkSession) {
+                    window.talkSession = new Talk.Session({
+                        appId: appId,
+                        me: me
+                    });
+                }
+
+                this.inbox = window.talkSession.createInbox();
+                this.inbox.mount(this.container);
+
+            })
+            .catch(e => console.error(e));
     }
+
     setUser = () => {
         const { user, socket } = this.props
         socket.emit(user)
