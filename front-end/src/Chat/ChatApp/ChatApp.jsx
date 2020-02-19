@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../Layout/Layout'
+import Layout from '../Layout/Messager'
 import { connect } from 'react-redux'
 import Network from '../Network/Network'
 import { loadChatMessages } from '../../store/actions/chatActions'

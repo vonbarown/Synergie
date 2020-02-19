@@ -75,6 +75,7 @@ current-user-container {
   width: 45%;
   padding: 20px 0;
   height: 24%;
+  margin-top: 20px;
 }
 .user {
   display: flex;
