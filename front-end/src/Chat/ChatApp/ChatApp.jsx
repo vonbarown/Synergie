@@ -13,7 +13,7 @@ class ChatApp extends React.Component {
 
     loadChatMessages = async () => {
         try {
-            const { data: { payload } } = await axios.get(`/api/network/1`)
+            const { data: { payload } } = await axios.get(`/api/network/${this.props.loggedUser.id}`)
             console.log('history', payload);
             this.props.loadChatMessages(payload);
 

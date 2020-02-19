@@ -11,6 +11,11 @@ class Network extends React.Component {
         const { loggedUser, network } = this.props;
 
         const user = network.find(user => user.user_id === userId)
+        // user.name = user.username
+        // user.photoUrl = user.avatar_url
+
+        console.log('user', user);
+
 
         console.log('logged', loggedUser);
 
@@ -18,7 +23,7 @@ class Network extends React.Component {
         Talk.ready
             .then(() => {
                 const me = new Talk.User(loggedUser);
-                const other = new Talk.User(user.user_id)
+                const other = new Talk.User(user)
 
                 if (!window.talkSession) {
                     window.talkSession = new Talk.Session({
@@ -59,11 +64,11 @@ class Network extends React.Component {
                         this.props.network.map(contact => {
                             return (
                                 <div className='user'
-                                    key={contact.user_id}>
+                                    key={contact.id}>
                                     <div className='user-info-container'>
-                                        <img className='chat-user-img ' src={contact.avatar_url} alt={contact.username} />
+                                        <img className='chat-user-img ' src={contact.photourl} alt={contact.name} />
                                         <div className='user-info'>
-                                            <p className="title">{contact.username}</p>
+                                            <p className="title">{contact.name}</p>
                                         </div>
                                     </div>
                                     <div className='user-action'>

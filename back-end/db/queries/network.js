@@ -2,12 +2,13 @@ const db = require('../db')
 
 const getNetworkByUserId = async (chat_id) => {
     networkQuery = `
-            SELECT network.user_id , network.contact_id, users.username,users.avatar_url,
+            SELECT network.user_id , network.contact_id AS id, users.username AS name,
+            users.avatar_url AS  photoUrl,
             network.role
             FROM 
             network
-            INNER JOIN users on network.user_id = users.id
-            WHERE users.id = $1
+            INNER JOIN users on network.contact_id = users.id
+            WHERE network.user_id = $1
         `
 
     return await db.any(networkQuery, [chat_id])

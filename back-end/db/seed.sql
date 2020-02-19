@@ -38,8 +38,8 @@ CREATE TABLE comments (
 
 CREATE TABLE network (
     id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES  users(id),
-    contact_id INT UNIQUE NOT NULL,
+    user_id INT,
+    contact_id INT UNIQUE NOT NULL REFERENCES  users(id),
     role VARCHAR
 );
 
