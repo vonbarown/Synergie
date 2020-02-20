@@ -10,7 +10,7 @@ class Network extends React.Component {
     handleClick = (userId) => {
         const { loggedUser, network } = this.props;
 
-        const user = network.find(user => user.user_id === userId)
+        const user = network.find(user => user.id === userId)
         // user.name = user.username
         // user.photoUrl = user.avatar_url
 
@@ -72,7 +72,7 @@ class Network extends React.Component {
                                         </div>
                                     </div>
                                     <div className='user-action'>
-                                        <button onClick={(userId) => this.handleClick(contact.user_id)}>Message</button>
+                                        <button onClick={(userId) => this.handleClick(contact.id)}>Message</button>
                                     </div>
                                 </div>
                             )

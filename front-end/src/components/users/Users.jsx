@@ -34,6 +34,9 @@ const Users = (props) => {
                     }) : null
                 }
             </div>
+            <button className='scroll message'>
+                <Link to='/messaging'>Messages</Link>
+            </button>
             <button className='scroll' onClick={() => scroll.scrollToTop()}>Scroll To Top</button>
         </div>
     )

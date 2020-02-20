@@ -47,3 +47,16 @@
   color: antiquewhite;
   border: 1px;
 }
+
+.users-page-container {
+  display: flex;
+  margin-top: 220px;
+  align-items: center;
+  width: 90vw;
+}
+
+.message {
+  right: 200px;
+  width: 300px;
+  height: 30px;
+}
