@@ -4,8 +4,14 @@ import './showPage.css'
 import { Link } from 'react-router-dom'
 import { animateScroll as scroll } from 'react-scroll'
 import axios from 'axios'
-
+import { scrolling } from '../../store/actions/userActions'
 class Shows extends React.Component {
+
+    componentDidMount() {
+        window.addEventListener("scroll", this.handleScroll);
+    }
+
+    handleScroll = () => this.props.scrolling(window.pageYOffset)
 
 
     startWatching = async e => {
@@ -22,10 +28,10 @@ class Shows extends React.Component {
 
 
     render() {
-        const { user } = this.props
+        const { user, visible } = this.props
 
         return (
-            <div className='user-page'>
+            <div className='user-page' onScroll={this.handleScroll}>
                 <div className='container'>
                     <h2 className='page-title'>All Shows</h2>
                     {
@@ -71,7 +77,12 @@ class Shows extends React.Component {
                         })
                     }
                 </div>
-                <button className='scroll' onClick={() => scroll.scrollToTop()}>Scroll To Top</button>
+                {
+                    visible
+                        ? <button className='scroll' onClick={() => scroll.scrollToTop()}>Scroll To Top</button>
+                        : null
+
+                }
             </div>
         )
     }
@@ -81,10 +92,16 @@ const mapStateToProps = (state) => {
     return {
         shows: state.showsReducer.shows,
         user: state.usersReducer.loggedUser.user,
+        visible: state.usersReducer.scrolling.visible,
         watchList: state.showsReducer.showObj
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        scrolling: data => dispatch(scrolling(data))
+    }
+}
 
 
-export default connect(mapStateToProps, null)(Shows)
+export default connect(mapStateToProps, mapDispatchToProps)(Shows)
