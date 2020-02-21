@@ -15,8 +15,8 @@ class UserPage extends React.Component {
 
     loadUser = async () => {
         try {
-            const { data: { user } } = await axios.get(`/api/users/${this.props.match.params.id}`)
-            this.props.loadUser(user);
+            const { data: { payload } } = await axios.get(`/api/users/${this.props.match.params.id}`)
+            this.props.loadUser(payload);
 
         } catch (error) {
 
@@ -26,8 +26,8 @@ class UserPage extends React.Component {
 
     loadShows = async () => {
         try {
-            const { data: { shows } } = await axios.get(`/api/shows/user/${this.props.match.params.id}`)
-            this.props.loadUserShows(shows)
+            const { data: { payload } } = await axios.get(`/api/shows/user/${this.props.match.params.id}`)
+            this.props.loadUserShows(payload)
         } catch (error) {
 
         }

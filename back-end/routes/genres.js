@@ -8,7 +8,7 @@ router.get('/', loginRequired, async (req, res, next) => {
         let genres = await queries.getAllGenres()
 
         res.json({
-            genres: genres,
+            payload: genres,
             message: 'all genres retrieved',
             error: false
         })
@@ -16,7 +16,7 @@ router.get('/', loginRequired, async (req, res, next) => {
         console.log(error);
 
         res.status(500).json({
-            genres: null,
+            payload: null,
             message: 'you took a wrong turn',
             error: true
         })
@@ -28,14 +28,14 @@ router.post('/', loginRequired, async (req, res, next) => {
         let newGenre = await queries.addGenre(req.body)
 
         res.json({
-            genre: newGenre,
+            payload: newGenre,
             message: 'new genre added',
             error: false
         })
     } catch (error) {
         console.log(error)
         res.status(500).json({
-            users: null,
+            payload: null,
             message: 'you can\'t perform this operation ',
             error: true
         })

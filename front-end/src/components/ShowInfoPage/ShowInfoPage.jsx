@@ -13,8 +13,8 @@ class ShowInfoPage extends React.Component {
 
     loadSpecificShow = async () => {
         try {
-            const { data: { shows } } = await axios.get(`/api/shows/${this.props.match.params.id}`)
-            this.props.loadUserShows(shows)
+            const { data: { payload } } = await axios.get(`/api/shows/${this.props.match.params.id}`)
+            this.props.loadUserShows(payload)
         } catch (error) {
 
         }
@@ -22,8 +22,8 @@ class ShowInfoPage extends React.Component {
 
     loadUserComments = async () => {
         try {
-            const { data: { comments } } = await axios.get(`/api/comments/show/${this.props.match.params.id}`)
-            this.props.loadComments(comments);
+            const { data: { payload } } = await axios.get(`/api/comments/show/${this.props.match.params.id}`)
+            this.props.loadComments(payload);
         } catch (error) {
 
         }

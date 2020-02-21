@@ -46,8 +46,8 @@ class ShowsContainer extends React.Component {
     loadShows = async () => {
 
         try {
-            const { data: { shows } } = await axios.get('/api/shows/')
-            this.makeObj(shows)
+            const { data: { payload } } = await axios.get('/api/shows/')
+            this.makeObj(payload)
         } catch (error) {
             console.log('all shows error', error);
 

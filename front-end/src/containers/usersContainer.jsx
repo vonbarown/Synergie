@@ -14,8 +14,8 @@ class UsersContainer extends React.Component {
 
     loadUsers = async () => {
         try {
-            const { data: { users } } = await axios.get('/api/users/')
-            this.props.fetchUsers(users)
+            const { data: { payload } } = await axios.get('/api/users/')
+            this.props.fetchUsers(payload)
         } catch (error) {
             console.log('usersAll error', error);
 

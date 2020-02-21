@@ -16,8 +16,8 @@ class AddComment extends React.Component {
 
     loadUserComments = async () => {
         try {
-            const { data: { comments } } = await axios.get(`/api/comments/show/${this.props.video_id}`)
-            this.props.loadComments(comments);
+            const { data: { payload } } = await axios.get(`/api/comments/show/${this.props.video_id}`)
+            this.props.loadComments(payload);
         } catch (error) {
 
         }

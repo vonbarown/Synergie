@@ -9,14 +9,14 @@ router.get('/show/:show_id', loginRequired, async (req, res, next) => {
         let comments = await queries.getCommentByShowId(req.params.show_id)
 
         res.json({
-            comments: comments,
+            payload: comments,
             message: 'all comments retrieved',
             error: false
         })
     } catch (error) {
         console.log(error)
         res.status(500).json({
-            comments: null,
+            payload: null,
             message: 'you took a wrong turn',
             error: true
         })
@@ -28,14 +28,14 @@ router.post('/', loginRequired, async (req, res, next) => {
         let newComment = await queries.addNewComment(req.body)
 
         res.json({
-            comment: newComment,
+            payload: newComment,
             message: 'new comment added',
             error: false
         })
     } catch (error) {
         console.log(error)
         res.status(500).json({
-            comment: null,
+            payload: null,
             message: 'comment could not be added',
             error: true
         })

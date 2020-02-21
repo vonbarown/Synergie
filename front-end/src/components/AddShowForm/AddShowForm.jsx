@@ -19,9 +19,9 @@ class AddShowForm extends React.Component {
 
     fetchGenres = async () => {
         try {
-            const { data: { genres } } = await axios.get(`/api/genres`)
+            const { data: { payload } } = await axios.get(`/api/genres`)
             this.setState({
-                genres: genres
+                genres: payload
             })
         } catch (error) {
 
