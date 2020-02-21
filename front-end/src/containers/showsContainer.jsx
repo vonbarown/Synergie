@@ -57,15 +57,33 @@ class ShowsContainer extends React.Component {
         }
     }
 
+    startWatching = async e => {
+        console.log('toggle', e.target.value);
+        try {
+            await axios.post(`/api/shows/new_watcher`, {
+                show_id: e.target.value,
+                user_id: this.props.user.id
+            })
+        } catch (error) {
+
+        }
+        this.loadShows()
+    }
+
     render() {
         return (
             <div className='shows-container'>
-                <Shows />
+                <Shows startWatching={this.startWatching} />
             </div>
         )
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.usersReducer.loggedUser.user
+    }
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -73,4 +91,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(ShowsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ShowsContainer)

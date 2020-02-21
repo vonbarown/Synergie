@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import './showPage.css'
 import { Link } from 'react-router-dom'
 import { animateScroll as scroll } from 'react-scroll'
-import axios from 'axios'
+// import axios from 'axios'
 import { scrolling } from '../../store/actions/userActions'
 class Shows extends React.Component {
     state = {
@@ -28,22 +28,12 @@ class Shows extends React.Component {
         // this.props.scrolling(window.pageYOffset)
     };
 
-    startWatching = async e => {
-        console.log('toggle', e.target.value);
-        try {
-            await axios.post(`/api/shows/new_watcher`, {
-                show_id: e.target.value,
-                user_id: this.props.user.id
-            })
-        } catch (error) {
 
-        }
-    }
 
 
     render() {
         const { visible } = this.state
-        const { user } = this.props
+        const { user, startWatching } = this.props
 
         return (
             <div className='user-page' onScroll={this.handleScroll}>
@@ -80,7 +70,7 @@ class Shows extends React.Component {
                                         {
                                             !show.watchers.find(el => el.watchers_id === user.id)
                                                 ? <button className='form-button ' id='start-watching'
-                                                    value={show.id} onClick={this.startWatching}
+                                                    value={show.id} onClick={startWatching}
                                                 >
                                                     Start watching
                                                 </button>
