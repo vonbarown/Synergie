@@ -43,41 +43,43 @@ class Shows extends React.Component {
                         Object.values(this.props.watchList).map(show => {
 
                             return (
-                                <div className='movie' key={show.title}>
-                                    <img className='show-img' src={show.img_url} alt={show.title} />
-                                    <div className='show-info'>
-                                        <div>
-                                            <p className='title'>{show.title}</p>
-                                            <p className='genre'>{show.genre}</p>
-                                        </div>
-                                        <div className='show-watchers'>Being Watched by:{'  '}
+                                <Link to={`/shows/${show.id}/user/${show.user_id}`}>
+                                    <div className='movie' key={show.title}>
+                                        <img className='show-img' src={show.img_url} alt={show.title} />
+                                        <div className='show-info'>
+                                            <div>
+                                                <p className='title'>{show.title}</p>
+                                                <p className='genre'>{show.genre}</p>
+                                            </div>
+                                            <div className='show-watchers'>Being Watched by:{'  '}
+                                                {
+                                                    show.watchers.map(watcher => {
+                                                        return (
+                                                            <div className={`watcher-${watcher.watchers_id}`} key={watcher.username}>
+                                                                <Link to={`/users/${watcher.watchers_id}`}>
+                                                                    <img className='watcher-img'
+                                                                        src={watcher.avatar_url}
+                                                                        alt={watcher.username}
+                                                                    />
+                                                                    {watcher.username}
+                                                                </Link>{' '}
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
                                             {
-                                                show.watchers.map(watcher => {
-                                                    return (
-                                                        <div className={`watcher-${watcher.watcher_id}`} key={watcher.username}>
-                                                            <Link to={`/shows/${watcher.show_id}/user/${show.user_id}`}>
-                                                                <img className='watcher-img'
-                                                                    src={watcher.avatar_url}
-                                                                    alt={watcher.username}
-                                                                />
-                                                                {watcher.username}
-                                                            </Link>{' '}
-                                                        </div>
-                                                    )
-                                                })
+                                                !show.watchers.find(el => el.watchers_id === user.id)
+                                                    ? <button className='form-button ' id='start-watching'
+                                                        value={show.id} onClick={startWatching}
+                                                    >
+                                                        Start watching
+                                                </button>
+                                                    : null
                                             }
                                         </div>
-                                        {
-                                            !show.watchers.find(el => el.watchers_id === user.id)
-                                                ? <button className='form-button ' id='start-watching'
-                                                    value={show.id} onClick={startWatching}
-                                                >
-                                                    Start watching
-                                                </button>
-                                                : null
-                                        }
                                     </div>
-                                </div>
+                                </Link>
                             )
                         })
                     }
