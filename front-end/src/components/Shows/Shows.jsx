@@ -6,6 +6,10 @@ import { animateScroll as scroll } from 'react-scroll'
 
 class Shows extends React.Component {
 
+    toggle = e => {
+        console.log('toggle', e.target.value);
+
+    }
 
 
     render() {
@@ -24,8 +28,8 @@ class Shows extends React.Component {
                                     <img className='show-img' src={el.img_url} alt={el.title} />
                                     <div className='show-info'>
                                         <div>
-                                            <p>{el.title}</p>
-                                            <p>{el.genre}</p>
+                                            <p className='title'>{el.title}</p>
+                                            <p className='genre'>{el.genre}</p>
                                         </div>
                                         <div className='show-watchers'>Being Watched by:{'  '}
                                             {
@@ -44,6 +48,7 @@ class Shows extends React.Component {
                                                 })
                                             }
                                         </div>
+                                        <button value={el.id} onClick={this.toggle} >watching</button>
                                     </div>
                                 </div>
                             )

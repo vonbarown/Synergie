@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { fetchUsers } from '../store/actions/userActions'
 import UsersComponent from '../components/users/Users'
 // import ModalContainer from './modalContainer'
-import { Link } from 'react-router-dom'
 
 class UsersContainer extends React.Component {
 
