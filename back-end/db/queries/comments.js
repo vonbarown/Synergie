@@ -20,7 +20,7 @@ const addNewComment = async (commentObj) => {
     console.log(commentObj);
 
     const newCommentQStr = `INSERT INTO comments ( comment_body,user_id,show_id) 
-                            VALUES($/comment_body/,$/user_id/,$/show_id/) RETURNING *`
+                            VALUES($/comment_body/,$/user_id/,$/show_id/) RETURNING comment_body,user_id,show_id`
 
     return await db.one(newCommentQStr, {
         comment_body: commentObj.comment_body,
@@ -29,7 +29,24 @@ const addNewComment = async (commentObj) => {
     })
 }
 
+
+const updateComment = async (commentObj, id) => {
+
+    console.log(commentObj);
+
+    const updateCommentQtr = `UPDATE comments 
+                            SET comment_body = $1 ,
+                            edited = $2
+                            WHERE id = $3
+                            RETURNING   comment_body,user_id,show_id,edited`
+
+    return await db.oneOrNone(updateCommentQtr, [commentObj, 'edited', Number(id)])
+
+
+
+}
 module.exports = {
     getCommentByShowId,
-    addNewComment
+    addNewComment,
+    updateComment
 }

@@ -42,4 +42,23 @@ router.post('/', loginRequired, async (req, res, next) => {
     }
 })
 
+router.patch('/:id', loginRequired, async (req, res, next) => {
+
+    try {
+        let updatedComment = await queries.updateComment(req.body.comment_body, req.params.id)
+        res.json({
+            payload: updatedComment,
+            message: 'Update successful',
+            error: false
+        })
+    } catch (error) {
+        console.log("error", error)
+        res.status(500).json({
+            payload: null,
+            msg: 'Failed to add update',
+            error: true
+        })
+    }
+})
+
 module.exports = router
