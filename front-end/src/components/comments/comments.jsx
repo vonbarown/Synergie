@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import AddComment from './addComment'
 import { Link } from 'react-router-dom'
-
+import './comments.css'
 const Comments = (props) => {
 
     return (

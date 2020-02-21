@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { loadComments } from '../../store/actions/showsActions'
-
+import './comments.css'
 class AddComment extends React.Component {
     state = {
         comment_body: ''
