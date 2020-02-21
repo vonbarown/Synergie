@@ -82,6 +82,11 @@ INSERT INTO showWatchers (user_id,show_id) VALUES (4,4);
 INSERT INTO showWatchers (user_id,show_id) VALUES (1,5);
 INSERT INTO showWatchers (user_id,show_id) VALUES (4,5);
 
+-- INSERT COMMENTS
+INSERT INTO comments (comment_body, user_id, show_id)
+VALUES ('BEST SHOW EVER!!', 1, 1);
+INSERT INTO comments (comment_body, user_id, show_id)
+VALUES ('Of course you would think so Jon', 2, 1);
 
 -- INSERT network
 INSERT INTO network (user_id,contact_id,role) VALUES (1,3,'Member');
