@@ -43,7 +43,7 @@ class Shows extends React.Component {
                         Object.values(this.props.watchList).map(show => {
 
                             return (
-                                <Link to={`/shows/${show.id}/user/${show.user_id}`}>
+                                <Link to={`/shows/${show.id}/user/${show.user_id}`} key={show.id}>
                                     <div className='movie' key={show.title}>
                                         <img className='show-img' src={show.img_url} alt={show.title} />
                                         <div className='show-info'>
