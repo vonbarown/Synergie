@@ -6,13 +6,27 @@ import { animateScroll as scroll } from 'react-scroll'
 import axios from 'axios'
 import { scrolling } from '../../store/actions/userActions'
 class Shows extends React.Component {
+    state = {
+        prevScrollPos: window.pageYOffset,
+        visible: false
+    }
 
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
     }
 
-    handleScroll = () => this.props.scrolling(window.pageYOffset)
+    handleScroll = () => {
+        const { prevScrollPos } = this.state;
 
+        const currentScrollPos = window.pageYOffset;
+        const visible = prevScrollPos < currentScrollPos;
+
+        this.setState({
+            prevScrollPos: currentScrollPos,
+            visible
+        });
+        // this.props.scrolling(window.pageYOffset)
+    };
 
     startWatching = async e => {
         console.log('toggle', e.target.value);
@@ -28,7 +42,8 @@ class Shows extends React.Component {
 
 
     render() {
-        const { user, visible } = this.props
+        const { visible } = this.state
+        const { user } = this.props
 
         return (
             <div className='user-page' onScroll={this.handleScroll}>
