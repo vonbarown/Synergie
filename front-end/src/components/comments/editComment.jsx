@@ -1,23 +1,26 @@
 import React, { Component } from 'react'
+import './comments.css'
 
 class EditComment extends Component {
     state = {
-        editMode: false
+        editMode: false,
+        newComment: ''
     }
 
 
     switchEditMode = () => this.setState({ editMode: !this.state.editMode })
 
-    // const[editMode, setEditMode] = useState(false)
-    // const[updateComment, setUpdateComment] = useState('')
+    handleEdit = e => {
+        e.preventDefault()
 
-    // const handleEdit = e => {
-    //     e.preventDefault()
-    // }
+        this.setState({
+            newComment: e.target.value
+        })
+    }
 
     render() {
         const { comment, loggedUser } = this.props
-        const { editMode } = this.state
+        const { editMode, newComment } = this.state
         return (
             <div className='comment-metadata'>
                 {
@@ -27,10 +30,11 @@ class EditComment extends Component {
                             // onSubmit={handleEdit}
                             >
                                 <input
-                                    // value={updateComment}
+                                    className='user-comment'
+                                    value={newComment}
                                     placeholder={comment.comment_body}
                                     disabled={!editMode}
-                                // onChange={(e) => setUpdateComment(e.target.value)}
+                                    onChange={this.handleEdit}
                                 />
                             </form>
                             <button

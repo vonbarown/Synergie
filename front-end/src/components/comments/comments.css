@@ -56,10 +56,12 @@
 }
 
 .comment-metadata input {
-  width: 500px;
+  width: 550px;
   height: 50px;
   background-color: transparent;
   border: transparent;
+  color: black;
+  font-size: 20px;
 }
 
 .comment-user-info a {
