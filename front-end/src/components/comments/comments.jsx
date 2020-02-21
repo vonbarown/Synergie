@@ -3,18 +3,20 @@ import { connect } from 'react-redux';
 import AddComment from './addComment'
 import { Link } from 'react-router-dom'
 import './comments.css'
-const Comments = (props) => {
+const Comments = ({ comments, user_id, video_id }) => {
 
     return (
         <div className='show-page-comments'>
             <div>
-                <AddComment user_id={props.user_id} video_id={props.video_id} />
+                <AddComment user_id={user_id} video_id={video_id} />
                 {
-                    props.comments.map(el => {
+                    comments.map(comment => {
                         return (
-                            <div className='comment' key={el.id}>
-                                <Link to={`/users/${el.id}`}>User: {el.username}</Link>
-                                <p>{el.comment_body}</p>
+                            <div className='comment' key={comment.id}>
+                                <Link to={`/users/${comment.id}`}>
+                                    <img className='watcher-img' src={comment.avatar_url} alt={comment.username} />
+                                    {comment.username}</Link>
+                                <p>{comment.comment_body}</p>
                             </div>
                         )
                     })

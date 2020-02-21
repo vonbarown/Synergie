@@ -4,7 +4,7 @@ const db = require('../db')
 const getCommentByShowId = async (showId) => {
     const queryStr = `SELECT 
                     comments.id,
-                    username,comment_body 
+                    username,comment_body ,users.avatar_url
                     FROM
                     comments 
                     JOIN users ON user_id = users.id

@@ -30,6 +30,7 @@ class ShowInfoPage extends React.Component {
     }
 
     render() {
+        const { comments } = this.props
         return (
             <div className='show-info-page'>
                 <div className='show-info-page-container'>
@@ -41,9 +42,12 @@ class ShowInfoPage extends React.Component {
                                         <h3>Show {el.title} of {el.username}</h3>
                                         <img className='show-info-page-img' src={el.img_url} alt={el.title} />
                                         <p>{el.genre_name}</p>
-                                        <p>{this.props.comments.length} Comments</p>
+                                        <p>{comments.length} Comments</p>
                                     </div>
-                                    <Comments user_id={this.props.match.params.userId} video_id={this.props.match.params.id} />
+                                    <Comments
+                                        user_id={this.props.match.params.userId}
+                                        video_id={this.props.match.params.id}
+                                    />
                                 </div>
                             )
                         })

@@ -3,7 +3,7 @@ const router = express.Router();
 const queries = require('../db/queries/network')
 const { loginRequired } = require('../auth/helpers')
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', loginRequired, async (req, res, next) => {
     try {
         let network = await queries.getNetworkByUserId(req.params.id)
 
