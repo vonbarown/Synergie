@@ -26,15 +26,18 @@ class ShowsContainer extends React.Component {
                     genre: show.genre_name,
                     user_id: show.user_id,
                     watchers: [{
-                        username: show.username, user_id: show.user_id,
-                        show_id: show.id, avatar_url: show.avatar_url
+                        username: show.username,
+                        show_id: show.id,
+                        avatar_url: show.avatar_url,
+                        watchers_id: show.watchers_id
                     }]
                 }
             } else {
                 watchList[key]['watchers'].push({
                     username: show.username,
-                    user_id: show.user_id, show_id: show.id,
-                    avatar_url: show.avatar_url
+                    show_id: show.id,
+                    avatar_url: show.avatar_url,
+                    watchers_id: show.watchers_id
                 })
             }
         }

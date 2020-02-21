@@ -99,7 +99,7 @@ router.post('/', loginRequired, async (req, res, next) => {
     }
 })
 
-router.post('/', loginRequired, async (req, res, next) => {
+router.post('/new_watcher', loginRequired, async (req, res, next) => {
     try {
         let newShow = await queries.addNewShowWatcher(req.body)
         console.log('new', newShow);

@@ -3,12 +3,21 @@ import { connect } from 'react-redux'
 import './showPage.css'
 import { Link } from 'react-router-dom'
 import { animateScroll as scroll } from 'react-scroll'
+import axios from 'axios'
 
 class Shows extends React.Component {
 
-    startWatching = e => {
-        console.log('toggle', e.target.value);
 
+    startWatching = async e => {
+        console.log('toggle', e.target.value);
+        try {
+            await axios.post(`/api/shows/new_watcher`, {
+                show_id: e.target.value,
+                user_id: this.props.user.id
+            })
+        } catch (error) {
+
+        }
     }
 
 
@@ -34,8 +43,8 @@ class Shows extends React.Component {
                                             {
                                                 show.watchers.map(watcher => {
                                                     return (
-                                                        <div className={`watcher-${watcher.user_id}`} key={watcher.username}>
-                                                            <Link to={`/shows/${watcher.show_id}/user/${watcher.user_id}`}>
+                                                        <div className={`watcher-${watcher.watcher_id}`} key={watcher.username}>
+                                                            <Link to={`/shows/${watcher.show_id}/user/${show.user_id}`}>
                                                                 <img className='watcher-img'
                                                                     src={watcher.avatar_url}
                                                                     alt={watcher.username}
@@ -48,12 +57,12 @@ class Shows extends React.Component {
                                             }
                                         </div>
                                         {
-                                            show.user_id !== user.id
+                                            !show.watchers.find(el => el.watchers_id === user.id)
                                                 ? <button className='form-button ' id='start-watching'
                                                     value={show.id} onClick={this.startWatching}
                                                 >
                                                     Start watching
-                                                    </button>
+                                                </button>
                                                 : null
                                         }
                                     </div>
