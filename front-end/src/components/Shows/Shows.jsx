@@ -6,36 +6,35 @@ import { animateScroll as scroll } from 'react-scroll'
 
 class Shows extends React.Component {
 
-    toggle = e => {
+    startWatching = e => {
         console.log('toggle', e.target.value);
 
     }
 
 
     render() {
-        let test = Object.values(this.props.watchList)
-        console.log('testing', test);
+        const { user } = this.props
 
         return (
             <div className='user-page'>
                 <div className='container'>
                     <h2 className='page-title'>All Shows</h2>
                     {
-                        test.map(el => {
+                        Object.values(this.props.watchList).map(show => {
 
                             return (
-                                <div className='movie' key={el.title}>
-                                    <img className='show-img' src={el.img_url} alt={el.title} />
+                                <div className='movie' key={show.title}>
+                                    <img className='show-img' src={show.img_url} alt={show.title} />
                                     <div className='show-info'>
                                         <div>
-                                            <p className='title'>{el.title}</p>
-                                            <p className='genre'>{el.genre}</p>
+                                            <p className='title'>{show.title}</p>
+                                            <p className='genre'>{show.genre}</p>
                                         </div>
                                         <div className='show-watchers'>Being Watched by:{'  '}
                                             {
-                                                el.watchers.map(watcher => {
+                                                show.watchers.map(watcher => {
                                                     return (
-                                                        <div className={`watcher-${watcher.user_id}`} key={watcher.user_id}>
+                                                        <div className={`watcher-${watcher.user_id}`} key={watcher.username}>
                                                             <Link to={`/shows/${watcher.show_id}/user/${watcher.user_id}`}>
                                                                 <img className='watcher-img'
                                                                     src={watcher.avatar_url}
@@ -48,7 +47,15 @@ class Shows extends React.Component {
                                                 })
                                             }
                                         </div>
-                                        <button value={el.id} onClick={this.toggle} >watching</button>
+                                        {
+                                            show.user_id !== user.id
+                                                ? <button className='form-button ' id='start-watching'
+                                                    value={show.id} onClick={this.startWatching}
+                                                >
+                                                    Start watching
+                                                    </button>
+                                                : null
+                                        }
                                     </div>
                                 </div>
                             )
@@ -64,7 +71,7 @@ class Shows extends React.Component {
 const mapStateToProps = (state) => {
     return {
         shows: state.showsReducer.shows,
-        user: state.usersReducer.user,
+        user: state.usersReducer.loggedUser.user,
         watchList: state.showsReducer.showObj
     }
 }

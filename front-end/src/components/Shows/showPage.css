@@ -51,3 +51,10 @@
   width: 50px;
   border-radius: 50px;
 }
+
+#start-watching {
+  font-size: 12px;
+  height: 35px;
+  color: green;
+  font-weight: 900;
+}

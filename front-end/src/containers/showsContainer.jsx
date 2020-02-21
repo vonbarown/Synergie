@@ -24,6 +24,7 @@ class ShowsContainer extends React.Component {
                     img_url: show.img_url,
                     id: show.id,
                     genre: show.genre_name,
+                    user_id: show.user_id,
                     watchers: [{
                         username: show.username, user_id: show.user_id,
                         show_id: show.id, avatar_url: show.avatar_url
@@ -58,7 +59,6 @@ class ShowsContainer extends React.Component {
         return (
             <div className='shows-container'>
                 <Shows />
-                <ModalContainer />
             </div>
         )
     }
