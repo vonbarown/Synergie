@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 import EditComment from './editComment'
 import './comments.css'
 
-const Comments = ({ comments, user_id, video_id, loggedUser }) => {
+const Comments = ({ comments, user_id, show_id, loggedUser }) => {
     return (
         <div className='show-page-comments'>
             <div>
-                <AddComment user_id={user_id} video_id={video_id} />
+                <AddComment user_id={user_id} show_id={show_id} />
                 {
                     comments.map(comment => {
                         return (

@@ -46,7 +46,7 @@ class ShowInfoPage extends React.Component {
                                     </div>
                                     <Comments
                                         user_id={this.props.match.params.userId}
-                                        video_id={this.props.match.params.id}
+                                        show_id={this.props.match.params.id}
                                     />
                                 </div>
                             )

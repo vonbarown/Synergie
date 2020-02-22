@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './comments.css'
+import { connect } from 'react-redux'
+import { loadComments } from '../../store/actions/showsActions'
 
 class EditComment extends Component {
     state = {
@@ -21,18 +23,29 @@ class EditComment extends Component {
         })
     }
 
-    handleSubmit = e => {
+    loadUserComments = async () => {
+        const { comment } = this.props
+        try {
+            const { data: { payload } } = await axios.get(`/api/comments/show/${comment.show_id}`)
+            this.props.loadComments(payload);
+        } catch (error) {
+
+        }
+    }
+
+    handleSubmit = async e => {
         const { comment } = this.props
         e.preventDefault()
 
         try {
-            axios.patch(`/api/comments/${comment.id}`, {
+            await axios.patch(`/api/comments/${comment.id}`, {
                 comment_body: this.state.newComment
             })
         } catch (error) {
             console.log('edit comment error', error);
 
         }
+        this.loadUserComments()
     }
 
 
@@ -59,13 +72,13 @@ class EditComment extends Component {
                                     onChange={this.handleEdit}
                                 />
                             </form>
-                            <button
-                                className='form-button'
+                            <span
                                 id='edit-button'
                                 onClick={this.switchEditMode}
+                                role='img'
                             >
-                                Edit
-                                                </button>
+                                ✏️
+                             </span>
                             <button className='form-button' id='delete'>X</button>
                         </div>
                         : <p>{comment.comment_body}</p>
@@ -76,4 +89,10 @@ class EditComment extends Component {
     }
 }
 
-export default EditComment
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadComments: data => dispatch(loadComments(data))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(EditComment)
