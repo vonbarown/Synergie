@@ -76,6 +76,8 @@ class EditComment extends Component {
                                 id='edit-button'
                                 onClick={this.switchEditMode}
                                 role='img'
+                                title='edit'
+                                aria-label="pencil"
                             >
                                 ✏️
                              </span>

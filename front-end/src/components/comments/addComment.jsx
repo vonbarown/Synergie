@@ -42,8 +42,6 @@ class AddComment extends React.Component {
 
 
     render() {
-        console.log('user id', this.props.video_id);
-
         return (
             <form onSubmit={this.AddComment} className='comment-form'>
                 <input className='comment-submit-input' type="text" onChange={this.handleInput} placeholder='Comment' />
