@@ -34,7 +34,7 @@ CREATE TABLE comments (
     comment_body VARCHAR NOT NULL,
     user_id INT REFERENCES users(id),
     show_id INT REFERENCES shows(id),
-    edited VARCHAR
+    edited BOOLEAN NOT NULL
 );
 
 CREATE TABLE network (
@@ -84,10 +84,10 @@ INSERT INTO showWatchers (user_id,show_id) VALUES (1,5);
 INSERT INTO showWatchers (user_id,show_id) VALUES (4,5);
 
 -- INSERT COMMENTS
-INSERT INTO comments (comment_body, user_id, show_id)
-VALUES ('BEST SHOW EVER!!', 1, 1);
-INSERT INTO comments (comment_body, user_id, show_id)
-VALUES ('Of course you would think so Jon', 2, 1);
+INSERT INTO comments (comment_body, user_id, show_id,edited)
+VALUES ('BEST SHOW EVER!!', 1, 1,'false');
+INSERT INTO comments (comment_body, user_id, show_id,edited)
+VALUES ('Of course you would think so Jon', 2, 1,'false');
 
 -- INSERT network
 INSERT INTO network (user_id,contact_id,role) VALUES (1,3,'Member');

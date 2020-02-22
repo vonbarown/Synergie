@@ -1,22 +1,40 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import './comments.css'
 
 class EditComment extends Component {
     state = {
         editMode: false,
-        newComment: ''
+        newComment: this.props.comment.comment_body
+
     }
 
 
-    switchEditMode = () => this.setState({ editMode: !this.state.editMode })
+    switchEditMode = () => {
+        this.refs.userComment.focus();
+        this.setState({ editMode: !this.state.editMode })
+    }
 
     handleEdit = e => {
-        e.preventDefault()
-
         this.setState({
-            newComment: e.target.value
+            newComment: this.refs.userComment.value
         })
     }
+
+    handleSubmit = e => {
+        const { comment } = this.props
+        e.preventDefault()
+
+        try {
+            axios.patch(`/api/comments/${comment.id}`, {
+                comment_body: this.state.newComment
+            })
+        } catch (error) {
+            console.log('edit comment error', error);
+
+        }
+    }
+
 
     render() {
         const { comment, loggedUser } = this.props
@@ -27,22 +45,28 @@ class EditComment extends Component {
                     comment.user_id === loggedUser.id
                         ? <div className='editable-comment'>
                             <form className='edit-form'
-                            // onSubmit={handleEdit}
+                                onSubmit={this.handleSubmit}
                             >
                                 <input
-                                    className='user-comment'
+                                    ref='userComment'
+                                    className={
+                                        editMode
+                                            ? 'editable'
+                                            : 'non-editable'
+                                    }
                                     value={newComment}
-                                    placeholder={comment.comment_body}
                                     disabled={!editMode}
                                     onChange={this.handleEdit}
                                 />
                             </form>
                             <button
+                                className='form-button'
+                                id='edit-button'
                                 onClick={this.switchEditMode}
                             >
                                 Edit
                                                 </button>
-                            <button className='form-button'>Delete</button>
+                            <button className='form-button' id='delete'>X</button>
                         </div>
                         : <p>{comment.comment_body}</p>
                 }

@@ -50,12 +50,15 @@
   height: 50px;
   font-size: 30px;
 }
-.comment-metadata {
+.editable-comment {
   display: flex;
   justify-content: space-between;
 }
+#delete {
+  width: 30px;
+}
 
-.comment-metadata input {
+.non-editable {
   width: 550px;
   height: 50px;
   background-color: transparent;
@@ -64,6 +67,11 @@
   font-size: 20px;
 }
 
+.editable {
+  width: 550px;
+  height: 50px;
+  font-size: 20px;
+}
 .comment-user-info a {
   display: flex;
   align-items: center;
