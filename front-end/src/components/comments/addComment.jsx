@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { loadComments } from '../../store/actions/showsActions'
-
+import './comments.css'
 class AddComment extends React.Component {
     state = {
         comment_body: ''
@@ -16,8 +16,8 @@ class AddComment extends React.Component {
 
     loadUserComments = async () => {
         try {
-            const { data: { comments } } = await axios.get(`/api/comments/show/${this.props.video_id}`)
-            this.props.loadComments(comments);
+            const { data: { payload } } = await axios.get(`/api/comments/show/${this.props.show_id}`)
+            this.props.loadComments(payload);
         } catch (error) {
 
         }
@@ -28,7 +28,7 @@ class AddComment extends React.Component {
         const commentObj = {
             comment_body: this.state.comment_body,
             user_id: this.props.loggedInUser.id,
-            show_id: this.props.video_id
+            show_id: this.props.show_id
         }
         try {
             const { data: comments } = await axios.post(`/api/comments`, commentObj)
@@ -42,8 +42,6 @@ class AddComment extends React.Component {
 
 
     render() {
-        console.log('user id', this.props.video_id);
-
         return (
             <form onSubmit={this.AddComment} className='comment-form'>
                 <input className='comment-submit-input' type="text" onChange={this.handleInput} placeholder='Comment' />

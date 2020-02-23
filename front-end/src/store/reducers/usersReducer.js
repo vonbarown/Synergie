@@ -1,4 +1,4 @@
-import { RECEIVE_USERS, LOAD_USER, LOGIN_USER, LOGIN_OUT } from '../actions/actionTypes';
+import { RECEIVE_USERS, LOAD_USER, LOGIN_USER, LOGIN_OUT, SCROLLING } from '../actions/actionTypes';
 
 const initialState = {
     users: [],
@@ -6,6 +6,10 @@ const initialState = {
     loggedUser: {
         user: null,
         isUserLoggedIn: false
+    },
+    scrolling: {
+        prevScrollPos: window.pageYOffset,
+        visible: false
     }
 }
 
@@ -21,6 +25,12 @@ export default (state = initialState, action) => {
             stateCopy.user = action.payload
             break
         case LOGIN_USER:
+            let user = action.payload
+
+            user.name = user.username
+            user.photoUrl = user.avatar_url
+            user.role = 'Member'
+
             stateCopy.loggedUser = {
                 user: action.payload,
                 isUserLoggedIn: true
@@ -30,6 +40,12 @@ export default (state = initialState, action) => {
             stateCopy.loggedUser = {
                 user: action.payload,
                 isUserLoggedIn: false
+            }
+            break
+        case SCROLLING:
+            stateCopy.scrolling = {
+                prevScrollPos: action.payload,
+                visible: stateCopy.scrolling.prevScrollPos < action.payload
             }
             break
         default:

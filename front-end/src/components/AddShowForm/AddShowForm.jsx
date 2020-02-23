@@ -2,12 +2,15 @@ import React from 'react'
 import './AddShow.css'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import Modal from '../Modal/modal'
 class AddShowForm extends React.Component {
     state = {
         img_url: '',
         show_name: '',
         genres: [],
-        genre_id: ''
+        genre_id: '',
+        show: false
+
     }
 
     componentDidMount() {
@@ -16,9 +19,9 @@ class AddShowForm extends React.Component {
 
     fetchGenres = async () => {
         try {
-            const { data: { genres } } = await axios.get(`/api/genres`)
+            const { data: { payload } } = await axios.get(`/api/genres`)
             this.setState({
-                genres: genres
+                genres: payload
             })
         } catch (error) {
 
@@ -46,6 +49,7 @@ class AddShowForm extends React.Component {
 
     handleSelect = e => this.setState({ genre_id: parseInt(e.target.value) })
 
+    showModal = e => this.setState({ show: !this.state.show })
 
 
     render() {
@@ -54,6 +58,19 @@ class AddShowForm extends React.Component {
             <div className='add-show-form-page'>
                 <div className='add-show'>
                     <h1 className='page-title'>Add Show</h1>
+                    <Modal
+                        show={this.state.show}
+                        onClose={this.showModal}
+                    >
+                        <div>
+                            <p>Congrats You added</p>
+                            <img className='modal-show-img'
+                                src={this.state.img_url}
+                                alt={this.state.show_name} />
+                            <p>{this.state.show_name}</p>
+                        </div>
+
+                    </Modal>
                     <form onSubmit={this.addShow} className='add-show-form'>
                         <div className='url form-element'>
                             <p>Show Image Url</p>
@@ -80,14 +97,19 @@ class AddShowForm extends React.Component {
                                 }
                             </select>
                         </div>
-                        <button className='form-button'>Submit</button>
+                        <button
+                            onClick={this.showModal}
+                            className='form-button'
+                        >Submit</button>
                         <br />
                     </form>
                 </div>
+
             </div>
         )
     }
 }
+
 
 const mapStateToProps = (state) => {
     return {

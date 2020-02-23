@@ -3,10 +3,12 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import LoginForm from '../components/AuthComponents/LoginForm'
 import SignupForm from '../components/AuthComponents/SignUpForm'
 import axios from 'axios'
+import io from 'socket.io-client'
 import { connect } from 'react-redux'
 import { setUser } from '../store/actions/userActions'
 
-
+import { fetchSocket } from '../store/actions/chatActions'
+const socketUrl = 'http://localhost:8282/'
 class AuthContainer extends Component {
     state = {
         username: '',
@@ -17,20 +19,33 @@ class AuthContainer extends Component {
         try {
             const { data } = await axios.get('/api/auth/isUserLoggedIn')
             this.props.setUser(data.payload)
-            this.props.history.push('/users')
+            this.props.history.push('/')
         } catch (err) {
             console.log('ERROR', err)
         }
+        this.initSocket()
+    }
+
+    initSocket = () => {
+        const { fetchSocket } = this.props
+        const socket = io(socketUrl)
+        socket.on('connect', () => {
+            console.log('connected');
+
+        })
+        fetchSocket(socket)
     }
 
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
     signupUser = async (user) => {
+        const { setUser, socket } = this.props
         try {
-            const { data } = await axios.post('/api/auth/signup', this.state)
+            const { data: { payload } } = await axios.post('/api/auth/signup', this.state)
 
-            this.props.setUser(data.payload)
-
+            setUser(payload)
+            socket.emit('user', payload.username)
+            this.props.history.push('/profile')
         } catch (error) {
             console.log(error);
 
@@ -39,11 +54,14 @@ class AuthContainer extends Component {
     }
 
     loginUser = async () => {
-        try {
-            const { data } = await axios.post('/api/auth/login', this.state)
+        const { setUser, socket } = this.props
 
-            this.props.setUser(data.payload)
-            this.props.history.push('/users')
+        try {
+            const { data: { payload } } = await axios.post('/api/auth/login', this.state)
+
+            setUser(payload)
+            socket.emit('user', payload.username)
+            this.props.history.push('/profile')
         } catch (error) {
             console.log(error);
 
@@ -51,13 +69,14 @@ class AuthContainer extends Component {
     }
 
     renderSignupForm = () => {
-        const { username, password } = this.state
+        const { username, password, avatar_url } = this.state
         return (
             <SignupForm
                 handleChange={this.handleChange}
+                signupUser={this.signupUser}
                 username={username}
                 password={password}
-                signupUser={this.signupUser}
+                avatar_url={avatar_url}
             />
         )
     }
@@ -79,7 +98,7 @@ class AuthContainer extends Component {
             <div>
                 {
                     this.props.isUserLoggedIn
-                        ? <Redirect to='/home' />
+                        ? <Redirect to='/profile' />
                         : (
                             <Switch>
                                 <Route path='/login' component={this.renderLoginForm} />
@@ -92,10 +111,18 @@ class AuthContainer extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        setUser: data => dispatch(setUser(data)),
+        socket: state.chatReducer.socket
     }
 }
 
-export default connect(null, mapDispatchToProps)(AuthContainer)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setUser: data => dispatch(setUser(data)),
+        fetchSocket: data => dispatch(fetchSocket(data))
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer)

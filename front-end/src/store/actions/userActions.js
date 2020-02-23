@@ -1,4 +1,4 @@
-import { RECEIVE_USERS, LOAD_USER, LOGIN_USER, LOGIN_OUT } from './actionTypes';
+import { RECEIVE_USERS, LOAD_USER, LOGIN_USER, LOGIN_OUT, UPDATE_PROFILE, SCROLLING } from './actionTypes';
 
 export const fetchUsers = (payload) => {
     return {
@@ -27,3 +27,16 @@ export const logOut = (payload) => {
         payload
     }
 }
+export const scrolling = (payload) => {
+    return {
+        type: SCROLLING,
+        payload
+    }
+}
+
+export const updateProfile = () => {
+    return {
+        type: UPDATE_PROFILE
+    }
+}
+

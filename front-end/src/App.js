@@ -14,6 +14,9 @@ import axios from 'axios'
 import { logOut } from './store/actions/userActions';
 import { connect } from 'react-redux'
 import { PrivateRoute } from './components/AuthComponents/PrivateRoute'
+import ChatApp from './Chat/ChatApp/ChatApp'
+import Profile from './components/Profile/Profile'
+import Messager from './Chat/Layout/Messager'
 class App extends React.Component {
 
 
@@ -42,11 +45,14 @@ class App extends React.Component {
         <Switch>
           <Route path='/login' render={this.renderAuthContainer} />
           <Route path='/signup' render={this.renderAuthContainer} />
+          <Route path='/profile' component={Profile} />
           <PrivateRoute path='/users/:id' component={UserPage} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/users' component={UsersContainer} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/addShow' component={AddShowForm} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/shows/:id/user/:userId' component={ShowInfoPage} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/shows' component={showsContainer} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
+          <PrivateRoute path='/chat' component={ChatApp} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
+          <PrivateRoute path='/messaging' component={Messager} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <Route exact path='/about' component={About} />
           <Route exact path='/' component={Home} />
         </Switch>

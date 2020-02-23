@@ -9,14 +9,14 @@ router.get('/', loginRequired, async (req, res, next) => {
     let users = await queries.getAllUsers()
 
     res.json({
-      users: users,
+      payload: users,
       message: 'all users retrieved',
       error: false
     })
   } catch (error) {
     console.log(error)
     res.status(500).json({
-      users: null,
+      payload: null,
       message: 'you took a wrong turn',
       error: true
     })
@@ -28,14 +28,14 @@ router.get('/:id', loginRequired, async (req, res, next) => {
     let byId = await queries.getUsersById(req.params.id)
 
     res.json({
-      user: byId,
+      payload: byId,
       message: 'user retrieved',
       error: false
     })
   } catch (error) {
     console.log(error)
     res.status(500).json({
-      user: null,
+      payload: null,
       message: 'you took a wrong turn',
       error: true
     })
@@ -49,14 +49,14 @@ router.get('/:id', loginRequired, async (req, res, next) => {
 //     let newUser = await queries.addNewUser(req.body)
 
 //     res.json({
-//       users: newUser,
+//       payload: newUser,
 //       message: 'a new user added',
 //       error: false
 //     })
 //   } catch (error) {
 //     console.log(error)
 //     res.status(500).json({
-//       users: null,
+//       payload: null,
 //       message: 'user could not be added',
 //       error: true
 //     })

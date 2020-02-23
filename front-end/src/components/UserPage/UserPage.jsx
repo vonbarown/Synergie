@@ -15,8 +15,8 @@ class UserPage extends React.Component {
 
     loadUser = async () => {
         try {
-            const { data: { user } } = await axios.get(`/api/users/${this.props.match.params.id}`)
-            this.props.loadUser(user);
+            const { data: { payload } } = await axios.get(`/api/users/${this.props.match.params.id}`)
+            this.props.loadUser(payload);
 
         } catch (error) {
 
@@ -26,8 +26,8 @@ class UserPage extends React.Component {
 
     loadShows = async () => {
         try {
-            const { data: { shows } } = await axios.get(`/api/shows/user/${this.props.match.params.id}`)
-            this.props.loadUserShows(shows)
+            const { data: { payload } } = await axios.get(`/api/shows/user/${this.props.match.params.id}`)
+            this.props.loadUserShows(payload)
         } catch (error) {
 
         }
@@ -35,29 +35,26 @@ class UserPage extends React.Component {
 
     render() {
         console.log(this.props.match.params.id);
+        const { loggedUser, user } = this.props
         let loggedIn;
         return (
             <div className='user-page'>
                 <div className='container'>
                     <div className='logged-user'>
                         {
-                            this.props.user.map(el => {
-
-                                if (this.props.loggedUser.isUserLoggedIn) {
-                                    this.props.loggedUser.user.username === el.username ?
+                            loggedUser.isUserLoggedIn ?
+                                (
+                                    loggedUser.user.username === user.username ?
                                         loggedIn = 'Logged In' :
                                         loggedIn = ''
-                                }
-
-                                return (
-                                    <div className='user-profile' key={el.id}>
-                                        <img className='profile-pic' src={el.avatar_url} alt={el.username} />
-                                        <p>{el.username}</p>
-                                        <p>{loggedIn}</p>
-                                    </div>
-                                )
-                            })
+                                ) : null
                         }
+                        < div className='user-profile'>
+                            <img className='profile-pic' src={user.avatar_url} alt={user.username} />
+                            <p>{user.username}</p>
+                            <p>{loggedIn}</p>
+                        </div>
+
                     </div>
                     <h2 className='page-title'>Watching</h2>
                     {
@@ -75,7 +72,7 @@ class UserPage extends React.Component {
                     }
                 </div>
 
-            </div>
+            </div >
         )
     }
 }

@@ -30,8 +30,33 @@ router.post('/signup', async (req, res, next) => {
     }
 })
 
+router.patch('/:id', authHelpers.loginRequired, async (req, res, next) => {
+    // const passwordDigest = await authHelpers.hashPassword(req.body.password)
+
+    const userInfo = {
+        username: req.body.username,
+        avatar_url: req.body.avatar_url,
+        // password: passwordDigest
+    }
+
+    try {
+        let updatedUser = await userQueries.updateUserInfo(userInfo, req.params.id)
+        res.json({
+            payload: updatedUser,
+            message: 'Update successful',
+            error: false
+        })
+    } catch (error) {
+        console.log("error", error)
+        res.status(500).json({
+            payload: null,
+            msg: 'Failed to add update',
+            error: true
+        })
+    }
+})
+
 router.post('/login', passport.authenticate('local'), async (req, res, next) => {
-    console.log('login', req.body);
     res.json({
         payload: req.user,
         msg: 'user successfully logged in',
@@ -40,8 +65,6 @@ router.post('/login', passport.authenticate('local'), async (req, res, next) => 
 })
 
 router.get('/isUserLoggedIn', authHelpers.loginRequired, (req, res) => {
-    console.log('session', req.user);
-
     res.json({
         payload: req.user,
         msg: 'User is logged in'
@@ -56,7 +79,5 @@ router.get('/logout', authHelpers.loginRequired, (req, res, next) => {
         err: false
     })
 })
-
-
 
 module.exports = router;

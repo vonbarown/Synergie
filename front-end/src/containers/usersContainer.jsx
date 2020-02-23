@@ -3,6 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { fetchUsers } from '../store/actions/userActions'
 import UsersComponent from '../components/users/Users'
+// import ModalContainer from './modalContainer'
 
 class UsersContainer extends React.Component {
 
@@ -13,8 +14,8 @@ class UsersContainer extends React.Component {
 
     loadUsers = async () => {
         try {
-            const { data: { users } } = await axios.get('/api/users/')
-            this.props.fetchUsers(users)
+            const { data: { payload } } = await axios.get('/api/users/')
+            this.props.fetchUsers(payload)
         } catch (error) {
             console.log('usersAll error', error);
 
@@ -22,9 +23,11 @@ class UsersContainer extends React.Component {
     }
 
     render() {
+
         return (
-            <div className='users-container'>
+            <div className='users-page-container'>
                 <UsersComponent />
+
             </div>
         )
     }

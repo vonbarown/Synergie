@@ -23,10 +23,21 @@ class ShowsContainer extends React.Component {
                     img_url: show.img_url,
                     id: show.id,
                     genre: show.genre_name,
-                    watchers: [{ username: show.username, user_id: show.user_id, show_id: show.id }]
+                    user_id: show.user_id,
+                    watchers: [{
+                        username: show.username,
+                        show_id: show.id,
+                        avatar_url: show.avatar_url,
+                        watchers_id: show.watchers_id
+                    }]
                 }
             } else {
-                watchList[key]['watchers'].push({ username: show.username, user_id: show.user_id, show_id: show.id })
+                watchList[key]['watchers'].push({
+                    username: show.username,
+                    show_id: show.id,
+                    avatar_url: show.avatar_url,
+                    watchers_id: show.watchers_id
+                })
             }
         }
         this.props.loadAllShows(watchList)
@@ -38,23 +49,41 @@ class ShowsContainer extends React.Component {
     loadShows = async () => {
 
         try {
-            const { data: { shows } } = await axios.get('/api/shows/')
-            this.makeObj(shows)
+            const { data: { payload } } = await axios.get('/api/shows/')
+            this.makeObj(payload)
         } catch (error) {
             console.log('all shows error', error);
 
         }
     }
 
+    startWatching = async e => {
+        console.log('toggle', e.target.value);
+        try {
+            await axios.post(`/api/shows/new_watcher`, {
+                show_id: e.target.value,
+                user_id: this.props.user.id
+            })
+        } catch (error) {
+
+        }
+        this.loadShows()
+    }
+
     render() {
         return (
             <div className='shows-container'>
-                <Shows />
+                <Shows startWatching={this.startWatching} />
             </div>
         )
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.usersReducer.loggedUser.user
+    }
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -62,4 +91,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(ShowsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ShowsContainer)

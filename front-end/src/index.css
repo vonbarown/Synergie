@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: seashell;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1),
+    1px 1px 1px rgba(0, 0, 0, 0.5), 6px -2px 20px rgba(206, 89, 55, 0.12);
 }
 
 code {
@@ -13,11 +16,10 @@ code {
 }
 
 .container {
-  margin-top: 30px;
+  /* margin-top: 30px; */
   display: flex;
   flex-direction: column;
   gap: 30px;
-  border: 1px solid black;
   border-radius: 4px;
   padding: 40px;
   width: 60vw;
@@ -25,5 +27,5 @@ code {
 
 .page-title {
   border-bottom: 1px solid black;
-  font-size: 80px;
+  font-size: 60px;
 }
