@@ -59,8 +59,8 @@ const addNewShowWatcher = async (watcherObj) => {
                         `
 
     return await db.one(newShowWatcherQStr, {
-        user_id: Number(watcherObj.user_id),
-        show_id: Number(watcherObj.show_id)
+        user_id: watcherObj.user_id,
+        show_id: watcherObj.show_id
     })
 }
 
