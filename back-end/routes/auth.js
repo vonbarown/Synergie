@@ -3,14 +3,17 @@ const router = express.Router();
 const authHelpers = require('../auth/helpers')
 const userQueries = require('../db/queries/users')
 const passport = require('../auth/passport')
+const uuidv4 = require('uuid')
 
 router.post('/signup', async (req, res, next) => {
     const passwordDigest = await authHelpers.hashPassword(req.body.password)
+    const user_id = uuidv4('pam')
 
     const userInfo = {
         username: req.body.username,
         avatar_url: req.body.avatar_url,
-        password: passwordDigest
+        password: passwordDigest,
+        user_id: user_id
     }
 
     try {
@@ -81,3 +84,9 @@ router.get('/logout', authHelpers.loginRequired, (req, res, next) => {
 })
 
 module.exports = router;
+
+// const test = () =>{
+//     return user_id = uuidv4('pam')
+// }
+
+// console.log(test());

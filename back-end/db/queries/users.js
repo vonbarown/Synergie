@@ -22,13 +22,14 @@ const addNewUser = async (userObj) => {
         userObj.avatar_url = `https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVNvzwx7wJwD8DQM_nzGcl3hyBLEevUfKLOU3bv5X90J7_QExP`
     }
 
-    const newUserQStr = `INSERT INTO users (username, avatar_url,password_digest) 
-VALUES($/username/,$/avatar_url/,$/password_digest/) RETURNING id,username,avatar_url`
+    const newUserQStr = `INSERT INTO users (username, avatar_url,password_digest,id) 
+VALUES($/username/,$/avatar_url/,$/password_digest/,$/id/) RETURNING id,username,avatar_url`
 
     return await db.one(newUserQStr, {
         username: userObj.username,
         avatar_url: userObj.avatar_url,
-        password_digest: userObj.password
+        password_digest: userObj.password,
+        id:userObj.user_id
     })
 }
 
