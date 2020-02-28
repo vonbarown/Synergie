@@ -16,7 +16,7 @@ CREATE TABLE genres (
 );
 
 CREATE TABLE shows (
-    id SERIAL PRIMARY KEY,
+    id VARCHAR PRIMARY KEY,
     title VARCHAR UNIQUE NOT NULL,
     img_url VARCHAR NOT NULL,
     user_id VARCHAR REFERENCES users(id),
@@ -26,14 +26,14 @@ CREATE TABLE shows (
 CREATE TABLE showWatchers (
     id SERIAL PRIMARY KEY,
     user_id VARCHAR REFERENCES users(id),
-    show_id INT REFERENCES shows(id)
+    show_id VARCHAR REFERENCES shows(id)
 );
 
 CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
     comment_body VARCHAR NOT NULL,
     user_id VARCHAR REFERENCES users(id),
-    show_id INT REFERENCES shows(id),
+    show_id VARCHAR REFERENCES shows(id),
     edited BOOLEAN NOT NULL
 );
 
@@ -62,35 +62,35 @@ VALUES
 ('Pam Beesly', 'https://i1.sndcdn.com/avatars-000150274248-xnvnyn-t500x500.jpg','$2b$12$tfAxX4n9f2jJ65Sy3lS41OoK07pR18782Vz.3VmI9gpTN0L7QNCXa','157a2ad3-b941-4455-ac71-3c1fff7d689d'); -- 4
 
 -- INSERT SHOWS
-INSERT INTO shows (title, img_url, user_id, genre_id)
+INSERT INTO shows (title, img_url, user_id, genre_id, id)
 VALUES 
-('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 'e440a39e-cea2-498c-8080-700c520b77b3', 4),
-('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 'e440a39e-cea2-498c-8080-700c520b77b3', 1),
-('Naruto Shippūden', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/zAYRe2bJxpWTVrwwmBc00VFkAf4.jpg', 'e440a39e-cea2-498c-8080-700c520b77b3', 4),
-('Greys Anatomy', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/eqgIOObafPJitt8JNh1LuO2fvqu.jpg', 'c4cb08b9-afae-4c8a-bcd0-d94e4e1fbf89', 2),
-('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 'e440a39e-cea2-498c-8080-700c520b77b3', 3);
+('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 'e440a39e-cea2-498c-8080-700c520b77b3', 4,'cdbb94ca-c5c0-43fe-b390-099b88ba88b4'),
+('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 'e440a39e-cea2-498c-8080-700c520b77b3', 1,'3452b0f3-1956-4c7b-b09b-e91fadfdb211'),
+('Naruto Shippūden', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/zAYRe2bJxpWTVrwwmBc00VFkAf4.jpg', 'e440a39e-cea2-498c-8080-700c520b77b3', 4,'071b95bd-8f59-4f33-aa98-de4d722c7e85'),
+('Greys Anatomy', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/eqgIOObafPJitt8JNh1LuO2fvqu.jpg', 'c4cb08b9-afae-4c8a-bcd0-d94e4e1fbf89', 2,'772e1f59-2e7f-4b2b-8d54-6cb36db6eb66'),
+('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 'e440a39e-cea2-498c-8080-700c520b77b3', 3,'b702a98-c803-4ab4-8e8a-08a4916fa2f0');
 
 -- INSERT showWatchers
 INSERT INTO showWatchers (user_id,show_id) 
 VALUES 
-('e440a39e-cea2-498c-8080-700c520b77b3',1),
-('34bab52c-caec-4dca-8895-78807cc30016',1),
-('c4cb08b9-afae-4c8a-bcd0-d94e4e1fbf89',1),
-('e440a39e-cea2-498c-8080-700c520b77b3',2),
-('c4cb08b9-afae-4c8a-bcd0-d94e4e1fbf89',2),
-('157a2ad3-b941-4455-ac71-3c1fff7d689d',2),
-('e440a39e-cea2-498c-8080-700c520b77b3',3),
-('34bab52c-caec-4dca-8895-78807cc30016',3),
-('c4cb08b9-afae-4c8a-bcd0-d94e4e1fbf89',4),
-('157a2ad3-b941-4455-ac71-3c1fff7d689d',4),
-('e440a39e-cea2-498c-8080-700c520b77b3',5),
-('157a2ad3-b941-4455-ac71-3c1fff7d689d',5);
+('e440a39e-cea2-498c-8080-700c520b77b3','cdbb94ca-c5c0-43fe-b390-099b88ba88b4'),
+('34bab52c-caec-4dca-8895-78807cc30016','cdbb94ca-c5c0-43fe-b390-099b88ba88b4'),
+('c4cb08b9-afae-4c8a-bcd0-d94e4e1fbf89','cdbb94ca-c5c0-43fe-b390-099b88ba88b4'),
+('e440a39e-cea2-498c-8080-700c520b77b3','3452b0f3-1956-4c7b-b09b-e91fadfdb211'),
+('c4cb08b9-afae-4c8a-bcd0-d94e4e1fbf89','3452b0f3-1956-4c7b-b09b-e91fadfdb211'),
+('157a2ad3-b941-4455-ac71-3c1fff7d689d','3452b0f3-1956-4c7b-b09b-e91fadfdb211'),
+('e440a39e-cea2-498c-8080-700c520b77b3','071b95bd-8f59-4f33-aa98-de4d722c7e85'),
+('34bab52c-caec-4dca-8895-78807cc30016','071b95bd-8f59-4f33-aa98-de4d722c7e85'),
+('c4cb08b9-afae-4c8a-bcd0-d94e4e1fbf89','772e1f59-2e7f-4b2b-8d54-6cb36db6eb66'),
+('157a2ad3-b941-4455-ac71-3c1fff7d689d','772e1f59-2e7f-4b2b-8d54-6cb36db6eb66'),
+('e440a39e-cea2-498c-8080-700c520b77b3','b702a98-c803-4ab4-8e8a-08a4916fa2f0'),
+('157a2ad3-b941-4455-ac71-3c1fff7d689d','b702a98-c803-4ab4-8e8a-08a4916fa2f0');
 
 -- INSERT COMMENTS
 INSERT INTO comments (comment_body, user_id, show_id,edited)
 VALUES 
-('BEST SHOW EVER!!', 'e440a39e-cea2-498c-8080-700c520b77b3', 1,'false'),
-('Of course you would think so Jon', '34bab52c-caec-4dca-8895-78807cc30016', 1,'false');
+('BEST SHOW EVER!!', 'e440a39e-cea2-498c-8080-700c520b77b3', 'cdbb94ca-c5c0-43fe-b390-099b88ba88b4','false'),
+('Of course you would think so Jon', '34bab52c-caec-4dca-8895-78807cc30016', 'cdbb94ca-c5c0-43fe-b390-099b88ba88b4','false');
 
 -- INSERT network
 INSERT INTO network (user_id,contact_id,role) 

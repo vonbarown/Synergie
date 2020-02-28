@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const queries = require('../db/queries/shows')
 const { loginRequired } = require('../auth/helpers')
+const uuidv4 = require('uuid')
 
 router.get('/', loginRequired, async (req, res, next) => {
     try {
@@ -80,8 +81,12 @@ router.get('/user/:user_id', loginRequired, async (req, res, next) => {
 })
 
 router.post('/', loginRequired, async (req, res, next) => {
+    let bodyCopy = Object.assign({},req.body)
+    let show_id = uuidv4()
+        bodyCopy.show_id = show_id
+        
     try {
-        let newShow = await queries.addNewShow(req.body)
+        let newShow = await queries.addNewShow(bodyCopy)
         console.log('new', newShow);
 
         res.json({
