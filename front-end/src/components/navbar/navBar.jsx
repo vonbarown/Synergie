@@ -17,8 +17,6 @@ export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
                 <Link to='/addShow'>Add Show</Link>{' '}
                 <Link to='/about'>About</Link>{' '}
                 <Link to='/profile'>Profile</Link>{' '}
-                <Link to='/chat'>Network</Link>{' '}
-                <Link to='/messaging'>Messages</Link>
                 <button className='log-out' onClick={logoutUser}>log-out</button>
             </nav>
 
