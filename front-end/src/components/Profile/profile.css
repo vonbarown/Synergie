@@ -40,3 +40,14 @@
 .change-profile-input p {
   font-size: 20px;
 }
+
+.chat-links-btn{
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.profile-button{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

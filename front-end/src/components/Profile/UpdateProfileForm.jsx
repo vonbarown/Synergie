@@ -64,7 +64,7 @@ class UpdateProfileForm extends Component {
                     </div>
                     <button
                         onClick={this.changeUserInfo}
-                        className='form-button'
+                        className='form-button profile-button'
                     >
                         Update
                         </button>

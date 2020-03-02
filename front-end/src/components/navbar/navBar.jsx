@@ -12,13 +12,11 @@ export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
                         <h2>Synergie</h2>
                     </div>
                 </Link>{" "}
-                <Link to='/users'>Users</Link>
-                <Link to='/shows'>Shows</Link>{' '}
-                <Link to='/addShow'>Add Show</Link>{' '}
-                <Link to='/about'>About</Link>{' '}
-                <Link to='/profile'>Profile</Link>{' '}
-                <Link to='/chat'>Network</Link>{' '}
-                <Link to='/messaging'>Messages</Link>
+                <Link className='navbar-links' to='/users'>Users</Link>
+                <Link className='navbar-links' to='/shows'>Shows</Link>{' '}
+                <Link className='navbar-links' to='/addShow'>Add Show</Link>{' '}
+                <Link className='navbar-links' to='/about'>About</Link>{' '}
+                <Link className='navbar-links' to='/profile'>Profile</Link>{' '}
                 <button className='log-out' onClick={logoutUser}>log-out</button>
             </nav>
 
@@ -31,9 +29,9 @@ export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
                         <h2>Synergie</h2>
                     </div>
                 </Link>{" "}
-                <Link to='/about'>About</Link>{' '}
-                <Link to='login'>Log-In</Link>{' '}
-                <Link to='/signup'>Sign-Up</Link>{' '}
+                <Link  className='navbar-links' to='/about'>About</Link>{' '}
+                <Link  className='navbar-links' to='login'>Log-In</Link>{' '}
+                <Link  className='navbar-links' to='/signup'>Sign-Up</Link>{' '}
             </nav>
         )
     }

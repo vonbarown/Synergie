@@ -33,8 +33,8 @@ const getShowsById = async (id) => {
 const addNewShow = async (showObj) => {
     // console.log(showObj);
 
-    const newShowQStr = `INSERT INTO shows (title, img_url,user_id,genre_id) 
-                        VALUES($/title/,$/img_url/,$/user_id/,$/genre_id/) 
+    const newShowQStr = `INSERT INTO shows (title, img_url,user_id,genre_id,id) 
+                        VALUES($/title/,$/img_url/,$/user_id/,$/genre_id/,$/id/) 
                         ON CONFLICT (title) DO UPDATE SET title=EXCLUDED.title
                         RETURNING shows.id
                         `
@@ -44,6 +44,7 @@ const addNewShow = async (showObj) => {
         img_url: showObj.img_url,
         user_id: showObj.user_id,
         genre_id: showObj.genre_id,
+        id: showObj.show_id
     })
 
     await addNewShowWatcher({ user_id: showObj.user_id, show_id: showId.id })
@@ -58,8 +59,8 @@ const addNewShowWatcher = async (watcherObj) => {
                         `
 
     return await db.one(newShowWatcherQStr, {
-        user_id: Number(watcherObj.user_id),
-        show_id: Number(watcherObj.show_id)
+        user_id: watcherObj.user_id,
+        show_id: watcherObj.show_id
     })
 }
 
