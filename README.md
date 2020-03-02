@@ -1,6 +1,6 @@
-<img src="https://avatars1.githubusercontent.com/u/5825944?s=200&v=4" width="100px" style="text-align: center;">
 
-# Comprehensive Technical Assessment - Practical
+
+# Synergie
 
 ## Opening Remarks
 
@@ -102,13 +102,3 @@ Your frontend must include the following routes/pages. Note that these are not a
 | **`/shows/:id/user/:userId`** | A specific show's profile page for a specific user. Shows the title, image, genre, number of comments and list of comments. Allows you to add new comments. The comment should be reflected immediately on the list without needing to refresh the page.                                                   |
 | **`/about`**                  | Shows short description of what this app is about and who made it                                                                                                                                                                                                                                          |
 
-### Wireframes 
-Find wireframes [here](./wireframes.pdf).
-
-## Submission Guidelines
-
-* Create a new **private** repository (or two, depending on how you choose to architect your application) on your GitHub. Invite all your instructor as collaborators so they can view your progress.
-* As soon as you have created your repo(s) submit the link(s) on [canvas for this assignment](https://canvas.instructure.com/courses/1605748/assignments/13722707)
-* Build your application, making regular, descriptive commits!
-* When finished, submit on [canvas for this assignment](https://canvas.instructure.com/courses/1605748/assignments/13709184) the link(s) to your repo(s). If you deployed your app, also include the links to the deployed versions.
-* Mention anything you'd like specific feedback on.
