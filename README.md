@@ -66,8 +66,7 @@ Your API Endpoints should include at least:
   | ------ | ------------------------- | ------------------------------------- | ------------------------------------ |
   | GET    | `/comments/show/:show_id` | Get all comments for specific show_id | n/a                                  |
   | POST   | `/comments`               | Add new comment                       | `comment_body`, `user_id`, `show_id` 
-  | PATCH   | `/` | Update user comment | n/
-  |
+  | PATCH   | `/` | Update user comment | n/a
 
 
 ## Frontend
@@ -83,5 +82,6 @@ Your frontend must include the following routes/pages. Note that these are not a
 | **`/users/:id/addShow`**      | Shows a form where the logged in user can add a new show. Should be able to submit to the Database. These changes are reflected app wide. Selecting the genre is a drop down. This data should be reflecting the genres in the database.                                                                   |
 | **`/shows`**                  | Masterlist of all the shows. **Don't repeat the same show twice.** For each show list all the users who are watching. Clicking on the name of the user takes you to that specific users' show profile page. We are assuming that the name of the show has to match exactly to be considered the same show. |
 | **`/shows/:id/user/:userId`** | A specific show's profile page for a specific user. Shows the title, image, genre, number of comments and list of comments. Allows you to add new comments. The comment should be reflected immediately on the list without needing to refresh the page.                                                   |
-| **`/about`**                  | Shows short description of what this app is about and who made it                                                                                                                                                                                                                                          |
+| **`/about`**                  | Shows short description of what this app is about and who made it                                                                                                          | **`/network`**                  | Shows the list other users that the current user has in their network  
+ | **`/messages`**                  | Shows all the current chat sessions that the user has open                                                                                                                              |
 
