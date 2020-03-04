@@ -64,7 +64,7 @@ class EditComment extends Component {
                                     ref='userComment'
                                     className={
                                         editMode
-                                            ? 'editable'
+                                            ? 'editable shared-input-styling'
                                             : 'non-editable'
                                     }
                                     value={newComment}

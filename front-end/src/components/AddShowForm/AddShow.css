@@ -22,10 +22,11 @@
 }
 .add-show-item {
   height: 40px;
-  width: 220px;
+  /* width: 220px; */
+  width: 30vw;
+  font-size: 20px;
 }
 
-.add-show-input {
-  font-size: 20px;
-  border-radius: 4px;
+.add-show-select {
+  text-align: center;
 }
