@@ -8,6 +8,9 @@ class UpdateProfileForm extends Component {
         username: '',
         avatar_url: ''
     }
+    componentDidMount(){
+        this.refs.username.focus()
+    }
 
     handleSubmit = async e => {
         e.preventDefault()
@@ -45,8 +48,9 @@ class UpdateProfileForm extends Component {
                         <input type="text"
                             name='username'
                             placeholder={this.props.loggedUser.username}
-                            className='form-input'
+                            className='form-input shared-input-styling'
                             onChange={this.handleChange}
+                            ref='username'
                         />
                     </div>
                     <div className='change-profile-input'>
@@ -54,13 +58,13 @@ class UpdateProfileForm extends Component {
                         <input type="text"
                             name='avatar_url'
                             placeholder={this.props.loggedUser.avatar_url}
-                            className='form-input'
+                            className='form-input shared-input-styling'
                             onChange={this.handleChange}
                         />
                     </div>
                     <div className='change-profile-input'>
                         <p>Change Password:</p>
-                        <input type="text" placeholder='Password' className='form-input' />
+                        <input type="text" placeholder='Password' className='form-input shared-input-styling' />
                     </div>
                     <button
                         onClick={this.changeUserInfo}

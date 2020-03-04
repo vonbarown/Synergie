@@ -29,3 +29,9 @@ code {
   border-bottom: 1px solid black;
   font-size: 60px;
 }
+
+.shared-input-styling{
+  border: transparent;
+  background: transparent;
+  border-bottom: 1px solid black;
+}

@@ -25,8 +25,8 @@ class Profile extends React.Component {
                         display:'flex',
                         gap:'10px'
                     }}>
-                    <Link className='chat-links-btn' to='/chat'>Network</Link>
-                    <Link className='chat-links-btn' to='/messaging'>Messages</Link>
+                    <Link className='chat-links-btn' to='/network'>Network</Link>
+                    <Link className='chat-links-btn' to='/messages'>Messages</Link>
                     </div>
                 </div>
                 <UpdateProfileForm />

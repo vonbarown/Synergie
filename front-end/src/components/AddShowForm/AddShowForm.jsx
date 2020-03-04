@@ -15,6 +15,7 @@ class AddShowForm extends React.Component {
 
     componentDidMount() {
         this.fetchGenres()
+        this.refs.img_url.focus()
     }
 
     fetchGenres = async () => {
@@ -74,19 +75,21 @@ class AddShowForm extends React.Component {
                     <form onSubmit={this.addShow} className='add-show-form'>
                         <div className='url form-element'>
                             <p>Show Image Url</p>
-                            <input name='img_url' className='add-show-input add-show-item'
+                            <input name='img_url'
+                                className=' add-show-item shared-input-styling'
+                                ref='img_url'
                                 onChange={this.handleInput}
-                                type="text" placeholder='url' />
+                                type="text" placeholder='Url' />
                         </div>
                         <div className='name form-element'>
                             <p>Show Name</p>
-                            <input name='show_name' className='add-show-input add-show-item'
+                            <input name='show_name' className=' add-show-item shared-input-styling'
                                 onChange={this.handleInput}
                                 type="text" placeholder='Name' />
                         </div>
                         <div className='genre form-element'>
                             <p>Genre</p>
-                            <select className='add-show-item' onChange={this.handleSelect}>
+                            <select className='add-show-item add-show-select' onChange={this.handleSelect}>
                                 <option>---Select A Genre---</option>
                                 {
                                     this.state.genres.map(el => {
