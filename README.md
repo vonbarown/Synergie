@@ -2,29 +2,12 @@
 
 # Synergie
 
-## Opening Remarks
+Synergie is a full-stack application where users can post, comment on, and favorite TV shows that they are binging on.
 
-This exam, like many exams before it, will be an **open-book, project-driven exam**.
-
-- You are permitted the use of online resources, including your notes.
-- **You are not permitted to discuss the exam with your peers or to share code.** If you have questions, or would like to discuss details of the exam, please talk to an instructor or IA.
-  - Instructors will explicitly look for similar code.
-- You are welcome (encouraged, required) to utilize GitHub and Git for this exam. Until the conclusion of the exam period, please **make your repositories private** and invite the staff as collaborators to your repo.
-- As you continue to work through this project make regular commits because we will be monitoring your commit history for code consistency and educational integrity.
-
-## TV Show Watchlist App
-
-TV Show Watchlist will be a full-stack application where users can post, comment on, and favorite TV shows that they are binging on.
-
-- The app does **not** need user authentication, and does not need passwords - only usernames. You can assume from the front end that your logged in user is any user from the database.
-- Users should be able to **add shows** that they watch. These shows are shared on their profile pages.
+- Synergie uses user authentication through passportjs
+- Users can **add shows** that they watch currently watching. Which are shared on their profile pages.
 - Users can view the profile pages of other users.
-- Users should be able to **add comments** on other users' shows. Comments should include the comment's text as well as the username of the user who posted the comment.
-
-## Database Structure
-
-The following tables and columns will be necessary:
-![database schema diagram](./assets/schema_diagram.png)
+- Users can also **add comments** on other users' shows.
 
 - **Users**
   - id
@@ -47,8 +30,6 @@ The following tables and columns will be necessary:
   - comment_body
   - user_id - _References Users_
   - show_id - _References Shows_
-
-> You may use the included [seed.sql](/seed.sql) file.
 
 ## API Endpoints
 
@@ -84,7 +65,9 @@ Your API Endpoints should include at least:
   | Method | Endpoint                  | Description                           | Body Data                            |
   | ------ | ------------------------- | ------------------------------------- | ------------------------------------ |
   | GET    | `/comments/show/:show_id` | Get all comments for specific show_id | n/a                                  |
-  | POST   | `/comments`               | Add new comment                       | `comment_body`, `user_id`, `show_id` |
+  | POST   | `/comments`               | Add new comment                       | `comment_body`, `user_id`, `show_id` 
+  | PATCH   | `/` | Update user comment | n/
+  |
 
 
 ## Frontend
