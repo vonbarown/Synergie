@@ -9,7 +9,7 @@ const getCommentByShowId = async (showId) => {
                     FROM
                     comments 
                     JOIN users ON user_id = users.id
-                    WHERE show_id = $1
+                    WHERE show_id = $1 AND deleted_at  IS NULL
                     ORDER BY comments.id DESC
                     `
 
@@ -47,8 +47,18 @@ const updateComment = async (commentObj, id) => {
 
 
 }
+
+const deleteComment = async (deleteObj) => {
+    console.log(commentObj);
+
+    const newCommentQStr = `DELETE FROM comments where id = $1 AND comments.user_id = $2`
+
+    return await db.oneOrNone(newCommentQStr, [deleteObj])
+}
+
 module.exports = {
     getCommentByShowId,
     addNewComment,
-    updateComment
+    updateComment,
+    deleteComment
 }

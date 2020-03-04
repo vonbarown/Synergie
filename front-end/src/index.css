@@ -30,8 +30,8 @@ code {
   font-size: 60px;
 }
 
-.shared-input-styling{
+.shared-input-styling {
   border: transparent;
   background: transparent;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid teal;
 }
