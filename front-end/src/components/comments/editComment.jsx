@@ -48,6 +48,15 @@ class EditComment extends Component {
         this.loadUserComments()
     }
 
+    handleDelete = async (e) => {
+        const { loggedUser } = this.props
+        console.log(e.target.value);
+        try {
+            await axios.delete(`api/comments/${e.target.value}/user/${loggedUser.id}/delete`)
+        } catch (error) {
+            console.log('delete comment error', error);
+        }
+    }
 
     render() {
         const { comment, loggedUser } = this.props
@@ -81,7 +90,14 @@ class EditComment extends Component {
                             >
                                 ✏️
                              </span>
-                            <button className='form-button' id='delete'>X</button>
+                            <button
+                                value={comment.comment_id}
+                                className='form-button'
+                                id='delete'
+                                onClick={this.handleDelete}
+                            >
+                                X
+                                </button>
                         </div>
                         : <p>{comment.comment_body}</p>
                 }

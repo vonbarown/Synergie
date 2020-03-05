@@ -86,3 +86,7 @@ span {
   cursor: pointer;
   text-decoration: none;
 }
+
+.comment-user-link {
+  width: 220px;
+}

@@ -61,10 +61,10 @@ router.patch('/:id', loginRequired, async (req, res, next) => {
     }
 })
 
-router.delete('/:id/user/:user_id', loginRequired, async (req, res, next) => {
+router.delete('/:id/user/:user_id/delete', async (req, res, next) => {
 
     try {
-        let deletedComment = await queries.updateComment(req.params.id, req.params.user_id)
+        let deletedComment = await queries.deleteComment(req.params.id, req.params.user_id)
         res.json({
             payload: deletedComment,
             message: 'Comment successful deleted',

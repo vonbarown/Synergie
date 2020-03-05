@@ -13,9 +13,9 @@ const Comments = ({ comments, user_id, show_id, loggedUser }) => {
                 {
                     comments.map(comment => {
                         return (
-                            <div className='comment' key={comment.id}>
+                            <div className='comment' key={comment.comment_id}>
                                 <div className='comment-user-info'>
-                                    <Link to={`/users/${comment.id}`}>
+                                    <Link to={`/users/${comment.user_id}`} className='comment-user-link'>
                                         <img className='watcher-img' src={comment.avatar_url} alt={comment.username} />
                                         {comment.username}
                                     </Link>

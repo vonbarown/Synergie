@@ -3,7 +3,7 @@ const db = require('../db')
 
 const getCommentByShowId = async (showId) => {
     const queryStr = `SELECT 
-                    comments.id,
+                    comments.id AS comment_id,users.id AS user_id,
                     username,comment_body ,users.avatar_url,
                     comments.user_id, comments.edited, comments.show_id
                     FROM
@@ -48,13 +48,8 @@ const updateComment = async (commentObj, id) => {
 
 }
 
-const deleteComment = async (deleteObj) => {
-    console.log(commentObj);
+const deleteComment = async (id, user_id) => await db.oneOrNone(`DELETE FROM comments where id = $1 AND comments.user_id = $2`, [Number(id), user_id])
 
-    const newCommentQStr = `DELETE FROM comments where id = $1 AND comments.user_id = $2`
-
-    return await db.oneOrNone(newCommentQStr, [deleteObj])
-}
 
 module.exports = {
     getCommentByShowId,

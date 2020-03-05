@@ -103,8 +103,6 @@ VALUES
 
 ALTER TABLE comments ADD COLUMN deleted_at timestamptz;
 
--- CREATE INDEX not_deleted ON comments WHERE deleted_at IS NULL; 
-
 CREATE FUNCTION soft_delete()  
   RETURNS trigger AS $$
     DECLARE
@@ -118,5 +116,3 @@ CREATE FUNCTION soft_delete()
 CREATE TRIGGER soft_delete_user  
   BEFORE DELETE ON comments
   FOR EACH ROW EXECUTE PROCEDURE soft_delete();
-
---   DELETE FROM comments WHERE id = 1
