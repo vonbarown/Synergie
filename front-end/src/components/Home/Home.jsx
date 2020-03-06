@@ -6,8 +6,12 @@ export const Home = () => {
     return (
         <div className='home'>
             <div className='home-metadata'>
-                <img className='home-logo' src={logo} alt="" />
-                <h1 className='banner'>Welcome to Synergie</h1>
+                <h1 className='banner App-header'>
+                    <img className='home-logo App-logo' src={logo} alt="" />
+
+                    Welcome to Synergie
+
+                    </h1>
             </div>
         </div>
     )

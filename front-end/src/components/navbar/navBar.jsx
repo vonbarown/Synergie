@@ -29,9 +29,9 @@ export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
                         <h2>Synergie</h2>
                     </div>
                 </Link>{" "}
-                <Link  className='navbar-links' to='/about'>About</Link>{' '}
-                <Link  className='navbar-links' to='login'>Log-In</Link>{' '}
-                <Link  className='navbar-links' to='/signup'>Sign-Up</Link>{' '}
+                <Link className='navbar-links' to='/about'>About</Link>{' '}
+                <Link className='navbar-links' to='login'>Log-In</Link>{' '}
+                <Link className='navbar-links' to='/signup'>Sign-Up</Link>{' '}
             </nav>
         )
     }
