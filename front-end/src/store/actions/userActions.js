@@ -1,4 +1,4 @@
-import { RECEIVE_USERS, LOAD_USER, LOGIN_USER, LOGIN_OUT, UPDATE_PROFILE, SCROLLING } from './actionTypes';
+import { RECEIVE_USERS, LOAD_USER, LOGIN_USER, LOG_OUT, UPDATE_PROFILE, SCROLLING } from './actionTypes';
 
 export const fetchUsers = (payload) => {
     return {
@@ -23,7 +23,7 @@ export const setUser = (payload) => {
 
 export const logOut = (payload) => {
     return {
-        type: LOGIN_OUT,
+        type: LOG_OUT,
         payload
     }
 }

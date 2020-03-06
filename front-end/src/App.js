@@ -17,6 +17,7 @@ import { PrivateRoute } from './components/AuthComponents/PrivateRoute'
 import ChatApp from './Chat/ChatApp/ChatApp'
 import Profile from './components/Profile/Profile'
 import Messager from './Chat/Layout/Messager'
+import OMDBSearch from './components/OMDB/omdbComponent';
 class App extends React.Component {
 
 
@@ -40,12 +41,11 @@ class App extends React.Component {
           isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
         />
 
-
-
         <Switch>
           <Route path='/login' render={this.renderAuthContainer} />
           <Route path='/signup' render={this.renderAuthContainer} />
-          <Route path='/profile' component={Profile} />
+          <Route path='/shows/search' component={OMDBSearch} />
+          <PrivateRoute path='/profile' component={Profile} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/users/:id' component={UserPage} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/users' component={UsersContainer} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />
           <PrivateRoute path='/addShow' component={AddShowForm} isUserLoggedIn={this.props.loggedUser.isUserLoggedIn} />

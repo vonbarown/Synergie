@@ -1,9 +1,10 @@
-import { LOAD_USER_SHOWS, LOAD_SHOWS, LOAD_COMMENTS } from '../actions/actionTypes';
+import { LOAD_USER_SHOWS, LOAD_SHOWS, LOAD_COMMENTS, SEARCH_SHOW } from '../actions/actionTypes';
 
 const initialState = {
     shows: [],
     comments: [],
-    showObj: {}
+    showObj: {},
+    searchResult: {}
 }
 
 export default (state = initialState, action) => {
@@ -19,6 +20,9 @@ export default (state = initialState, action) => {
             break
         case LOAD_COMMENTS:
             stateCopy.comments = action.payload
+            break
+        case SEARCH_SHOW:
+            stateCopy.searchResult = action.payload
             break
         default:
             break

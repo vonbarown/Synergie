@@ -1,7 +1,7 @@
 nav {
   display: flex;
   justify-content: flex-start;
-  gap: 3%;
+  gap: 10%;
   width: 97.1vw;
   border: 1px solid black;
   /* justify-content: center; */
@@ -22,7 +22,15 @@ nav {
   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
+
+.log-out-btn {
+  display: flex;
+  left: 90vw;
+  position: fixed;
+}
+
 .logo {
+  color: black;
   border: 1px solid black;
   padding-left: 50px;
   padding-right: 50px;
@@ -50,6 +58,28 @@ a {
   text-decoration: none;
 }
 
-.navbar-links:hover{
+.navbar-links:hover {
   text-decoration: underline;
+}
+.hamburgerDropDown {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 450px;
+  top: 80px;
+  height: 300px;
+  width: 500px;
+  background-color: rgba(43, 80, 79, 0.541);
+  border: 1px solid bisque;
+  justify-content: center;
+  gap: 40px;
+  border-radius: 5px;
+}
+.test {
+  display: flex;
+  left: -600px;
+}
+
+.hamburgerDropDown a {
+  color: white;
 }
