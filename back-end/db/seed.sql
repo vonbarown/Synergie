@@ -116,3 +116,11 @@ CREATE FUNCTION soft_delete()
 CREATE TRIGGER soft_delete_user  
   BEFORE DELETE ON comments
   FOR EACH ROW EXECUTE PROCEDURE soft_delete();
+
+  CREATE VIEW un_deleted_comments AS  
+  SELECT * FROM comments WHERE deleted_at IS NULL;
+
+ALTER TABLE comments RENAME TO comments_with_delete;  
+ALTER VIEW un_deleted_comments RENAME TO comments; 
+
+

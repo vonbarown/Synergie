@@ -7,9 +7,9 @@ const getCommentByShowId = async (showId) => {
                     username,comment_body ,users.avatar_url,
                     comments.user_id, comments.edited, comments.show_id
                     FROM
-                    comments 
+                    comments
                     JOIN users ON user_id = users.id
-                    WHERE show_id = $1 AND deleted_at  IS NULL
+                    WHERE show_id = $1 
                     ORDER BY comments.id DESC
                     `
 
