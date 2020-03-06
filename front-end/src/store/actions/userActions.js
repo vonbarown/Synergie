@@ -1,4 +1,12 @@
-import { RECEIVE_USERS, LOAD_USER, LOGIN_USER, LOG_OUT, UPDATE_PROFILE, SCROLLING } from './actionTypes';
+import {
+    RECEIVE_USERS,
+    LOAD_USER,
+    LOGIN_USER,
+    LOG_OUT,
+    UPDATE_PROFILE,
+    SCROLLING,
+    SET_HAMBURGER
+} from './actionTypes';
 
 export const fetchUsers = (payload) => {
     return {
@@ -40,3 +48,9 @@ export const updateProfile = () => {
     }
 }
 
+export const setHamburger = (payload) => {
+    return {
+        type: SET_HAMBURGER,
+        payload
+    }
+}

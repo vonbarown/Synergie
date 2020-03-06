@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { animateScroll as scroll } from 'react-scroll'
-import { scrolling } from '../../store/actions/userActions'
+import { scrolling, setHamburger } from '../../store/actions/userActions'
 import './users.css'
 
 
@@ -30,15 +30,20 @@ class Users extends Component {
         });
         // this.props.scrolling(window.pageYOffset)]
     };
+    handleBurger = () => {
+        const { hamburgerOpen } = this.props
+        setHamburger(!hamburgerOpen)
+    }
 
 
     render() {
         const { visible } = this.state
         const { users, loggedUser } = this.props
+        let loggedIn;
         return (
-            <div className='users' onScroll={this.handleScroll}>
+            <div className='users' onScroll={this.handleScroll} >
                 <h2 className='page-title'>Users</h2>
-                <div className='container'>
+                <div className='container' onClick={this.handleBurger}>
                     {
 
                         users ? users.map(el => {
@@ -81,14 +86,15 @@ const mapStateToProps = (state) => {
     return {
         users: state.usersReducer.users,
         loggedUser: state.usersReducer.loggedUser,
-        // visible: state.usersReducer.scrolling.visible,
+        hamburgerOpen: state.usersReducer.hamburgerOpen
 
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        scrolling: data => dispatch(scrolling(data))
+        scrolling: data => dispatch(scrolling(data)),
+        setHamburger: data => dispatch(setHamburger(data))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Users)

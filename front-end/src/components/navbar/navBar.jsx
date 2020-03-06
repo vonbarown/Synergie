@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import HamburgerMenu from 'react-hamburger-menu';
 import './navbar.css'
 import { useState } from 'react';
+import { setHamburger } from '../../store/actions/userActions'
+import { connect } from 'react-redux';
 
-export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
-
-    const [open, setOpen] = useState(false)
-    // const [scrollPos, setScrollPos] = useState(window.pageYOffset)
+const Navbar = ({ logoutUser, isUserLoggedIn, hamburgerOpen, setHamburger }) => {
 
     // const handleScroll = () => {
     //     const currentScrollPos = window.pageYOffset;
@@ -21,11 +20,11 @@ export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
     const dropDown = () => {
         return (
             <div className='hamburgerDropDown' >
-                <Link className='navbar-links' onClick={() => setOpen(!open)} id='hamburgerNavItem' to='/users'>Users</Link>
-                <Link className='navbar-links' onClick={() => setOpen(!open)} id='hamburgerNavItem' to='/shows'>Shows</Link>{' '}
-                <Link className='navbar-links' onClick={() => setOpen(!open)} id='hamburgerNavItem' to='/addShow'>Add Show</Link>{' '}
-                <Link className='navbar-links' onClick={() => setOpen(!open)} id='hamburgerNavItem' to='/about'>About</Link>{' '}
-                <Link className='navbar-links' onClick={() => setOpen(!open)} id='hamburgerNavItem' to='/profile'>Profile</Link>{' '}
+                <Link className='navbar-links' onClick={() => setHamburger(!hamburgerOpen)} id='hamburgerNavItem' to='/users'>Users</Link>
+                <Link className='navbar-links' onClick={() => setHamburger(!hamburgerOpen)} id='hamburgerNavItem' to='/shows'>Shows</Link>{' '}
+                <Link className='navbar-links' onClick={() => setHamburger(!hamburgerOpen)} id='hamburgerNavItem' to='/addShow'>Add Show</Link>{' '}
+                <Link className='navbar-links' onClick={() => setHamburger(!hamburgerOpen)} id='hamburgerNavItem' to='/about'>About</Link>{' '}
+                <Link className='navbar-links' onClick={() => setHamburger(!hamburgerOpen)} id='hamburgerNavItem' to='/profile'>Profile</Link>{' '}
 
             </div >
         )
@@ -36,7 +35,7 @@ export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
             <nav className='logged-in'>
 
                 <div className='app-logo'>
-                    <Link to="/">
+                    <Link to="/" onClick={() => setHamburger(!hamburgerOpen)}>
                         <div className='logo'>
                             <h2>Synergie</h2>
                         </div>
@@ -45,8 +44,8 @@ export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
 
                 <div className='hamburgerMenu'>
                     <HamburgerMenu
-                        isOpen={open}
-                        menuClicked={() => setOpen(!open)}
+                        isOpen={hamburgerOpen}
+                        menuClicked={() => setHamburger(!hamburgerOpen)}
                         width={18}
                         height={15}
                         strokeWidth={1}
@@ -57,7 +56,7 @@ export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
                     />
                 </div>
                 {
-                    open ? dropDown() : null
+                    hamburgerOpen ? dropDown() : null
                 }
                 <div className='log-out-btn'>
                     <button className='log-out' onClick={logoutUser}>log-out</button>
@@ -78,8 +77,8 @@ export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
                 <Link className='navbar-links' to='login'>Log-In</Link>{' '}
                 <Link className='navbar-links' to='/signup'>Sign-Up</Link>{' '}
                 <HamburgerMenu
-                    isOpen={open}
-                    menuClicked={() => setOpen(!open)}
+                    isOpen={hamburgerOpen}
+                    menuClicked={() => setHamburger(!hamburgerOpen)}
                     width={18}
                     height={15}
                     strokeWidth={1}
@@ -92,3 +91,16 @@ export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
         )
     }
 }
+
+const mapStateToProp = (state) => {
+    return {
+        hamburgerOpen: state.usersReducer.hamburgerOpen
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setHamburger: data => dispatch(setHamburger(data))
+    }
+}
+
+export default connect(mapStateToProp, mapDispatchToProps)(Navbar)

@@ -26,7 +26,7 @@ nav {
 .log-out-btn {
   display: flex;
   left: 90vw;
-  position: fixed;
+  position: absolute;
 }
 
 .logo {

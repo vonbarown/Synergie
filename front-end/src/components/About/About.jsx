@@ -12,7 +12,10 @@ export const About = () => {
             </div>
             <div className='signature'>
                 Made by Voniel Brown
-            </div>
+                </div>
+            <footer>
+                <a href="https://github.com/vonbarown">Git</a>
+            </footer>
         </div>
     )
 }

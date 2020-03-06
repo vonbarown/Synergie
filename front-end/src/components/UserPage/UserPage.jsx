@@ -41,18 +41,17 @@ class UserPage extends React.Component {
             <div className='user-page'>
                 <div className='container'>
                     <div className='logged-user'>
-                        {
-                            loggedUser.isUserLoggedIn ?
-                                (
-                                    loggedUser.user.username === user.username ?
-                                        loggedIn = 'Logged In' :
-                                        loggedIn = ''
-                                ) : null
-                        }
                         < div className='user-profile'>
                             <img className='profile-pic' src={user.avatar_url} alt={user.username} />
                             <p>{user.username}</p>
-                            <p>{loggedIn}</p>
+                            {
+                                loggedUser.isUserLoggedIn ?
+                                    (
+                                        loggedUser.user.username === user.username ?
+                                            loggedIn = 'Logged In' :
+                                            loggedIn = ''
+                                    ) : null
+                            }
                         </div>
 
                     </div>

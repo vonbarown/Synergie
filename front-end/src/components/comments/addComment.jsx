@@ -34,6 +34,8 @@ class AddComment extends React.Component {
         try {
             const { data: comments } = await axios.post(`/api/comments`, commentObj)
             console.log(comments);
+            this.refs.commentInput.value = ''
+            this.refs.commentInput.focus()
 
         } catch (error) {
 
@@ -45,12 +47,12 @@ class AddComment extends React.Component {
     render() {
         return (
             <form onSubmit={this.AddComment} className='comment-form'>
-                <input 
-                ref='commentInput' 
-                className='comment-submit-input shared-input-styling' 
-                type="text" 
-                onChange={this.handleInput} 
-                placeholder='  Add Comment' 
+                <input
+                    ref='commentInput'
+                    className='comment-submit-input shared-input-styling'
+                    type="text"
+                    onChange={this.handleInput}
+                    placeholder='  Add Comment'
                 />
                 <button className='comment-submit-button'>Add</button>
             </form>
