@@ -2,7 +2,6 @@ import * as React from 'react';
 import './network.css'
 import { connect } from 'react-redux';
 import Talk from 'talkjs';
-import { appId } from '../../secret'
 
 class Network extends React.Component {
 
@@ -27,7 +26,7 @@ class Network extends React.Component {
 
                 if (!window.talkSession) {
                     window.talkSession = new Talk.Session({
-                        appId: appId,
+                        appId: process.env.REACT_APP_ID,
                         me: me
                     });
                 }

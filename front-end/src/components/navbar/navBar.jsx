@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import HamburgerMenu from '../HamburgerMenu/index'
 import './navbar.css'
 
 export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
@@ -18,6 +19,10 @@ export const Navbar = ({ logoutUser, isUserLoggedIn }) => {
                 <Link className='navbar-links' to='/about'>About</Link>{' '}
                 <Link className='navbar-links' to='/profile'>Profile</Link>{' '}
                 <button className='log-out' onClick={logoutUser}>log-out</button>
+                {
+
+                    // <HamburgerMenu />
+                }
             </nav>
 
         )
