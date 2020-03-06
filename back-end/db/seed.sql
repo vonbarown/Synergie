@@ -100,3 +100,27 @@ VALUES
 ('c4cb08b9-afae-4c8a-bcd0-d94e4e1fbf89','157a2ad3-b941-4455-ac71-3c1fff7d689d','Member'),
 ('157a2ad3-b941-4455-ac71-3c1fff7d689d','34bab52c-caec-4dca-8895-78807cc30016','Member'),
 ('157a2ad3-b941-4455-ac71-3c1fff7d689d','c4cb08b9-afae-4c8a-bcd0-d94e4e1fbf89','Member');
+
+ALTER TABLE comments ADD COLUMN deleted_at timestamptz;
+
+CREATE FUNCTION soft_delete()  
+  RETURNS trigger AS $$
+    DECLARE
+      command text := ' SET deleted_at = current_timestamp WHERE id = $1';
+    BEGIN
+      EXECUTE 'UPDATE ' || TG_TABLE_NAME || command USING OLD.id;
+      RETURN NULL;
+    END;
+  $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER soft_delete_user  
+  BEFORE DELETE ON comments
+  FOR EACH ROW EXECUTE PROCEDURE soft_delete();
+
+  CREATE VIEW un_deleted_comments AS  
+  SELECT * FROM comments WHERE deleted_at IS NULL;
+
+ALTER TABLE comments RENAME TO comments_with_delete;  
+ALTER VIEW un_deleted_comments RENAME TO comments; 
+
+

@@ -23,7 +23,7 @@ class EditComment extends Component {
         })
     }
 
-    loadUserComments = async () => {
+    loadShowComments = async () => {
         const { comment } = this.props
         try {
             const { data: { payload } } = await axios.get(`/api/comments/show/${comment.show_id}`)
@@ -38,16 +38,26 @@ class EditComment extends Component {
         e.preventDefault()
 
         try {
-            await axios.patch(`/api/comments/${comment.id}`, {
+            await axios.patch(`/api/comments/${comment.comment_id}`, {
                 comment_body: this.state.newComment
             })
         } catch (error) {
             console.log('edit comment error', error);
 
         }
-        this.loadUserComments()
+        this.loadShowComments()
     }
 
+    handleDelete = async (e) => {
+        const { loggedUser } = this.props
+        console.log(e.target.value);
+        try {
+            await axios.delete(`/api/comments/${e.target.value}/user/${loggedUser.id}/delete`)
+        } catch (error) {
+            console.log('delete comment error', error);
+        }
+        this.loadShowComments()
+    }
 
     render() {
         const { comment, loggedUser } = this.props
@@ -81,7 +91,14 @@ class EditComment extends Component {
                             >
                                 ✏️
                              </span>
-                            <button className='form-button' id='delete'>X</button>
+                            <button
+                                value={comment.comment_id}
+                                className='form-button'
+                                id='delete'
+                                onClick={this.handleDelete}
+                            >
+                                X
+                                </button>
                         </div>
                         : <p>{comment.comment_body}</p>
                 }

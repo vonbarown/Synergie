@@ -3,13 +3,13 @@ const db = require('../db')
 
 const getCommentByShowId = async (showId) => {
     const queryStr = `SELECT 
-                    comments.id,
+                    comments.id AS comment_id,users.id AS user_id,
                     username,comment_body ,users.avatar_url,
                     comments.user_id, comments.edited, comments.show_id
                     FROM
-                    comments 
+                    comments
                     JOIN users ON user_id = users.id
-                    WHERE show_id = $1
+                    WHERE show_id = $1 
                     ORDER BY comments.id DESC
                     `
 
@@ -47,8 +47,13 @@ const updateComment = async (commentObj, id) => {
 
 
 }
+
+const deleteComment = async (id, user_id) => await db.oneOrNone(`DELETE FROM comments where id = $1 AND comments.user_id = $2`, [Number(id), user_id])
+
+
 module.exports = {
     getCommentByShowId,
     addNewComment,
-    updateComment
+    updateComment,
+    deleteComment
 }

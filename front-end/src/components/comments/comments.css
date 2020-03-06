@@ -33,7 +33,7 @@
   display: flex;
   align-items: center;
   gap: 40px;
-  border-bottom: 2px solid teal;
+  border-bottom: 2px solid black;
   padding-bottom: 20px;
 }
 
@@ -49,7 +49,6 @@
   width: 520px;
   height: 50px;
   font-size: 30px;
- 
 }
 .editable-comment {
   display: flex;
@@ -86,4 +85,8 @@
 span {
   cursor: pointer;
   text-decoration: none;
+}
+
+.comment-user-link {
+  width: 220px;
 }

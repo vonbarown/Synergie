@@ -61,4 +61,23 @@ router.patch('/:id', loginRequired, async (req, res, next) => {
     }
 })
 
+router.delete('/:id/user/:user_id/delete', async (req, res, next) => {
+
+    try {
+        let deletedComment = await queries.deleteComment(req.params.id, req.params.user_id)
+        res.json({
+            payload: deletedComment,
+            message: 'Comment successful deleted',
+            error: false
+        })
+    } catch (error) {
+        console.log("error", error)
+        res.status(500).json({
+            payload: null,
+            msg: `You can't perform this operation`,
+            error: true
+        })
+    }
+})
+
 module.exports = router
