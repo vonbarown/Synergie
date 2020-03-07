@@ -58,6 +58,7 @@ class Users extends Component {
                                     <img className='profile-pic' src={el.avatar_url} alt="user-profile" />
                                     <p>{el.username}</p>
                                     <p>{loggedIn}</p>
+                                    < button >Connect</button>
                                 </Link>
 
                             )
@@ -65,7 +66,7 @@ class Users extends Component {
                     }
                 </div>
                 <div className='page-actions'>
-                    <Link to='/messaging'>
+                    <Link to='/messages'>
                         <button className='scroll message'>
                             Messages
                         </button>
@@ -74,10 +75,9 @@ class Users extends Component {
                         visible
                             ? <button className='scroll' onClick={() => scroll.scrollToTop()}>Scroll To Top</button>
                             : null
-
                     }
                 </div>
-            </div>
+            </div >
         )
     }
 }

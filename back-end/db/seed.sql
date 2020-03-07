@@ -41,7 +41,7 @@ CREATE TABLE network (
     id SERIAL PRIMARY KEY,
     user_id VARCHAR,
     contact_id VARCHAR REFERENCES  users(id),
-    role VARCHAR
+    role VARCHAR NOT NULL
 );
 
 

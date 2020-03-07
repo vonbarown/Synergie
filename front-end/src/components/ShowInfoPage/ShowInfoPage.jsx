@@ -11,6 +11,7 @@ class ShowInfoPage extends React.Component {
         this.loadUserComments()
     }
 
+    //loading information of  the specific show information
     loadSpecificShow = async () => {
         try {
             const { data: { payload } } = await axios.get(`/api/shows/${this.props.match.params.id}`)
@@ -20,6 +21,7 @@ class ShowInfoPage extends React.Component {
         }
     }
 
+    //loading all the comments  in to redux store using axios call to api
     loadUserComments = async () => {
         try {
             const { data: { payload } } = await axios.get(`/api/comments/show/${this.props.match.params.id}`)
