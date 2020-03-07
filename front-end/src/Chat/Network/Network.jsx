@@ -11,14 +11,6 @@ class Network extends React.Component {
         const { loggedUser, network } = this.props;
 
         const user = network.find(user => user.id === userId)
-        // user.name = user.username
-        // user.photoUrl = user.avatar_url
-
-        console.log('user', user);
-
-
-        console.log('logged', loggedUser);
-
 
         Talk.ready
             .then(() => {

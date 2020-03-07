@@ -8,7 +8,7 @@ const getNetworkByUserId = async (chat_id) => {
             FROM 
             network
             INNER JOIN users on network.contact_id = users.id
-            WHERE network.user_id = $1
+            WHERE network.user_id = $1 
         `
 
     return await db.any(networkQuery, [chat_id])

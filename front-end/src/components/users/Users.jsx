@@ -36,9 +36,10 @@ class Users extends Component {
     }
 
 
+
     render() {
         const { visible } = this.state
-        const { users, loggedUser } = this.props
+        const { users, loggedUser, network } = this.props
         let loggedIn;
         return (
             <div className='users' onScroll={this.handleScroll} >
@@ -54,13 +55,24 @@ class Users extends Component {
                             }
                             return (
 
-                                <Link to={`/users/${el.id}`} className='user-profile' key={el.id}>
-                                    <img className='profile-pic' src={el.avatar_url} alt="user-profile" />
-                                    <p>{el.username}</p>
-                                    <p>{loggedIn}</p>
-                                    < button >Connect</button>
-                                </Link>
+                                <div>
+                                    <Link to={`/users/${el.id}`} className='user-profile' key={el.id}>
+                                        <img className='profile-pic' src={el.avatar_url} alt="user-profile" />
+                                        <p>{el.username}</p>
+                                        <p>{loggedIn}</p>
+                                    </Link>
 
+                                    {
+                                        loggedUser.user.username !== el.username
+                                            ? < button
+                                                value={el.id}
+                                                onClick={network}
+                                            >
+                                                Connect
+                                            </button>
+                                            : null
+                                    }
+                                </div>
                             )
                         }) : null
                     }
