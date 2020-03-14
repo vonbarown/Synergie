@@ -93,12 +93,12 @@ class Shows extends React.Component {
 
 
 // redux functions connecting component to redux state and and actions
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ showsReducer: { shows, showObj }, usersReducer }) => {
     return {
-        shows: state.showsReducer.shows,
-        user: state.usersReducer.loggedUser.user,
-        visible: state.usersReducer.scrolling.visible,
-        watchList: state.showsReducer.showObj
+        shows: shows,
+        watchList: showObj,
+        user: usersReducer.loggedUser.user,
+        visible: usersReducer.scrolling.visible,
     }
 }
 

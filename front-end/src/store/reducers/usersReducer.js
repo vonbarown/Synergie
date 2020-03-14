@@ -9,7 +9,7 @@ import {
 
 const initialState = {
     users: [],
-    user: [],
+    selectedUser: {},
     loggedUser: {
         user: null,
         isUserLoggedIn: false
@@ -30,7 +30,7 @@ export default (state = initialState, action) => {
             stateCopy.users = action.payload
             break
         case LOAD_USER:
-            stateCopy.user = action.payload
+            stateCopy.selectedUser = action.payload
             break
         case LOGIN_USER:
             let user = action.payload
