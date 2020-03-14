@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import HamburgerMenu from 'react-hamburger-menu';
-import './navbar.css'
-import { useState } from 'react';
 import { setHamburger } from '../../store/actions/userActions'
 import { connect } from 'react-redux';
+import './navbar.css'
 
 const Navbar = ({ logoutUser, isUserLoggedIn, hamburgerOpen, setHamburger }) => {
 
@@ -32,12 +31,12 @@ const Navbar = ({ logoutUser, isUserLoggedIn, hamburgerOpen, setHamburger }) => 
 
     if (isUserLoggedIn) {
         return (
-            <nav className='logged-in'>
+            <nav className='logged-in navbar'>
 
                 <div className='app-logo'>
                     <Link to="/" onClick={() => setHamburger(!hamburgerOpen)}>
                         <div className='logo'>
-                            <h2>Synergie</h2>
+                            <h2 onClick={() => setHamburger(!hamburgerOpen)} >Synergie</h2>
                         </div>
                     </Link>{" "}
                 </div>
@@ -67,7 +66,7 @@ const Navbar = ({ logoutUser, isUserLoggedIn, hamburgerOpen, setHamburger }) => 
         )
     } else {
         return (
-            <nav className='not-logged-in'>
+            <nav className='not-logged-in navbar'>
                 <Link to="/">
                     <div className='logo'>
                         <h2>Synergie</h2>

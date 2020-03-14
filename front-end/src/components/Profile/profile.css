@@ -13,6 +13,7 @@
   z-index: 90;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
+  border-bottom-right-radius: 1px;
 }
 
 .profile-header {
@@ -41,13 +42,13 @@
   font-size: 20px;
 }
 
-.chat-links-btn{
+.chat-links-btn {
   border: 1px solid black;
   padding: 5px;
   border-radius: 5px;
 }
 
-.profile-button{
+.profile-button {
   margin-top: 10px;
   margin-bottom: 10px;
 }

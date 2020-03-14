@@ -15,6 +15,7 @@ export const About = () => {
                 </div>
             <footer>
                 <a href="https://github.com/vonbarown">Git</a>
+                <a href="https://www.linkedin.com/in/vonielbrown/">LinkedIn</a>
             </footer>
         </div>
     )

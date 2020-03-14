@@ -74,6 +74,7 @@ a {
   justify-content: center;
   gap: 40px;
   border-radius: 5px;
+  z-index: 90;
 }
 .test {
   display: flex;
@@ -82,4 +83,18 @@ a {
 
 .hamburgerDropDown a {
   color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    gap: 10px;
+    width: 89vw;
+  }
+
+  .navbar .logo {
+    width: 10px;
+    font-size: 5px;
+    display: flex;
+    justify-content: center;
+  }
 }

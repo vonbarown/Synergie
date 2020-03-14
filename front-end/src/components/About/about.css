@@ -12,3 +12,10 @@
 .signature {
   font-size: x-large;
 }
+
+footer {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  gap: 10px;
+}
