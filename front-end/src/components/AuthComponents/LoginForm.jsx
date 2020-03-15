@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import './authForms.css'
 
 const LoginForm = ({ username, password, handleChange, loginUser }) => {

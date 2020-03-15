@@ -3,7 +3,6 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { fetchUsers } from '../store/actions/userActions'
 import UsersComponent from '../components/users/Users'
-import { Redirect } from 'react-router-dom'
 
 // import ModalContainer from './modalContainer'
 
@@ -50,9 +49,9 @@ class UsersContainer extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ usersReducer: { loggedUser: { user } } }) => {
     return {
-        loggedUser: state.usersReducer.loggedUser.user,
+        loggedUser: user,
 
     }
 }

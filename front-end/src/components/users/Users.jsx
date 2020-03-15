@@ -55,7 +55,7 @@ class Users extends Component {
                             }
                             return (
 
-                                <div>
+                                <div key={el.id}>
                                     <Link to={`/users/${el.id}`} className='user-profile' key={el.id}>
                                         <img className='profile-pic' src={el.avatar_url} alt="user-profile" />
                                         <p>{el.username}</p>

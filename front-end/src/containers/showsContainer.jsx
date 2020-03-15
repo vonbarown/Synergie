@@ -79,9 +79,9 @@ class ShowsContainer extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ usersReducer: { loggedUser: { user } } }) => {
     return {
-        user: state.usersReducer.loggedUser.user
+        user: user
     }
 }
 

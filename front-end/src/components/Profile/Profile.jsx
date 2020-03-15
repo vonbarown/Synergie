@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ModalContainer from '../../containers/modalContainer'
 import { connect } from 'react-redux'
 import UpdateProfileForm from './UpdateProfileForm'
 import './profile.css'
@@ -22,11 +21,11 @@ class Profile extends React.Component {
                         <h3>What are you binging?</h3>
                     </div>
                     <div className='chat-links' style={{
-                        display:'flex',
-                        gap:'10px'
+                        display: 'flex',
+                        gap: '10px'
                     }}>
-                    <Link className='chat-links-btn' to='/network'>Network</Link>
-                    <Link className='chat-links-btn' to='/messages'>Messages</Link>
+                        <Link className='chat-links-btn' to='/network'>Network</Link>
+                        <Link className='chat-links-btn' to='/messages'>Messages</Link>
                     </div>
                 </div>
                 <UpdateProfileForm />

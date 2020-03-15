@@ -3,6 +3,7 @@ import './network.css'
 import { connect } from 'react-redux';
 import Talk from 'talkjs';
 import { appId } from '../../secret'
+import { Link } from 'react-scroll';
 
 class Network extends React.Component {
 

@@ -97,4 +97,10 @@ a {
     display: flex;
     justify-content: center;
   }
+  .navbar .log-out-btn .log-out {
+    display: flex;
+    width: 10vw;
+    font-size: 9px;
+    right: 10vw;
+  }
 }
