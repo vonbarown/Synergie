@@ -52,3 +52,20 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+@media screen and (max-width: 768px) {
+  .profile-page-img{
+    width: 15pc;
+    height: 15pc;
+    border-radius: 5px;
+  }
+  .profile-header{
+    gap:10px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5px;
+  }
+  .sub-header{
+    margin-right: 0;
+  }
+}

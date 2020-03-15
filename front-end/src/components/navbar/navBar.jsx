@@ -18,15 +18,56 @@ const Navbar = ({ logoutUser, isUserLoggedIn, hamburgerOpen, setHamburger }) => 
 
     const dropDown = () => {
         return (
-            <div className='hamburgerDropDown' >
-                <Link className='navbar-links' onClick={() => setHamburger(!hamburgerOpen)} id='hamburgerNavItem' to='/users'>Users</Link>
-                <Link className='navbar-links' onClick={() => setHamburger(!hamburgerOpen)} id='hamburgerNavItem' to='/shows'>Shows</Link>{' '}
-                <Link className='navbar-links' onClick={() => setHamburger(!hamburgerOpen)} id='hamburgerNavItem' to='/addShow'>Add Show</Link>{' '}
-                <Link className='navbar-links' onClick={() => setHamburger(!hamburgerOpen)} id='hamburgerNavItem' to='/about'>About</Link>{' '}
-                <Link className='navbar-links' onClick={() => setHamburger(!hamburgerOpen)} id='hamburgerNavItem' to='/profile'>Profile</Link>{' '}
-
-            </div >
-        )
+          <div className="hamburgerDropDown">
+            <Link
+              className="navbar-links"
+              onClick={() => setHamburger(!hamburgerOpen)}
+              id="hamburgerNavItem"
+              to="/users"
+            >
+              Users
+            </Link>
+            <Link
+              className="navbar-links"
+              onClick={() => setHamburger(!hamburgerOpen)}
+              id="hamburgerNavItem"
+              to="/shows"
+            >
+              Shows
+            </Link>{" "}
+            <Link
+              className="navbar-links"
+              onClick={() => setHamburger(!hamburgerOpen)}
+              id="hamburgerNavItem"
+              to="/addShow"
+            >
+              Add Show
+            </Link>{" "}
+            <Link
+              className="navbar-links"
+              onClick={() => setHamburger(!hamburgerOpen)}
+              id="hamburgerNavItem"
+              to="/about"
+            >
+              About
+            </Link>{" "}
+            <Link
+              className="navbar-links"
+              onClick={() => setHamburger(!hamburgerOpen)}
+              id="hamburgerNavItem"
+              to="/profile"
+            >
+              Profile
+            </Link>{" "}
+            <Link
+              onClick={() => setHamburger(!hamburgerOpen)}
+              className="navbar-links"
+              to="/messages"
+            >
+              Messages
+            </Link>
+          </div>
+        );
     }
 
     if (isUserLoggedIn) {

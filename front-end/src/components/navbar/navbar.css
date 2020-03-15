@@ -72,7 +72,7 @@ a {
   background-color: rgba(43, 80, 79, 0.541);
   border: 1px solid bisque;
   justify-content: center;
-  gap: 40px;
+  gap: 35px;
   border-radius: 5px;
   z-index: 90;
 }
@@ -88,7 +88,7 @@ a {
 @media screen and (max-width: 768px) {
   .navbar {
     gap: 10px;
-    width: 89vw;
+    width: 90vw;
   }
 
   .navbar .logo {
@@ -97,10 +97,17 @@ a {
     display: flex;
     justify-content: center;
   }
-  .navbar .log-out-btn .log-out {
+  .navbar .log-out-btn  {
     display: flex;
-    width: 10vw;
+    width: 90px;
     font-size: 9px;
-    right: 10vw;
+    /* right: 10vw; */
+    left: 80vw;
   }
+
+  /* .hamburgerDropDown{
+    display: flex;
+    top: 0;
+
+  } */
 }
