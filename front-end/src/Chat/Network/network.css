@@ -133,3 +133,23 @@ current-user-container {
   border-radius: 2px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .collection {
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .current-user-container > div,
+  .users-container {
+    width: 100vw;
+  }
+
+  .user {
+    gap: 20px;
+  }
+  .user-action {
+    margin-right: 10px;
+  }
+}
