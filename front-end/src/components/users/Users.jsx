@@ -58,8 +58,10 @@ class Users extends Component {
                                 <div key={el.id}>
                                     <Link to={`/users/${el.id}`} className='user-profile' key={el.id}>
                                         <img className='profile-pic' src={el.avatar_url} alt="user-profile" />
-                                        <p>{el.username}</p>
-                                        <p>{loggedIn}</p>
+                                        <div className='user-meta-data'>
+                                            <p>{el.username}</p>
+                                            <p>{loggedIn}</p>
+                                        </div>
                                     </Link>
 
                                     {
@@ -67,6 +69,7 @@ class Users extends Component {
                                             ? < button
                                                 value={el.id}
                                                 onClick={network}
+                                                className='connect'
                                             >
                                                 Connect
                                             </button>
