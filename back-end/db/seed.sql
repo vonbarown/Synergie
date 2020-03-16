@@ -1,7 +1,7 @@
 -- DROP DATABASE if exists tvwatchlistapp;
 -- CREATE DATABASE tvwatchlistapp;
 
-\c tvwatchlistapp
+-- \c tvwatchlistapp
 
 CREATE TABLE users (
     id VARCHAR PRIMARY KEY,
