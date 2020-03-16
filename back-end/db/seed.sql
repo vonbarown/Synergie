@@ -1,5 +1,5 @@
-DROP DATABASE if exists tvwatchlistapp;
-CREATE DATABASE tvwatchlistapp;
+-- DROP DATABASE if exists tvwatchlistapp;
+-- CREATE DATABASE tvwatchlistapp;
 
 \c tvwatchlistapp
 
