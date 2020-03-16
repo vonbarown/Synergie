@@ -8,7 +8,7 @@ class UpdateProfileForm extends Component {
         username: '',
         avatar_url: ''
     }
-    componentDidMount(){
+    componentDidMount() {
         this.refs.username.focus()
     }
 
@@ -18,10 +18,10 @@ class UpdateProfileForm extends Component {
     }
 
     changeUserInfo = async (e) => {
-        const { updateProfile, setUser } = this.props
+        const { updateProfile, setUser, loggedUser } = this.props
         e.preventDefault()
         try {
-            const { data: { payload } } = await axios.patch(`/api/auth/${this.props.loggedUser.id}`, {
+            const { data: { payload } } = await axios.patch(`/api/auth/${loggedUser.id}`, {
                 username: this.state.username,
                 avatar_url: this.state.avatar_url
             })
@@ -39,6 +39,7 @@ class UpdateProfileForm extends Component {
 
     render() {
         console.log(this.state);
+        const { loggedUser } = this.props
 
         return (
             <div>
@@ -47,7 +48,7 @@ class UpdateProfileForm extends Component {
                         <p>Change Username:</p>
                         <input type="text"
                             name='username'
-                            placeholder={this.props.loggedUser.username}
+                            placeholder={loggedUser.username}
                             className='form-input shared-input-styling'
                             onChange={this.handleChange}
                             ref='username'
@@ -57,7 +58,7 @@ class UpdateProfileForm extends Component {
                         <p>Change Avatar:</p>
                         <input type="text"
                             name='avatar_url'
-                            placeholder={this.props.loggedUser.avatar_url}
+                            placeholder={loggedUser.avatar_url}
                             className='form-input shared-input-styling'
                             onChange={this.handleChange}
                         />
@@ -78,9 +79,9 @@ class UpdateProfileForm extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ usersReducer: { loggedUser: { user } } }) => {
     return {
-        loggedUser: state.usersReducer.loggedUser.user
+        loggedUser: user
     }
 }
 const mapDispatchToProps = (dispatch) => {

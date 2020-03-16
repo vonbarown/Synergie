@@ -4,18 +4,6 @@
   align-items: center;
 }
 
-/* .show-info-page-container {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  border: 1px solid black;
-  border-radius: 4px;
-  padding: 40px;
-  width: 60vw;
-  height: 800px;
-  align-items: center;
-} */
 .show-data {
   border: 1px solid black;
   border-left: transparent;
@@ -38,4 +26,12 @@
 .show-info-page-img {
   height: 20pc;
   border-radius: 2pc;
+}
+
+@media screen and (max-width: 768px) {
+  .current-show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

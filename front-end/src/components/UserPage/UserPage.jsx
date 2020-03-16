@@ -35,24 +35,23 @@ class UserPage extends React.Component {
 
     render() {
         console.log(this.props.match.params.id);
-        const { loggedUser, user } = this.props
+        const { loggedUser: { isUserLoggedIn, user }, selectedUser } = this.props
         let loggedIn;
         return (
             <div className='user-page'>
                 <div className='container'>
                     <div className='logged-user'>
-                        {
-                            loggedUser.isUserLoggedIn ?
-                                (
-                                    loggedUser.user.username === user.username ?
-                                        loggedIn = 'Logged In' :
-                                        loggedIn = ''
-                                ) : null
-                        }
                         < div className='user-profile'>
-                            <img className='profile-pic' src={user.avatar_url} alt={user.username} />
-                            <p>{user.username}</p>
-                            <p>{loggedIn}</p>
+                            <img className='profile-pic' src={selectedUser.avatar_url} alt={selectedUser.username} />
+                            <p>{selectedUser.username}</p>
+                            {
+                                isUserLoggedIn ?
+                                    (
+                                        user.username === selectedUser.username ?
+                                            loggedIn = 'Logged In' :
+                                            loggedIn = ''
+                                    ) : null
+                            }
                         </div>
 
                     </div>
@@ -77,11 +76,11 @@ class UserPage extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ showsReducer, usersReducer: { selectedUser, loggedUser } }) => {
     return {
-        shows: state.showsReducer.shows,
-        user: state.usersReducer.user,
-        loggedUser: state.usersReducer.loggedUser
+        shows: showsReducer.shows,
+        selectedUser: selectedUser,
+        loggedUser: loggedUser
     }
 }
 

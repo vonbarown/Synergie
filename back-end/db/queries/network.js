@@ -8,7 +8,7 @@ const getNetworkByUserId = async (chat_id) => {
             FROM 
             network
             INNER JOIN users on network.contact_id = users.id
-            WHERE network.user_id = $1
+            WHERE network.user_id = $1 
         `
 
     return await db.any(networkQuery, [chat_id])
@@ -31,15 +31,14 @@ const getNetworkByUserId = async (chat_id) => {
 
 
 const addNewNetwork = async (chatObj) => {
-    const newShowQStr = `INSERT INTO network (,user_id,contact_id) 
-                        VALUES($/user_id/,$/contact_id/) 
-                        ON CONFLICT (contact_id) DO NOTHING
+    const newShowQStr = `INSERT INTO network (user_id,contact_id,role) 
+                        VALUES($/user_id/,$/contact_id/,$/role/) 
                         `
 
     let chatId = await db.oneOrNone(newShowQStr, {
-        chat_type: chatObj.chat_type,
         user_id: chatObj.user_id,
-        contact_id: chatObj.contact_id
+        contact_id: chatObj.contact_id,
+        role: 'Member'
     })
 
     // await addNewChatMember({ user_id: chatObj.user_id, chat_id: chatId.id })

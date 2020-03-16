@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { animateScroll as scroll } from 'react-scroll'
 // import axios from 'axios'
 import { scrolling } from '../../store/actions/userActions'
+import { Watchers } from './watchers'
 class Shows extends React.Component {
     state = {
         prevScrollPos: window.pageYOffset,
@@ -15,6 +16,8 @@ class Shows extends React.Component {
         window.addEventListener("scroll", this.handleScroll);
     }
 
+
+    // toggles the visibility of the scroll to top bottom
     handleScroll = () => {
         const { prevScrollPos } = this.state;
 
@@ -44,6 +47,7 @@ class Shows extends React.Component {
 
                             return (
                                 <Link to={`/shows/${show.id}/user/${show.user_id}`} key={show.id}>
+                                    {/* creating link  to show page to see comments on show*/}
                                     <div className='movie' key={show.title}>
                                         <img className='show-img' src={show.img_url} alt={show.title} />
                                         <div className='show-info'>
@@ -51,24 +55,15 @@ class Shows extends React.Component {
                                                 <p className='title'>{show.title}</p>
                                                 <p className='genre'>{show.genre}</p>
                                             </div>
-                                            <div className='show-watchers'>Being Watched by:{'  '}
-                                                {
-                                                    show.watchers.map(watcher => {
-                                                        return (
-                                                            <div className={`watcher-${watcher.watchers_id}`} key={watcher.username}>
-                                                                <Link to={`/users/${watcher.watchers_id}`}>
-                                                                    <img className='watcher-img'
-                                                                        src={watcher.avatar_url}
-                                                                        alt={watcher.username}
-                                                                    />
-                                                                    {watcher.username}
-                                                                </Link>{' '}
-                                                            </div>
-                                                        )
-                                                    })
-                                                }
-                                            </div>
+
+                                            {/* all the watchers for show*/}
+                                            <Watchers watchers={show.watchers} />
+
                                             {
+                                                /*
+                                                Allowing user to start watching show without having too add
+                                                with form.Only shows if user is not watching show
+                                                */
                                                 !show.watchers.find(el => el.watchers_id === user.id)
                                                     ? <button className='form-button ' id='start-watching'
                                                         value={show.id} onClick={startWatching}
@@ -85,6 +80,7 @@ class Shows extends React.Component {
                     }
                 </div>
                 {
+                    // checking  if the button should be visible based on scroll position
                     visible
                         ? <button className='scroll' onClick={() => scroll.scrollToTop()}>Scroll To Top</button>
                         : null
@@ -95,12 +91,13 @@ class Shows extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+
+// redux functions connecting component to redux state and and actions
+const mapStateToProps = ({ showsReducer: { shows, showObj }, usersReducer: { loggedUser: { user } } }) => {
     return {
-        shows: state.showsReducer.shows,
-        user: state.usersReducer.loggedUser.user,
-        visible: state.usersReducer.scrolling.visible,
-        watchList: state.showsReducer.showObj
+        shows: shows,
+        watchList: showObj,
+        user: user,
     }
 }
 

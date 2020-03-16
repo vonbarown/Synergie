@@ -18,8 +18,8 @@ class AuthContainer extends Component {
     async componentDidMount() {
         try {
             const { data } = await axios.get('/api/auth/isUserLoggedIn')
-            this.props.setUser(data.payload)
             this.props.history.push('/')
+            this.props.setUser(data.payload)
         } catch (err) {
             console.log('ERROR', err)
         }

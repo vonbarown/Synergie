@@ -11,6 +11,7 @@ class ShowInfoPage extends React.Component {
         this.loadUserComments()
     }
 
+    //loading information of  the specific show information
     loadSpecificShow = async () => {
         try {
             const { data: { payload } } = await axios.get(`/api/shows/${this.props.match.params.id}`)
@@ -20,6 +21,7 @@ class ShowInfoPage extends React.Component {
         }
     }
 
+    //loading all the comments  in to redux store using axios call to api
     loadUserComments = async () => {
         try {
             const { data: { payload } } = await axios.get(`/api/comments/show/${this.props.match.params.id}`)
@@ -30,19 +32,19 @@ class ShowInfoPage extends React.Component {
     }
 
     render() {
-        const { comments } = this.props
+        const { comments, shows } = this.props
         return (
             <div className='show-info-page'>
                 <div className='show-info-page-container'>
                     {
-                        this.props.shows.map(el => {
+                        shows.map(el => {
                             return (
                                 <div className='current-show' key={el.id}>
                                     <div className='show-page-data'>
                                         <h3>Show {el.title} of {el.username}</h3>
                                         <img className='show-info-page-img' src={el.img_url} alt={el.title} />
                                         <p>{el.genre_name}</p>
-                                        <p>{comments.length} Comments</p>
+                                        <p>{comments.length} Comment(s)</p>
                                     </div>
                                     <Comments
                                         user_id={this.props.match.params.userId}
@@ -58,10 +60,10 @@ class ShowInfoPage extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ showsReducer: { shows, comments } }) => {
     return {
-        shows: state.showsReducer.shows,
-        comments: state.showsReducer.comments
+        shows: shows,
+        comments: comments
     }
 }
 

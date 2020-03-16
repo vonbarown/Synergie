@@ -1,8 +1,15 @@
-import { RECEIVE_USERS, LOAD_USER, LOGIN_USER, LOGIN_OUT, SCROLLING } from '../actions/actionTypes';
+import {
+    RECEIVE_USERS,
+    LOAD_USER,
+    LOGIN_USER,
+    LOG_OUT,
+    SCROLLING,
+    SET_HAMBURGER
+} from '../actions/actionTypes';
 
 const initialState = {
     users: [],
-    user: [],
+    selectedUser: {},
     loggedUser: {
         user: null,
         isUserLoggedIn: false
@@ -10,7 +17,8 @@ const initialState = {
     scrolling: {
         prevScrollPos: window.pageYOffset,
         visible: false
-    }
+    },
+    hamburgerOpen: false
 }
 
 export default (state = initialState, action) => {
@@ -22,7 +30,7 @@ export default (state = initialState, action) => {
             stateCopy.users = action.payload
             break
         case LOAD_USER:
-            stateCopy.user = action.payload
+            stateCopy.selectedUser = action.payload
             break
         case LOGIN_USER:
             let user = action.payload
@@ -36,7 +44,7 @@ export default (state = initialState, action) => {
                 isUserLoggedIn: true
             }
             break
-        case LOGIN_OUT:
+        case LOG_OUT:
             stateCopy.loggedUser = {
                 user: action.payload,
                 isUserLoggedIn: false
@@ -47,6 +55,9 @@ export default (state = initialState, action) => {
                 prevScrollPos: action.payload,
                 visible: stateCopy.scrolling.prevScrollPos < action.payload
             }
+            break
+        case SET_HAMBURGER:
+            stateCopy.hamburgerOpen = action.payload
             break
         default:
             break

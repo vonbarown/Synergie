@@ -85,10 +85,10 @@ class ModalContainer extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ usersReducer: { loggedUser: user }, chatReducer: { chats } }) => {
     return {
-        loggedUser: state.usersReducer.loggedUser.user,
-        chat: state.chatReducer.chats
+        loggedUser: user,
+        chat: chats
     }
 }
 

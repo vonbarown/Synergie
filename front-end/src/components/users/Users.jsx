@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { animateScroll as scroll } from 'react-scroll'
-import { scrolling } from '../../store/actions/userActions'
+import { scrolling, setHamburger } from '../../store/actions/userActions'
 import './users.css'
 
 
@@ -30,15 +30,21 @@ class Users extends Component {
         });
         // this.props.scrolling(window.pageYOffset)]
     };
+    handleBurger = () => {
+        const { hamburgerOpen } = this.props
+        setHamburger(!hamburgerOpen)
+    }
+
 
 
     render() {
         const { visible } = this.state
-        const { users, loggedUser } = this.props
+        const { users, loggedUser, network } = this.props
+        let loggedIn;
         return (
-            <div className='users' onScroll={this.handleScroll}>
+            <div className='users' onScroll={this.handleScroll} >
                 <h2 className='page-title'>Users</h2>
-                <div className='container'>
+                <div className='container' onClick={this.handleBurger}>
                     {
 
                         users ? users.map(el => {
@@ -49,18 +55,33 @@ class Users extends Component {
                             }
                             return (
 
-                                <Link to={`/users/${el.id}`} className='user-profile' key={el.id}>
-                                    <img className='profile-pic' src={el.avatar_url} alt="user-profile" />
-                                    <p>{el.username}</p>
-                                    <p>{loggedIn}</p>
-                                </Link>
+                                <div key={el.id}>
+                                    <Link to={`/users/${el.id}`} className='user-profile' key={el.id}>
+                                        <img className='profile-pic' src={el.avatar_url} alt="user-profile" />
+                                        <div className='user-meta-data'>
+                                            <p>{el.username}</p>
+                                            <p>{loggedIn}</p>
+                                        </div>
+                                    </Link>
 
+                                    {
+                                        loggedUser.user.username !== el.username
+                                            ? < button
+                                                value={el.id}
+                                                onClick={network}
+                                                className='connect'
+                                            >
+                                                Connect
+                                            </button>
+                                            : null
+                                    }
+                                </div>
                             )
                         }) : null
                     }
                 </div>
                 <div className='page-actions'>
-                    <Link to='/messaging'>
+                    <Link to='/messages'>
                         <button className='scroll message'>
                             Messages
                         </button>
@@ -69,10 +90,9 @@ class Users extends Component {
                         visible
                             ? <button className='scroll' onClick={() => scroll.scrollToTop()}>Scroll To Top</button>
                             : null
-
                     }
                 </div>
-            </div>
+            </div >
         )
     }
 }
@@ -81,14 +101,15 @@ const mapStateToProps = (state) => {
     return {
         users: state.usersReducer.users,
         loggedUser: state.usersReducer.loggedUser,
-        // visible: state.usersReducer.scrolling.visible,
+        hamburgerOpen: state.usersReducer.hamburgerOpen
 
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        scrolling: data => dispatch(scrolling(data))
+        scrolling: data => dispatch(scrolling(data)),
+        setHamburger: data => dispatch(setHamburger(data))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Users)

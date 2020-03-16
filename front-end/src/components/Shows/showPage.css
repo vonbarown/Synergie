@@ -6,6 +6,7 @@
   flex-direction: row;
 }
 .show-img {
+  z-index: 90;
   height: 350px;
   width: 240px;
   border-radius: 20px;
@@ -36,7 +37,7 @@
   flex-direction: column;
   overflow: scroll;
   margin-top: -10px;
-  height: 250px;
+  height: 230px;
   padding: 20px;
 }
 
@@ -57,4 +58,20 @@
   height: 35px;
   color: green;
   font-weight: 900;
+}
+
+@media screen and (max-width: 768px) {
+  .show-info {
+    display: flex;
+    height: 300px;
+    overflow: scroll;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .movie {
+    margin-left: -80px;
+    width: 400px;
+    display: flex;
+  }
 }

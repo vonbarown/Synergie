@@ -9,6 +9,10 @@
   height: 40px;
   width: 30vw;
   font-size: x-large;
+  background-color: transparent;
+  border: transparent;
+  border-bottom: 2px solid rgb(4, 73, 73);
+  width: 50vw;
 }
 
 .form-button {

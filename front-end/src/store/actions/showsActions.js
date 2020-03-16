@@ -1,4 +1,4 @@
-import { LOAD_USER_SHOWS, LOAD_SHOWS, LOAD_COMMENTS } from './actionTypes';
+import { LOAD_USER_SHOWS, LOAD_SHOWS, LOAD_COMMENTS, SEARCH_SHOW } from './actionTypes';
 
 export const loadUserShows = (payload) => {
     return {
@@ -18,6 +18,13 @@ export const loadAllShows = (payload) => {
 export const loadComments = (payload) => {
     return {
         type: LOAD_COMMENTS,
+        payload
+    }
+}
+
+export const searchShow = (payload) => {
+    return {
+        type: SEARCH_SHOW,
         payload
     }
 }
