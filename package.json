@@ -5,5 +5,8 @@
   "scripts": {
     "start": "node ./back-end/bin/www",
     "heroku-postbuild": "cd back-end && npm install && cd ../front-end && npm install && npm run build"
+  },
+  "engines": {
+    "node": "12.14.1"
   }
 }
