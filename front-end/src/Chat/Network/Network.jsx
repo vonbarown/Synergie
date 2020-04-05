@@ -2,14 +2,13 @@ import * as React from "react";
 import "./network.css";
 import { connect } from "react-redux";
 import Talk from "talkjs";
-import { appId } from "../../secret";
 import { Link } from "react-router-dom";
 
 class Network extends React.Component {
-  handleClick = userId => {
+  handleClick = (userId) => {
     const { loggedUser, network } = this.props;
 
-    const user = network.find(user => user.id === userId);
+    const user = network.find((user) => user.id === userId);
 
     Talk.ready
       .then(() => {
@@ -18,8 +17,8 @@ class Network extends React.Component {
 
         if (!window.talkSession) {
           window.talkSession = new Talk.Session({
-            appId: appId,
-            me: me
+            appId: process.env.REACT_APP_APP_ID,
+            me: me,
           });
         }
 
@@ -34,7 +33,7 @@ class Network extends React.Component {
         this.chatbox = window.talkSession.createChatbox(conversation);
         this.chatbox.mount(this.container);
       })
-      .catch(e => console.error(e));
+      .catch((e) => console.error(e));
   };
   render() {
     const { loggedUser } = this.props;
@@ -56,7 +55,7 @@ class Network extends React.Component {
           )}
         </div>
         <div className="users-container">
-          {this.props.network.map(contact => {
+          {this.props.network.map((contact) => {
             return (
               <div className="user" key={contact.id}>
                 <div className="user-info-container">
@@ -70,14 +69,14 @@ class Network extends React.Component {
                   </div>
                 </div>
                 <div className="user-action">
-                  <button onClick={userId => this.handleClick(contact.id)}>
+                  <button onClick={(userId) => this.handleClick(contact.id)}>
                     Message
                   </button>
                 </div>
               </div>
             );
           })}
-          <div className="chatbox-container" ref={c => (this.container = c)}>
+          <div className="chatbox-container" ref={(c) => (this.container = c)}>
             <div id="talkjs-container" style={{ height: "300px" }}>
               <i></i>
             </div>
@@ -88,10 +87,10 @@ class Network extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     network: state.chatReducer.network,
-    loggedUser: state.usersReducer.loggedUser.user
+    loggedUser: state.usersReducer.loggedUser.user,
   };
 };
 
