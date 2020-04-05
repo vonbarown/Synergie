@@ -27,7 +27,7 @@ app.use(
   session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
   })
 );
 
@@ -44,7 +44,7 @@ app.use("/api/network", networkRouter);
 // app.use('/api/message', messageRouter)
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../front-end/build/index.html"));
+  res.sendFile(path.join(__dirname, "../front-end/build/index.html"));
 });
 
 module.exports = app;
