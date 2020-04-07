@@ -10,10 +10,14 @@ const LoginForm = ({ username, password, handleChange, loginUser }) => {
 
   return (
     <div className="auth-page">
-      <h2> Log-In </h2>
       <form onSubmit={handleSubmit} className="form-container">
+        <div className="instruction">
+          <h2> Login </h2>
+          <p>Enter your credentials to continue</p>
+        </div>
+
         <div className="icon-input-container">
-          <FontAwesomeIcon icon={["fas", "user-alt"]} className="fa-icon" />
+          <FontAwesomeIcon icon={["fas", "user-alt"]} className="fa-icon" />{" "}
           <input
             type="text"
             name="username"
@@ -21,10 +25,11 @@ const LoginForm = ({ username, password, handleChange, loginUser }) => {
             placeholder="username"
             onChange={handleChange}
             className="form-input"
+            required
           />
         </div>
         <div className="icon-input-container">
-          <FontAwesomeIcon icon={["fas", "key"]} className="fa-icon" />
+          <FontAwesomeIcon icon={["fas", "key"]} className="fa-icon" />{" "}
           <input
             type="password"
             name="password"
@@ -32,6 +37,7 @@ const LoginForm = ({ username, password, handleChange, loginUser }) => {
             placeholder="*******"
             onChange={handleChange}
             className="form-input"
+            required
           />
         </div>
         <input
