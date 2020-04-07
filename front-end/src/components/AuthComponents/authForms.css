@@ -3,6 +3,12 @@
   flex-direction: column;
   align-items: center;
   gap: 50px;
+  border: 1px solid black;
+  width: 40vw;
+  height: 600px;
+  justify-content: center;
+  background-color: white;
+  border-radius: 5px;
 }
 
 .form-input {
@@ -12,13 +18,23 @@
   background-color: transparent;
   border: transparent;
   border-bottom: 2px solid rgb(4, 73, 73);
-  width: 50vw;
+  width: 30vw;
 }
 
 .form-button {
-  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(167, 188, 245),
-    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  /* border-radius: 51px;
+  box-shadow: 7px 7px 14px #518688, -7px -7px 14px #6db6b8; */
+  background: #5f9ea0;
+  border: 0px;
   height: 30px;
   width: 90px;
   border-radius: 4px;
+  width: 220px;
+}
+
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
