@@ -17,8 +17,8 @@ const SignupForm = ({
     <div className="auth-page">
       <h2> Sign-Up </h2>
       <form onSubmit={handleSubmit} className="form-container">
-        <div>
-          <FontAwesomeIcon icon={["fas", "user-alt"]} />
+        <div className="icon-input-container">
+          <FontAwesomeIcon icon={["fas", "user-alt"]} className="fa-icon" />
           <input
             type="text"
             name="username"
@@ -28,16 +28,19 @@ const SignupForm = ({
             className="form-input"
           />
         </div>
-        <input
-          type="text"
-          name="avatar_url"
-          value={avatar_url}
-          placeholder="Url"
-          onChange={handleChange}
-          className="form-input"
-        />
-        <div>
-          <FontAwesomeIcon icon={["fas", "key"]} />
+        <div className="icon-input-container">
+          <FontAwesomeIcon icon={["fas", "upload"]} className="fa-icon" />
+          <input
+            type="text"
+            name="avatar_url"
+            value={avatar_url}
+            placeholder="Url"
+            onChange={handleChange}
+            className="form-input"
+          />
+        </div>
+        <div className="icon-input-container">
+          <FontAwesomeIcon icon={["fas", "key"]} className="fa-icon" />
           <input
             type="password"
             name="password"

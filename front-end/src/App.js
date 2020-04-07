@@ -19,10 +19,10 @@ import Profile from "./components/Profile/Profile";
 import Messager from "./Chat/Layout/Messager";
 import OMDBSearch from "./components/OMDB/omdbComponent";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faKey, faUserAlt } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faKey, faUserAlt, faUpload } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faKey, faUserAlt);
+library.add(faKey, faUserAlt, faUpload, faGithub, faLinkedin);
 class App extends React.Component {
   logoutUser = async () => {
     try {
