@@ -18,12 +18,14 @@ export const About = () => {
           <FontAwesomeIcon
             className="fa-icon github"
             icon={["fab", "github"]}
+            title="Github"
           />
         </a>
         <a href="https://www.linkedin.com/in/vonielbrown/" target="_blank">
           <FontAwesomeIcon
             className="fa-icon linked-in"
             icon={["fab", "linkedin"]}
+            title="LinkedIn"
           />
         </a>
       </footer>
