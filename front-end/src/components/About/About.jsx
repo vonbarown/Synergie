@@ -14,7 +14,7 @@ export const About = () => {
       </div>
       <div className="signature">Made by Voniel Brown</div>
       <footer>
-        <a href="https://github.com/vonbarown" target="_blank">
+        <a href="https://github.com/vonbarown/Watch-List" target="_blank">
           <FontAwesomeIcon
             className="fa-icon github"
             icon={["fab", "github"]}
