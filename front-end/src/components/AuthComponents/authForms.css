@@ -1,13 +1,13 @@
 .form-container {
   position: relative;
-  top: 5vh;
+  /* top: 5vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 50px;
   border: 1px solid black;
   width: 40vw;
-  height: 600px;
+  height: 70vh;
   justify-content: center;
   background-color: white;
   border-radius: 5px;
@@ -39,4 +39,12 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-color: tomato;
+  height: 90vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .form-container {
+    width: 65vw;
+  }
 }

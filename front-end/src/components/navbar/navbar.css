@@ -11,6 +11,7 @@ nav {
   box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.555);
   border-end-end-radius: 5px;
   border-end-start-radius: 5px;
+  height: 5vh;
 }
 
 .log-out {
@@ -30,16 +31,21 @@ nav {
 }
 
 .logo {
+  display: flex;
   color: black;
   border: 1px solid black;
   padding-left: 50px;
   padding-right: 50px;
-  width: 20vw;
+  align-items: center;
+  width: 10vw;
   position: relative;
   border-radius: 10px;
   /* margin-left: -20%; */
+  justify-content: center;
   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  font-size: 15px;
+  height: 5vh;
 }
 
 .links {
@@ -97,7 +103,7 @@ a {
     display: flex;
     justify-content: center;
   }
-  .navbar .log-out-btn  {
+  .navbar .log-out-btn {
     display: flex;
     width: 90px;
     font-size: 9px;
