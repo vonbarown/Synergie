@@ -1,16 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import HamburgerMenu from "react-hamburger-menu";
 import { setHamburger } from "../../store/actions/userActions";
+import { DrawerToggleButton } from "./drawerToggle";
 import { connect } from "react-redux";
 import "./navbar.css";
 
-const Navbar = ({
-  logoutUser,
-  isUserLoggedIn,
-  hamburgerOpen,
-  setHamburger,
-}) => {
+const Navbar = ({ logoutUser, isUserLoggedIn, drawerClick }) => {
   // const handleScroll = () => {
   //     const currentScrollPos = window.pageYOffset;
   //     if (scrollPos < currentScrollPos) {
@@ -20,109 +15,68 @@ const Navbar = ({
   //     setScrollPos(currentScrollPos)
   // };
 
-  const dropDown = () => {
-    return (
-      <div className="hamburgerDropDown">
-        <Link
-          className="navbar-links"
-          onClick={() => setHamburger(!hamburgerOpen)}
-          id="hamburgerNavItem"
-          to="/users"
-        >
-          Users
-        </Link>
-        <Link
-          className="navbar-links"
-          onClick={() => setHamburger(!hamburgerOpen)}
-          id="hamburgerNavItem"
-          to="/shows"
-        >
-          Shows
-        </Link>{" "}
-        <Link
-          className="navbar-links"
-          onClick={() => setHamburger(!hamburgerOpen)}
-          id="hamburgerNavItem"
-          to="/addShow"
-        >
-          Add Show
-        </Link>{" "}
-        <Link
-          className="navbar-links"
-          onClick={() => setHamburger(!hamburgerOpen)}
-          id="hamburgerNavItem"
-          to="/about"
-        >
-          About
-        </Link>{" "}
-        <Link
-          className="navbar-links"
-          onClick={() => setHamburger(!hamburgerOpen)}
-          id="hamburgerNavItem"
-          to="/profile"
-        >
-          Profile
-        </Link>{" "}
-        <Link
-          onClick={() => setHamburger(!hamburgerOpen)}
-          className="navbar-links"
-          to="/messages"
-        >
-          Messages
-        </Link>
-      </div>
-    );
-  };
-
   if (isUserLoggedIn) {
     return (
-      <nav className="logged-in navbar">
+      <nav className={"logged-in navbar"}>
+        <div className="sidebar-toggle-button">
+          <DrawerToggleButton click={drawerClick} />
+        </div>
         <div className="app-logo">
-          <Link to="/" onClick={() => setHamburger(!hamburgerOpen)}>
+          <Link to="/">
             <div className="logo">
-              <h2 onClick={() => setHamburger(!hamburgerOpen)}>Synergie</h2>
+              <h2>Synergie</h2>
             </div>
           </Link>{" "}
         </div>
-
-        <div className="hamburgerMenu">
-          <HamburgerMenu
-            isOpen={hamburgerOpen}
-            menuClicked={() => setHamburger(!hamburgerOpen)}
-            width={18}
-            height={15}
-            strokeWidth={1}
-            rotate={0}
-            color="black"
-            borderRadius={0}
-            animationDuration={0.5}
-          />
-        </div>
-        {hamburgerOpen ? dropDown() : null}
-        <div className="log-out-btn">
-          <button className="log-out" onClick={logoutUser}>
-            log-out
-          </button>
+        <div className="nav-items">
+          <Link className="navbar-links" id="hamburgerNavItem" to="/users">
+            Users
+          </Link>
+          <Link className="navbar-links" id="hamburgerNavItem" to="/shows">
+            Shows
+          </Link>{" "}
+          <Link className="navbar-links" id="hamburgerNavItem" to="/addShow">
+            Add Show
+          </Link>{" "}
+          <Link className="navbar-links" id="hamburgerNavItem" to="/about">
+            About
+          </Link>{" "}
+          <Link className="navbar-links" id="hamburgerNavItem" to="/profile">
+            Profile
+          </Link>{" "}
+          <Link className="navbar-links" to="/messages">
+            Messages
+          </Link>
+          <div className="log-out-btn">
+            <button className="log-out" onClick={logoutUser}>
+              log-out
+            </button>
+          </div>
         </div>
       </nav>
     );
   } else {
     return (
-      <nav className="not-logged-in navbar">
+      <nav className={"not-logged-in navbar"}>
         <Link to="/">
           <div className="logo">
             <h2>Synergie</h2>
           </div>
         </Link>{" "}
-        <Link className="navbar-links" to="/about">
-          About
-        </Link>{" "}
-        <Link className="navbar-links" to="login">
-          Log-In
-        </Link>{" "}
-        <Link className="navbar-links" to="/signup">
-          Sign-Up
-        </Link>{" "}
+        <div className="sidebar-toggle-button">
+          <DrawerToggleButton click={drawerClick} />
+        </div>
+        <div className="nav-items">
+          <Link className="navbar-links" to="/about">
+            About
+          </Link>{" "}
+          <Link className="navbar-links" to="login">
+            Log-In
+          </Link>{" "}
+          <Link className="navbar-links" to="/signup">
+            Sign-Up
+          </Link>{" "}
+        </div>
       </nav>
     );
   }

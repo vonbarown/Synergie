@@ -13,6 +13,31 @@ nav {
   border-end-start-radius: 5px;
   height: 5vh;
 }
+.nav-items {
+  display: flex;
+  gap: 10%;
+  width: 80.1vw;
+}
+
+.toggle-button {
+  padding: 0;
+  width: 36px;
+  height: 24px;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: transparent;
+}
+
+.darkMode .toggler-line {
+  background-color: white;
+}
+
+.toggler-line {
+  background-color: black;
+}
 
 .log-out {
   border-radius: 10px;
@@ -22,12 +47,6 @@ nav {
   border: 1px solid;
   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-}
-
-.log-out-btn {
-  display: flex;
-  left: 90vw;
-  position: absolute;
 }
 
 .logo {
@@ -91,7 +110,7 @@ a {
   color: white;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .navbar {
     gap: 10px;
     width: 90vw;
@@ -107,13 +126,63 @@ a {
     display: flex;
     width: 90px;
     font-size: 9px;
-    /* right: 10vw; */
     left: 80vw;
   }
 
-  /* .hamburgerDropDown{
+  .hamburgerDropDown {
     display: flex;
     top: 0;
+  }
+} */
 
+@media screen and (min-width: 811px) {
+  /* .navbar .nav-items {
+    display: none;
   } */
+  .sidebar-toggle-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 810px) {
+  .navbar .nav-items {
+    display: none;
+  }
+}
+
+.nav-button:hover {
+  color: teal;
+}
+
+.side-drawer {
+  top: 0;
+  left: 0;
+  gap: 30px;
+  width: 50%;
+  height: 100%;
+  z-index: 200;
+  font-size: 30px;
+  position: fixed;
+  max-width: 400px;
+  align-items: center;
+  flex-direction: column;
+  transform: translateX(-200%);
+  transition: transform 0.9s ease-out;
+}
+
+.side-drawer .open {
+  z-index: 600;
+  transform: translateX(0);
+}
+.open {
+  left: 0;
+  gap: 30px;
+  width: 50%;
+  height: 100%;
+  z-index: 200;
+  display: flex;
+  font-size: 30px;
+  position: fixed;
+  flex-direction: column;
+  transition: transform 0.3s ease-out;
 }

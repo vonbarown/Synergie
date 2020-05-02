@@ -1,0 +1,41 @@
+.backdrop {
+  top: 0;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  z-index: 100;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.3);
+}
+.toggle-button {
+  padding: 0;
+  width: 36px;
+  height: 24px;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: transparent;
+}
+
+.sidebar-toggle-button {
+  top: 2.9vh;
+  right: 10vw;
+  z-index: 900;
+  margin-top: 8px;
+  position: fixed;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+.toggler-line {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+}
+
+.darkMode .toggler-line {
+  background-color: white;
+}

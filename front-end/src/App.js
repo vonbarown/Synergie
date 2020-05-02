@@ -21,9 +21,15 @@ import OMDBSearch from "./components/OMDB/omdbComponent";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faKey, faUserAlt, faUpload } from "@fortawesome/free-solid-svg-icons";
+import SideDrawer from "./components/navbar/sideDrawer";
+import { Backdrop } from "./components/navbar/backdrop/backdrop";
 
 library.add(faKey, faUserAlt, faUpload, faGithub, faLinkedin);
 class App extends React.Component {
+  state = {
+    sideDrawerOpen: false,
+  };
+
   logoutUser = async () => {
     try {
       await axios.get("/api/auth/logout");
@@ -34,14 +40,41 @@ class App extends React.Component {
     }
   };
 
+  backDropClick = () => this.setState({ sideDrawerOpen: false });
+
   renderAuthContainer = (routeProps) => <AuthContainer {...routeProps} />;
 
+  drawerToggler = () => {
+    this.setState((prevState) => {
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+    });
+  };
+
   render() {
+    const { sideDrawerOpen } = this.state;
+
+    let backDrop;
+
+    if (sideDrawerOpen) {
+      backDrop = <Backdrop clicked={this.backDropClick} />;
+    }
+
     return (
       <div className="App">
+        <SideDrawer
+          logoutUser={this.logoutUser}
+          show={sideDrawerOpen}
+          isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
+          drawerClick={this.drawerToggler}
+        />
+
+        {backDrop}
+
         <Navbar
           logoutUser={this.logoutUser}
           isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
+          drawerClick={this.drawerToggler}
+          show={sideDrawerOpen}
         />
 
         <Switch>
