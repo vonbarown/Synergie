@@ -53,6 +53,8 @@
   align-items: center;
   text-align: left;
   gap: 4px;
+  left: 9px;
+  position: relative;
 }
 /* .name {
   width: 5vw;
@@ -92,17 +94,30 @@
 }
 
 @media screen and (max-width: 768px) {
+  .title {
+    font-size: 9vw;
+  }
+  .title + p {
+    font-size: 5vw;
+  }
   .show-info {
     display: flex;
     height: 300px;
     overflow: scroll;
     flex-direction: column;
     justify-content: flex-start;
+    gap: 0px;
   }
 
   .movie {
     margin-left: -80px;
     width: 400px;
     display: flex;
+  }
+  #start-watching {
+    position: absolute;
+    top: 470px;
+    left: 30px;
+    width: 90px;
   }
 }

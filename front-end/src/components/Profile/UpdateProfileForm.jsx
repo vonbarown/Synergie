@@ -8,9 +8,6 @@ class UpdateProfileForm extends Component {
     username: "",
     avatar_url: "",
   };
-  componentDidMount() {
-    this.refs.username.focus();
-  }
 
   handleSubmit = async (e) => {
     e.preventDefault();
