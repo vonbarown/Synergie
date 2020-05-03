@@ -64,10 +64,6 @@ current-user-container {
   border-radius: 50%;
 }
 
-.users {
-  width: 55%;
-  margin: 0 auto;
-}
 .users-container {
   background-color: #ffffff;
   width: 45%;
