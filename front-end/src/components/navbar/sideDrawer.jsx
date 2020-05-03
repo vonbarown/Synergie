@@ -20,28 +20,53 @@ const SideDrawer = ({ logoutUser, isUserLoggedIn, show, drawerClick }) => {
         className={show ? "not-logged-in open" : "side-drawer not-logged-in"}
       >
         <div className="app-logo">
-          <Link to="/">
+          <Link to="/" onClick={drawerClick}>
             <div className="logo">
               <h2>Synergie</h2>
             </div>
           </Link>{" "}
         </div>
-        <Link className="navbar-links" id="hamburgerNavItem" to="/users">
+        <Link
+          className="navbar-links"
+          id="hamburgerNavItem"
+          to="/users"
+          onClick={drawerClick}
+        >
           Users
         </Link>
-        <Link className="navbar-links" id="hamburgerNavItem" to="/shows">
+        <Link
+          className="navbar-links"
+          id="hamburgerNavItem"
+          to="/shows"
+          onClick={drawerClick}
+        >
           Shows
         </Link>{" "}
-        <Link className="navbar-links" id="hamburgerNavItem" to="/addShow">
+        <Link
+          className="navbar-links"
+          id="hamburgerNavItem"
+          to="/addShow"
+          onClick={drawerClick}
+        >
           Add Show
         </Link>{" "}
-        <Link className="navbar-links" id="hamburgerNavItem" to="/about">
+        <Link
+          className="navbar-links"
+          id="hamburgerNavItem"
+          to="/about"
+          onClick={drawerClick}
+        >
           About
         </Link>{" "}
-        <Link className="navbar-links" id="hamburgerNavItem" to="/profile">
+        <Link
+          className="navbar-links"
+          id="hamburgerNavItem"
+          to="/profile"
+          onClick={drawerClick}
+        >
           Profile
         </Link>{" "}
-        <Link className="navbar-links" to="/messages">
+        <Link className="navbar-links" to="/messages" onClick={drawerClick}>
           Messages
         </Link>
         <div className="log-out-btn">

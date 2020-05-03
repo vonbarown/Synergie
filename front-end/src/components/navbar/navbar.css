@@ -145,6 +145,10 @@ a {
 }
 
 @media screen and (max-width: 810px) {
+  .open .logo {
+    width: 28vw;
+    top: 0;
+  }
   .navbar .nav-items {
     display: none;
   }

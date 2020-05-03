@@ -54,18 +54,18 @@
 }
 
 @media screen and (max-width: 768px) {
-  .profile-page-img{
+  .profile-page-img {
     width: 15pc;
     height: 15pc;
     border-radius: 5px;
   }
-  .profile-header{
-    gap:10px;
+  .profile-header {
+    gap: 10px;
     display: flex;
     flex-direction: column;
     padding-bottom: 5px;
   }
-  .sub-header{
+  .sub-header {
     margin-right: 0;
   }
 }
