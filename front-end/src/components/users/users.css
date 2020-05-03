@@ -29,7 +29,6 @@
 }
 
 .users {
-  display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
@@ -50,7 +49,6 @@
 
 .users-page-container {
   display: flex;
-  margin-top: 25vh;
   align-items: center;
   width: 90vw;
 }

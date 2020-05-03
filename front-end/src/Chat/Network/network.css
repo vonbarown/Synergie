@@ -65,10 +65,8 @@ current-user-container {
 }
 
 .users {
-  display: flex;
   width: 55%;
   margin: 0 auto;
-  justify-content: space-around;
 }
 .users-container {
   background-color: #ffffff;
