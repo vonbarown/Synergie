@@ -12,7 +12,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "pubnub": "^4.27.3",
     "pubnub-react": "^2.0.0",
     "react": "^16.12.0",
