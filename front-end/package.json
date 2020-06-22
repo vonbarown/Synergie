@@ -27,7 +27,7 @@
     "redux-thunk": "^2.3.0",
     "socket.io": "^2.3.0",
     "talkjs": "^0.14.2",
-    "uuid": "^3.4.0"
+    "uuid": "^8.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
