@@ -4,6 +4,7 @@
 
 ![Synergie](https://raw.githubusercontent.com/vonbarown/Portfolio/master/src/assets/synergie-landing.png)
 
+## Synopsis
 Synergie is a full-stack application where users can post, comment on, and favorite TV shows that they are binging on.
 
 - Synergie uses user authentication through passportjs
@@ -11,27 +12,8 @@ Synergie is a full-stack application where users can post, comment on, and favor
 - Users can view the profile pages of other users.
 - Users can also **add comments** on other users' shows.
 
-- **Users**
-  - id
-  - username - _Unique_
-  - avatar_url 
-
-- **Genres**
-  - id
-  - genre_name - _Unique_
-
-- **Shows**
-  - id
-  - title
-  - img_url
-  - user_id - _References Users_
-  - genre_id - _References Genres_
-
-- **Comments**
-  - id
-  - comment_body
-  - user_id - _References Users_
-  - show_id - _References Shows_
+## Schema
+![database schema](https://raw.githubusercontent.com/vonbarown/Synergie/master/front-end/src/assets/Screen%20Shot%202020-07-07%20at%205.56.54%20PM.png)
 
 ## API Endpoints
 
