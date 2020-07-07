@@ -69,3 +69,32 @@ Your frontend must include the following routes/pages. Note that these are not a
 | **`/about`**                  | Shows short description of what this app is about and who made it                                                                                                          | **`/network`**                  | Shows the list other users that the current user has in their network  
  | **`/messages`**                  | Shows all the current chat sessions that the user has open                                                                                                                              |
 
+## Installation 
+
+To install this projects
+run the following comman in your terminal
+```
+git clone https://github.com/vonbarown/Synergie.git
+```
+To install the dependencies for the back-end folder from root directory
+ ```
+ cd back-end && npm i
+ ```
+To install the dependencies for the front-end folder from root directory
+ ```
+ cd front-end && npm i
+ ```
+
+### Starting App
+To start the app run these following commands
+After cloning the repo run the following commands
+
+Backend
+```
+ cd back-end && npm run start:dev
+```
+
+Frontend
+```
+ cd front-end && npm start
+```
