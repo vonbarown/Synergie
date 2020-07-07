@@ -4,6 +4,7 @@
 
 ![Synergie](https://raw.githubusercontent.com/vonbarown/Portfolio/master/src/assets/synergie-landing.png)
 
+## Synopsis
 Synergie is a full-stack application where users can post, comment on, and favorite TV shows that they are binging on.
 
 - Synergie uses user authentication through passportjs
@@ -11,27 +12,8 @@ Synergie is a full-stack application where users can post, comment on, and favor
 - Users can view the profile pages of other users.
 - Users can also **add comments** on other users' shows.
 
-- **Users**
-  - id
-  - username - _Unique_
-  - avatar_url 
-
-- **Genres**
-  - id
-  - genre_name - _Unique_
-
-- **Shows**
-  - id
-  - title
-  - img_url
-  - user_id - _References Users_
-  - genre_id - _References Genres_
-
-- **Comments**
-  - id
-  - comment_body
-  - user_id - _References Users_
-  - show_id - _References Shows_
+## Schema
+![database schema](https://raw.githubusercontent.com/vonbarown/Synergie/master/front-end/src/assets/Screen%20Shot%202020-07-07%20at%205.56.54%20PM.png)
 
 ## API Endpoints
 
@@ -87,3 +69,32 @@ Your frontend must include the following routes/pages. Note that these are not a
 | **`/about`**                  | Shows short description of what this app is about and who made it                                                                                                          | **`/network`**                  | Shows the list other users that the current user has in their network  
  | **`/messages`**                  | Shows all the current chat sessions that the user has open                                                                                                                              |
 
+## Installation 
+
+To install this projects
+run the following comman in your terminal
+```
+git clone https://github.com/vonbarown/Synergie.git
+```
+To install the dependencies for the back-end folder from root directory
+ ```
+ cd back-end && npm i
+ ```
+To install the dependencies for the front-end folder from root directory
+ ```
+ cd front-end && npm i
+ ```
+
+### Starting App
+To start the app run these following commands
+After cloning the repo run the following commands
+
+Backend
+```
+ cd back-end && npm run start:dev
+```
+
+Frontend
+```
+ cd front-end && npm start
+```
