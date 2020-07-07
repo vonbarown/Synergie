@@ -5,7 +5,7 @@
 
 CREATE TABLE users (
     id VARCHAR PRIMARY KEY,
-    username VARCHAR NOT NULL,
+    username VARCHAR UNIQUE NOT NULL,
     avatar_url VARCHAR NOT NULL,
     password_digest VARCHAR NOT NULL
 );
