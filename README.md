@@ -13,7 +13,7 @@ Synergie is a full-stack application where users can post, comment on, and favor
 - Users can also **add comments** on other users' shows.
 
 ## Schema
-![database schema](https://raw.githubusercontent.com/vonbarown/Synergie/master/front-end/src/assets/Screen%20Shot%202020-07-07%20at%205.56.54%20PM.png)
+![database schema](https://raw.githubusercontent.com/vonbarown/Synergie/master/front-end/src/assets/Screen%20Shot%202020-07-07%20at%2010.18.50%20PM.png)
 
 ## API Endpoints
 
