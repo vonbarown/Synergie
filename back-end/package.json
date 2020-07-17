@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start:dev": "nodemon"
+    "dev": "nodemon",
+    "reseed": "cd db/ && psql -f seed.sql && cd .. && npm run dev",
+    "resetDB": "heroku pg:reset DATABASE",
+    "reseedHeroku": "npm run resetDB && heroku pg:psql -f db/seed.sql"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
