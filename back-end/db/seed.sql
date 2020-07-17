@@ -7,12 +7,16 @@ CREATE TABLE users (
     id VARCHAR PRIMARY KEY,
     username VARCHAR UNIQUE NOT NULL,
     avatar_url VARCHAR NOT NULL,
-    password_digest VARCHAR NOT NULL
+    password_digest VARCHAR NOT NULL,
+    time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    time_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE genres (
     id SERIAL PRIMARY KEY,
-    genre_name VARCHAR NOT NULL
+    genre_name VARCHAR NOT NULL,
+    time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    time_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE shows (
@@ -20,13 +24,17 @@ CREATE TABLE shows (
     title VARCHAR UNIQUE NOT NULL,
     img_url VARCHAR NOT NULL,
     user_id VARCHAR REFERENCES users(id),
-    genre_id INT REFERENCES genres(id)
+    genre_id INT REFERENCES genres(id),
+    time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    time_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE showWatchers (
     id SERIAL PRIMARY KEY,
     user_id VARCHAR REFERENCES users(id),
-    show_id VARCHAR REFERENCES shows(id)
+    show_id VARCHAR REFERENCES shows(id),
+    time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    time_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE comments (
@@ -34,14 +42,18 @@ CREATE TABLE comments (
     comment_body VARCHAR NOT NULL,
     user_id VARCHAR REFERENCES users(id),
     show_id VARCHAR REFERENCES shows(id),
-    edited BOOLEAN NOT NULL
+    edited BOOLEAN NOT NULL,
+    time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    time_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE network (
     id SERIAL PRIMARY KEY,
     user_id VARCHAR,
     contact_id VARCHAR REFERENCES  users(id),
-    role VARCHAR NOT NULL
+    role VARCHAR NOT NULL,
+    time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    time_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
@@ -101,6 +113,26 @@ VALUES
 ('157a2ad3-b941-4455-ac71-3c1fff7d689d','34bab52c-caec-4dca-8895-78807cc30016','Member'),
 ('157a2ad3-b941-4455-ac71-3c1fff7d689d','c4cb08b9-afae-4c8a-bcd0-d94e4e1fbf89','Member');
 
+
+-- updating time time_modified
+CREATE OR REPLACE FUNCTION update_modified_column() 
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.time_modified = now();
+    RETURN NEW; 
+END;
+$$ language 'plpgsql';
+
+
+CREATE TRIGGER update_users_modtime BEFORE UPDATE ON users FOR EACH ROW EXECUTE PROCEDURE  update_modified_column();
+CREATE TRIGGER update_genre_modtime BEFORE UPDATE ON genres FOR EACH ROW EXECUTE PROCEDURE  update_modified_column();
+CREATE TRIGGER update_shows_list_modtime BEFORE UPDATE ON shows FOR EACH ROW EXECUTE PROCEDURE  update_modified_column();
+CREATE TRIGGER update_show_watchers_modtime BEFORE UPDATE ON showWatchers FOR EACH ROW EXECUTE PROCEDURE  update_modified_column();
+CREATE TRIGGER update_comments_modtime BEFORE UPDATE ON comments FOR EACH ROW EXECUTE PROCEDURE  update_modified_column();
+CREATE TRIGGER update_network_modtime BEFORE UPDATE ON network FOR EACH ROW EXECUTE PROCEDURE  update_modified_column();
+
+
+-- allowing for soft delete of comments
 ALTER TABLE comments ADD COLUMN deleted_at timestamptz;
 
 CREATE FUNCTION soft_delete()  
@@ -122,5 +154,4 @@ CREATE TRIGGER soft_delete_user
 
 ALTER TABLE comments RENAME TO comments_with_delete;  
 ALTER VIEW un_deleted_comments RENAME TO comments; 
-
 

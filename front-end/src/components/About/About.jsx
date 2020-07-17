@@ -14,14 +14,22 @@ export const About = () => {
       </div>
       <div className="signature">Made by Voniel Brown</div>
       <footer>
-        <a href="https://github.com/vonbarown/Watch-List" target="_blank">
+        <a
+          href="https://github.com/vonbarown/Watch-List"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon
             className="fa-icon github"
             icon={["fab", "github"]}
             title="Github"
           />
         </a>
-        <a href="https://www.linkedin.com/in/vonielbrown/" target="_blank">
+        <a
+          href="https://www.linkedin.com/in/vonielbrown/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon
             className="fa-icon linked-in"
             icon={["fab", "linkedin"]}
