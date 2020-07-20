@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { useState } from "react";
 import { connect } from "react-redux";
 import { searchShow, searchTem } from "../store/actions/showsActions";
-import SearchResults from "../components/OMDB/omdbComponent";
+import SearchTerm from "../components/OMDB/omdbComponent";
+import SearchResults from "../components/OMDB/SearchResults";
 
 const OMDBSearch = (props) => {
   console.log(props.search);
@@ -24,7 +24,7 @@ const OMDBSearch = (props) => {
 
   return (
     <div>
-      <SearchResults />
+      <SearchTerm />
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -34,6 +34,7 @@ const OMDBSearch = (props) => {
       >
         <button>Submit</button>
       </form>
+      <SearchResults />
     </div>
   );
 };

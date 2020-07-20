@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { searchTem } from "../../store/actions/showsActions";
 
-const SearchResults = (props) => {
+const SearchTerm = (props) => {
   return (
     <div>
       <input
@@ -26,4 +26,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchTerm);
