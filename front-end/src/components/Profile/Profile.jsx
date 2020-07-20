@@ -19,7 +19,6 @@ class Profile extends React.Component {
             <h1>Welcome {loggedUser.username}</h1>
             <h3>What are you binging?</h3>
           </div>
-          // <Link to="/addShow">Add Show</Link>
           <div
             className="chat-links"
             style={{

@@ -1,40 +1,29 @@
 import React from "react";
-import axios from "axios";
-import { useState } from "react";
 import { connect } from "react-redux";
-import { searchShow } from "../../store/actions/showsActions";
+import { searchTem } from "../../store/actions/showsActions";
 
-const OMDBSearch = (props) => {
-  const [search, setSearch] = useState("");
-
-  const loadSearchData = async () => {
-    const { data } = await axios.get(
-      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&t=${search}`
-    );
-    console.log(data);
-
-    props.searchShow(data);
-  };
-
+const SearchTerm = (props) => {
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          loadSearchData();
-        }}
-      >
-        <input type="text" onChange={(e) => setSearch(e.target.value)} />
-      </form>
-      movies
+      <input
+        type="text"
+        value={props.search}
+        onChange={(e) => props.searchTem(e.target.value)}
+      />
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = ({ showsReducer: { search } }) => {
   return {
-    searchShow: (data) => dispatch(searchShow(data)),
+    search: search,
   };
 };
 
-export default connect(null, mapDispatchToProps)(OMDBSearch);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchTem: (data) => dispatch(searchTem(data)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchTerm);
