@@ -8,12 +8,18 @@ import SearchResults from "../components/OMDB/omdbComponent";
 const OMDBSearch = (props) => {
   console.log(props.search);
   const loadSearchData = async () => {
-    const { data } = await axios.get(
-      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&t=${props.search}`
-    );
-    console.log(data);
-
-    props.searchShow(data);
+    try {
+      if (props.search !== "") {
+        const { data } = await axios.get(
+          `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&t=${props.search}`
+        );
+        props.searchShow(data);
+      } else {
+        window.alert("Please enter a show to search");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
