@@ -29,6 +29,7 @@ export default (state = initialState, action) => {
       break;
     case SEARCH_SHOW_RESULT:
       stateCopy.searchResult = action.result;
+      break;
     case SEARCH_SHOW_TERM:
       stateCopy.search = action.search;
       break;
