@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 // import { searchTem } from "../../store/actions/showsActions";
 
 const SearchResults = (props) => {
-  let result = props.searchTem;
+  let result = props.result;
+  console.log("resvb", result);
   return (
     <div className="search-results">
       <img src={result.Poster} alt={result.Poster} />
@@ -11,9 +12,9 @@ const SearchResults = (props) => {
   );
 };
 
-const mapStateToProps = ({ showsReducer: { SearchResult } }) => {
+const mapStateToProps = ({ showsReducer: { searchResult } }) => {
   return {
-    search: SearchResult,
+    result: searchResult,
   };
 };
 

@@ -34,14 +34,15 @@ const OMDBSearch = (props) => {
       >
         <button>Submit</button>
       </form>
-      {props.search ? <SearchResults /> : null}
+      {Object.keys(props.searchResult).length ? <SearchResults /> : null}
     </div>
   );
 };
 
-const mapStateToProps = ({ showsReducer: { search } }) => {
+const mapStateToProps = ({ showsReducer: { search, searchResult } }) => {
   return {
     search: search,
+    searchResult: searchResult,
   };
 };
 
