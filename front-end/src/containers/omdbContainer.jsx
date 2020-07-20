@@ -23,6 +23,7 @@ const OMDBSearch = (props) => {
         onSubmit={(e) => {
           e.preventDefault();
           loadSearchData();
+          props.searchTem("");
         }}
       >
         <button>Submit</button>
@@ -40,6 +41,7 @@ const mapStateToProps = ({ showsReducer: { search } }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     searchShow: (data) => dispatch(searchShow(data)),
+    searchTem: (data) => dispatch(searchTem(data)),
   };
 };
 
