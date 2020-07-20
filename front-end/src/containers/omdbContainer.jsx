@@ -34,7 +34,7 @@ const OMDBSearch = (props) => {
       >
         <button>Submit</button>
       </form>
-      <SearchResults />
+      {props.search ? <SearchResults /> : null}
     </div>
   );
 };
