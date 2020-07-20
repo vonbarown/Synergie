@@ -17,7 +17,7 @@ import { PrivateRoute } from "./components/AuthComponents/PrivateRoute";
 import ChatApp from "./Chat/ChatApp/ChatApp";
 import Profile from "./components/Profile/Profile";
 import Messager from "./Chat/Layout/Messager";
-import OMDBSearch from "./components/OMDB/omdbComponent";
+import OMDBSearch from "./containers/omdbContainer";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faKey, faUserAlt, faUpload } from "@fortawesome/free-solid-svg-icons";
