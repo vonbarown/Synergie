@@ -9,7 +9,6 @@ class AddShowForm extends Component {
   render() {
     return (
       <div className="add-show">
-        <h1 className="page-title">Add Show</h1>
         <Modal show={this.props.show} onClose={this.props.onClose}>
           <div>
             <p>Congrats You added</p>
