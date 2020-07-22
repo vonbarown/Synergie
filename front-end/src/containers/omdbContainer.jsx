@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { searchShow, searchTem } from "../store/actions/showsActions";
 import SearchTerm from "../components/OMDB/omdbComponent";
 import SearchResults from "../components/OMDB/SearchResults";
-import Modal from "../components/Modal/modal";
 
 const OMDBSearch = (props) => {
   console.log(props.search);
@@ -24,7 +23,7 @@ const OMDBSearch = (props) => {
   };
 
   return (
-    <div>
+    <div className="search-bar">
       <SearchTerm />
       <form
         onSubmit={(e) => {
@@ -35,11 +34,7 @@ const OMDBSearch = (props) => {
       >
         <button>Submit</button>
       </form>
-      {Object.keys(props.searchResult).length ? (
-        <Modal show={true} onClose={props.onClose}>
-          <SearchResults />
-        </Modal>
-      ) : null}
+      {Object.keys(props.searchResult).length ? <SearchResults /> : null}
     </div>
   );
 };

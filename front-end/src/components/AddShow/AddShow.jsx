@@ -63,7 +63,7 @@ class AddShow extends React.Component {
           </button>
         </div>
         {this.state.search ? (
-          <OMDBSearch show={true} onClose={this.showModal} />
+          <OMDBSearch />
         ) : (
           <AddShowForm
             show={this.state.show}
