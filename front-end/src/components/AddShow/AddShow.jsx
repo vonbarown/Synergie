@@ -54,14 +54,12 @@ class AddShow extends React.Component {
   render() {
     return (
       <div className="add-show-form-page">
-        <h1 className="page-title">Add Show</h1>
-
         <div>
           How would you like to proceed:{" "}
           <button
             onClick={() => this.setState({ search: !this.state.search })}
             className="form-button"
-            id='toggle-search'
+            id="toggle-search"
           >
             {this.state.search ? <span>Upload</span> : <span>Search</span>} Show
           </button>
