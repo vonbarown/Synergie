@@ -6,12 +6,14 @@
 }
 #plot {
   width: 30vw;
-  height: 30vh;
+  height: 20vh;
   display: flex;
   align-items: center;
 }
 
-.search-results h1 {
-  font-size: 40px;
-  font-weight: 600;
+@media only screen and (max-width: 800px) {
+  #plot {
+    height: 30vh;
+    width: 65vw;
+  }
 }
