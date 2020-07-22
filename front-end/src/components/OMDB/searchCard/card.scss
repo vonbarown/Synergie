@@ -84,6 +84,12 @@ $text-margin: 10px;
     .blog-post {
       height: 100%;
 
+      .read-more {
+        font-size: 20px;
+        position: relative;
+        bottom: 0px;
+        text-align: right;
+      }
       .blog-content {
         height: 90%;
         display: block;

@@ -13,6 +13,8 @@ const ratingsColors = (color) => {
       return "green";
     case "TV-Y7":
       return "light-green";
+    case "Not Rated":
+      return "black";
     default:
       return "light-pink";
   }
@@ -55,9 +57,9 @@ const MainArea = (props) => {
     <div className="main-area">
       <div className="blog-post">
         <div className="blog-content">
-          <p>{props.result.Language}</p>
-          <p>{props.result.Production}</p>
-          <p>{props.result.Year}</p>
+          <p>Languages: {props.result.Language}</p>
+          <p>Production: {props.result.Production}</p>
+          <p>Released: {props.result.Year}</p>
           <p className="read-more">Hover to read more...</p>
         </div>
       </div>
