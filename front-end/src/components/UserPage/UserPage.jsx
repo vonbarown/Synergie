@@ -36,6 +36,7 @@ class UserPage extends React.Component {
       loggedUser: { isUserLoggedIn, user },
       selectedUser,
     } = this.props;
+    // eslint-disable-next-line
     let loggedIn;
     return (
       <div className="user-page">
