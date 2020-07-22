@@ -23,10 +23,9 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faKey, faUserAlt, faUpload } from "@fortawesome/free-solid-svg-icons";
 import SideDrawer from "./components/navbar/sideDrawer";
 import { Backdrop } from "./components/navbar/backdrop/backdrop";
-import ErrorBoundary from "./components/Error/ErrorBoundaries";
 
 library.add(faKey, faUserAlt, faUpload, faGithub, faLinkedin);
-class App extends React.Component {
+class Landing extends React.Component {
   state = {
     sideDrawerOpen: false,
   };
@@ -78,55 +77,53 @@ class App extends React.Component {
           show={sideDrawerOpen}
         />
 
-        <ErrorBoundary>
-          <Switch>
-            <Route path="/login" render={this.renderAuthContainer} />
-            <Route path="/signup" render={this.renderAuthContainer} />
-            <Route path="/shows/search" component={OMDBSearch} />
-            <PrivateRoute
-              path="/profile"
-              component={Profile}
-              isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
-            />
-            <PrivateRoute
-              path="/users/:id"
-              component={UserPage}
-              isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
-            />
-            <PrivateRoute
-              path="/users"
-              component={UsersContainer}
-              isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
-            />
-            <PrivateRoute
-              path="/addShow"
-              component={AddShow}
-              isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
-            />
-            <PrivateRoute
-              path="/shows/:id/user/:userId"
-              component={ShowInfoPage}
-              isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
-            />
-            <PrivateRoute
-              path="/shows"
-              component={showsContainer}
-              isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
-            />
-            <PrivateRoute
-              path="/network"
-              component={ChatApp}
-              isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
-            />
-            <PrivateRoute
-              path="/messages"
-              component={Messager}
-              isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
-            />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/" component={Home} />
-          </Switch>
-        </ErrorBoundary>
+        <Switch>
+          <Route path="/login" render={this.renderAuthContainer} />
+          <Route path="/signup" render={this.renderAuthContainer} />
+          <Route path="/shows/search" component={OMDBSearch} />
+          <PrivateRoute
+            path="/profile"
+            component={Profile}
+            isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
+          />
+          <PrivateRoute
+            path="/users/:id"
+            component={UserPage}
+            isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
+          />
+          <PrivateRoute
+            path="/users"
+            component={UsersContainer}
+            isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
+          />
+          <PrivateRoute
+            path="/addShow"
+            component={AddShow}
+            isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
+          />
+          <PrivateRoute
+            path="/shows/:id/user/:userId"
+            component={ShowInfoPage}
+            isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
+          />
+          <PrivateRoute
+            path="/shows"
+            component={showsContainer}
+            isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
+          />
+          <PrivateRoute
+            path="/network"
+            component={ChatApp}
+            isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
+          />
+          <PrivateRoute
+            path="/messages"
+            component={Messager}
+            isUserLoggedIn={this.props.loggedUser.isUserLoggedIn}
+          />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/" component={Home} />
+        </Switch>
       </div>
     );
   }
@@ -144,4 +141,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);

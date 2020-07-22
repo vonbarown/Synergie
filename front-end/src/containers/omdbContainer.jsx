@@ -23,7 +23,7 @@ const OMDBSearch = (props) => {
   };
 
   return (
-    <div>
+    <div className="search-bar">
       <SearchTerm />
       <form
         onSubmit={(e) => {
