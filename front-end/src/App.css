@@ -41,4 +41,24 @@
 .search-bar {
   display: flex;
   gap: 20px;
+  margin-top: 30px;
+  flex-direction: column;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#toggle-search {
+  width: 10vw;
+}
+
+#search-input {
+  width: 30vw;
 }

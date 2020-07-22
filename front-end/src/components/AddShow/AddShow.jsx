@@ -58,7 +58,11 @@ class AddShow extends React.Component {
 
         <div>
           How would you like to proceed:{" "}
-          <button onClick={() => this.setState({ search: !this.state.search })}>
+          <button
+            onClick={() => this.setState({ search: !this.state.search })}
+            className="form-button"
+            id='toggle-search'
+          >
             {this.state.search ? <span>Upload</span> : <span>Search</span>} Show
           </button>
         </div>
