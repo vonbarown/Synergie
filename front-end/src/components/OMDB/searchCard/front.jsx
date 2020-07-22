@@ -14,7 +14,7 @@ const ratingsColors = (color) => {
     case "TV-Y7":
       return "light-green";
     default:
-      break;
+      return "light-pink";
   }
 };
 
