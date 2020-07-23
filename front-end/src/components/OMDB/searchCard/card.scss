@@ -53,6 +53,14 @@ $text-margin: 10px;
     padding: 20px;
     font-size: 20px;
     /* back tile styles go here! */
+    .submitted {
+      cursor: not-allowed;
+      pointer-events: none;
+      color: #c0c0c0;
+      background-color: #ffffff;
+    }
+    // .un-submitted {
+    // }
   }
   .image-container {
     position: relative;
