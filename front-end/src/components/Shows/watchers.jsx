@@ -2,11 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export const Watchers = ({ watchers }) => {
+  const watcherSet = new Set(watchers);
+
   return (
     <div className="watchers-on-wall">
       <h3>Being Watched by:</h3>
       <div className="show-watchers">
-        {watchers.map((watcher) => {
+        {Array.from(watcherSet).map((watcher) => {
           return (
             <div
               className={`watcher-${watcher.watchers_id} `}

@@ -31,8 +31,7 @@ class AddShow extends React.Component {
 
   handleInput = (e) => this.setState({ [e.target.name]: e.target.value });
 
-  addShow = async (e) => {
-    e.preventDefault();
+  addShow = async (searchObj) => {
     const showObj = {
       title: this.state.show_name,
       img_url: this.state.img_url,
@@ -40,8 +39,12 @@ class AddShow extends React.Component {
       genre_id: this.state.genre_id,
     };
 
+    let queryObj = Object.keys(searchObj).length ? searchObj : showObj;
+
+    console.log(queryObj);
+
     try {
-      await axios.post(`/api/shows`, showObj);
+      await axios.post(`/api/shows`, queryObj);
     } catch (error) {
       console.log("add show error", error);
     }
@@ -65,7 +68,10 @@ class AddShow extends React.Component {
           </button>
         </div>
         {this.state.search ? (
-          <OMDBSearch />
+          <OMDBSearch
+            addShow={this.addShow}
+            loggedInUser={this.props.loggedInUser}
+          />
         ) : (
           <AddShowForm
             show={this.state.show}
