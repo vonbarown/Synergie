@@ -34,7 +34,12 @@ const OMDBSearch = (props) => {
       >
         <button>Submit</button>
       </form>
-      {Object.keys(props.searchResult).length ? <SearchResults /> : null}
+      {Object.keys(props.searchResult).length ? (
+        <SearchResults
+          addShow={props.addShow}
+          loggedInUser={props.loggedInUser}
+        />
+      ) : null}
     </div>
   );
 };

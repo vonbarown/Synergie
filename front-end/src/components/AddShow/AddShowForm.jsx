@@ -20,7 +20,13 @@ class AddShowForm extends Component {
             <p>{this.props.show_name}</p>
           </div>
         </Modal>
-        <form onSubmit={this.props.addShow} className="add-show-form">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            this.props.addShow();
+          }}
+          className="add-show-form"
+        >
           <div className="url form-element">
             <p>Show Image Url</p>
             <input

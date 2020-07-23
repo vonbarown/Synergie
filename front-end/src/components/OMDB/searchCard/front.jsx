@@ -59,7 +59,7 @@ const MainArea = (props) => {
         <div className="blog-content">
           <p>Languages: {props.result.Language}</p>
           <p>Production: {props.result.Production}</p>
-          <p>Released: {props.result.Year}</p>
+          <p>Released: {props.result.Released}</p>
           <p className="read-more">Hover to read more...</p>
         </div>
       </div>

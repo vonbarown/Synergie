@@ -26,7 +26,11 @@ const SearchResults = (props) => {
         //     <p>{result.Year}</p>
         //   </div>
       }
-      <BlogCard result={result} />
+      <BlogCard
+        result={result}
+        addShow={props.addShow}
+        loggedInUser={props.loggedInUser}
+      />
     </div>
   );
 };

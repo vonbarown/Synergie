@@ -21,7 +21,11 @@ class SearchCard extends React.Component {
         className={"card-container" + (this.state.flipped ? " flipped" : "")}
       >
         <Front result={this.props.result} />
-        <Back result={this.props.result} />
+        <Back
+          result={this.props.result}
+          addShow={this.props.addShow}
+          loggedInUser={this.props.loggedInUser}
+        />
       </div>
     );
   }
