@@ -1,7 +1,7 @@
 .add-show-form-page {
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 }
 
 /* .add-show {
@@ -50,6 +50,20 @@
   align-items: center;
 }
 
+#add-show-page-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 150px;
+}
+
+#upload {
+  height: 590px;
+  position: absolute;
+  left: 0;
+  top: 190px;
+}
+
 @media screen and (max-width: 768px) {
   #toggle-search {
     width: 120px;
@@ -59,5 +73,12 @@
     position: absolute;
     right: -20px;
     margin-top: 20px;
+  }
+  #add-show-page-container {
+    margin-left: 0px;
+  }
+
+  #upload {
+    display: none;
   }
 }
