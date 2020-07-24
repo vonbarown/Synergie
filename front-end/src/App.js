@@ -20,12 +20,17 @@ import Messager from "./Chat/Layout/Messager";
 import OMDBSearch from "./containers/omdbContainer";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faKey, faUserAlt, faUpload } from "@fortawesome/free-solid-svg-icons";
+import {
+  faKey,
+  faUserAlt,
+  faUpload,
+  faCopyright,
+} from "@fortawesome/free-solid-svg-icons";
 import SideDrawer from "./components/navbar/sideDrawer";
 import { Backdrop } from "./components/navbar/backdrop/backdrop";
 import ErrorBoundary from "./components/Error/ErrorBoundaries";
 
-library.add(faKey, faUserAlt, faUpload, faGithub, faLinkedin);
+library.add(faKey, faUserAlt, faUpload, faGithub, faLinkedin, faCopyright);
 class App extends React.Component {
   state = {
     sideDrawerOpen: false,
