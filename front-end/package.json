@@ -13,8 +13,6 @@
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "node-sass": "^4.14.1",
-    "pubnub": "^4.28.4",
-    "pubnub-react": "^2.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
