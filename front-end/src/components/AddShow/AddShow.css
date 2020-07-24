@@ -1,7 +1,7 @@
 .add-show-form-page {
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 }
 
 /* .add-show {
@@ -29,4 +29,56 @@
 
 .add-show-select {
   text-align: center;
+}
+
+#toggle-search {
+  height: 30px;
+  margin-left: 5px;
+  margin-top: 9px;
+  border-radius: 5px;
+  border: 1px transparent;
+  background-color: transparent;
+  color: black;
+  font-size: 17px;
+}
+
+#banner {
+  margin-top: 40px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#add-show-page-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 150px;
+}
+
+#upload {
+  height: 590px;
+  position: absolute;
+  left: 0;
+  top: 190px;
+}
+
+@media screen and (max-width: 768px) {
+  #toggle-search {
+    width: 120px;
+    margin-right: 30px;
+    height: 30px;
+    width: 120px;
+    position: absolute;
+    right: -20px;
+    margin-top: 20px;
+  }
+  #add-show-page-container {
+    margin-left: 0px;
+  }
+
+  #upload {
+    display: none;
+  }
 }
