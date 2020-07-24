@@ -8,6 +8,7 @@ const SearchTerm = (props) => {
     <div>
       <input
         className=" shared-input-styling"
+        placeholder="Title"
         id="search-input"
         type="text"
         value={props.search}
