@@ -54,11 +54,35 @@ input:focus {
   outline: none;
   box-shadow: none;
 }
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
 
 #toggle-search {
   width: 10vw;
 }
 
 #search-input {
-  width: 30vw;
+  width: 40vw;
+  font-size: 40px;
+  text-align: center;
+}
+
+#search-submit {
+  height: 30px;
+  width: 130px;
+  margin-left: 5px;
+  margin-top: 9px;
+  border-radius: 5px;
+  border: 1px transparent;
+  background-color: teal;
+  color: white;
+  font-size: 17px;
+}
+
+@media screen and (max-width: 768px) {
+  #search-input {
+    width: 70vw;
+  }
 }

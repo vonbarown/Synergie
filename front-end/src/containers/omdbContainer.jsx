@@ -32,7 +32,7 @@ const OMDBSearch = (props) => {
           props.searchTem("");
         }}
       >
-        <button>Submit</button>
+        <button className="form-button">Submit</button>
       </form>
       {Object.keys(props.searchResult).length ? (
         <SearchResults
