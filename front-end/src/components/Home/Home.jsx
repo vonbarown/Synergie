@@ -7,7 +7,7 @@ export const Home = () => {
     <div className="home">
       <div className="home-metadata">
         <h1 className="banner App-header">
-          <img className="home-logo App-logo" src={logo} alt="" />
+          <img className="home-logo App-logo" src={logo} alt="logo" />
           Welcome to Synergie
         </h1>
         <h3>What are you binging?</h3>
