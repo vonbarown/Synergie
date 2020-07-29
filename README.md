@@ -7,7 +7,7 @@
 ## Synopsis
 Synergie is a full-stack application where users can post, comment on, and favorite TV shows that they are binging on.
 
-- Synergie uses user authentication through passportjs
+- Synergie authenticate user using express-sessions and passportjs
 - Users can **add shows** that they watch currently watching. Which are shared on their profile pages.
 - Users can view the profile pages of other users.
 - Users can also **add comments** on other users' shows.
@@ -52,12 +52,7 @@ Your API Endpoints should include at least:
   | POST   | `/comments`               | Add new comment                       | `comment_body`, `user_id`, `show_id` 
   | PATCH   | `/` | Update user comment | n/a
 
-
-## Frontend
-
-Your frontend must include the following routes/pages. Note that these are not all the routes that may be required, these are just the frontend routes that display something.
-
-### Routes
+### Front End Routes
 | Route                         | Feature                                                                                                                                                                                                                                                                                                    |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`/`**                       | Home route. Should just welcome the user to the application. Must include Navbar, links, display message.                                                                                                                                                                                                  |
