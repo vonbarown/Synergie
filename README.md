@@ -1,6 +1,6 @@
 
 
-# Synergie
+<h1 align="center">Synergie</h1>
 
 ![Synergie](https://raw.githubusercontent.com/vonbarown/Portfolio/master/src/assets/synergie-landing.png)
 
