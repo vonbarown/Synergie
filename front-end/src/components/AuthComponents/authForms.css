@@ -42,8 +42,26 @@
   height: 90vh;
 }
 
+.signup-auth-page {
+  flex-direction: row;
+}
+
+.password-rule {
+  text-align: left;
+  width: 40%;
+  font-size: 19px;
+}
+
 @media only screen and (max-width: 600px) {
   .form-container {
     width: 65vw;
+  }
+
+  .signup-auth-page {
+    flex-direction: column;
+  }
+
+  .password-rule {
+    display: none;
   }
 }

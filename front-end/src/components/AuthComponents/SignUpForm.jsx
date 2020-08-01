@@ -22,7 +22,19 @@ const SignupForm = ({
 
   console.log(validPasswordObj[passwordStrength]);
   return (
-    <div className="auth-page">
+    <div className="signup-auth-page auth-page">
+      <div className="password-rule">
+        <p>Password must contain at</p>
+        <p>
+          least 1 lowercase alphabetical character The string must contain at
+        </p>
+        <p>
+          least 1 uppercase alphabetical character The string must contain at
+        </p>
+        <p>
+          least 1 numeric character The string must contain at least one special
+        </p>
+      </div>
       <form onSubmit={handleSubmit} className="form-container">
         <div className="instruction">
           <h2> Sign Up </h2>
@@ -62,13 +74,15 @@ const SignupForm = ({
             className="form-input"
             required
           />
-          <button
+          <div
             style={{
               backgroundColor: validPasswordObj[passwordStrength],
+              color: "white",
+              marginTop: "5px",
             }}
           >
-            fgf
-          </button>
+            {`${passwordStrength}`}
+          </div>
         </div>
         <input
           type="submit"
