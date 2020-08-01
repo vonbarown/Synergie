@@ -56,16 +56,20 @@
   background-color: lightgray;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 860px) {
   .form-container {
-    width: 65vw;
+    width: 75vw;
+    margin-top: 90px;
   }
 
   .signup-auth-page {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    position: absolute;
+    top: 150px;
   }
 
   .password-rule {
-    display: none;
+    /* display: none; */
+    width: 80%;
   }
 }
