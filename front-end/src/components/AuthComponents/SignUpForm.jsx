@@ -79,6 +79,9 @@ const SignupForm = ({
               backgroundColor: validPasswordObj[passwordStrength],
               color: "white",
               marginTop: "5px",
+              width: "90%",
+              margin: "8%",
+              marginBottom: "-35px",
             }}
           >
             {`${passwordStrength}`}
