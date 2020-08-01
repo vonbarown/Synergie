@@ -15,9 +15,9 @@ const SignupForm = ({
   };
 
   const validPasswordObj = {
-    strong: "green",
-    medium: "orange",
-    weak: "red",
+    strong: "#54c144",
+    medium: "#fbc16d",
+    weak: "#f5301f",
   };
 
   console.log(validPasswordObj[passwordStrength]);
@@ -58,7 +58,7 @@ const SignupForm = ({
             type="text"
             name="avatar_url"
             value={avatar_url}
-            placeholder="Url"
+            placeholder="Avatar url"
             onChange={handleChange}
             className="form-input"
           />
@@ -69,7 +69,7 @@ const SignupForm = ({
             type="password"
             name="password"
             value={password}
-            placeholder="*******"
+            placeholder="*************"
             onChange={handleChange}
             className="form-input"
             required
@@ -85,6 +85,7 @@ const SignupForm = ({
           </div>
         </div>
         <input
+          disabled={passwordStrength === "strong" ? false : true}
           type="submit"
           value="Signup"
           className="signup-button form-button"

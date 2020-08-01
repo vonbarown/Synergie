@@ -52,6 +52,10 @@
   font-size: 19px;
 }
 
+.signup-button:disabled {
+  background-color: lightgray;
+}
+
 @media only screen and (max-width: 600px) {
   .form-container {
     width: 65vw;
