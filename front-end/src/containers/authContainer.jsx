@@ -24,7 +24,13 @@ class AuthContainer extends Component {
     } catch (err) {
       console.log("ERROR", err);
     }
-    this.initSocket();
+    // this.initSocket();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.password !== this.state.password) {
+      this.validatePassword();
+    }
   }
 
   initSocket = () => {
@@ -38,7 +44,7 @@ class AuthContainer extends Component {
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-  validatePassword(password) {
+  validatePassword() {
     const strongPasswordRegex = new RegExp(
       "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
     );

@@ -7,12 +7,20 @@ const SignupForm = ({
   handleChange,
   signupUser,
   avatar_url,
+  passwordStrength,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signupUser();
   };
 
+  const validPasswordObj = {
+    strong: "green",
+    medium: "orange",
+    weak: "red",
+  };
+
+  console.log(validPasswordObj[passwordStrength]);
   return (
     <div className="auth-page">
       <form onSubmit={handleSubmit} className="form-container">
@@ -54,6 +62,13 @@ const SignupForm = ({
             className="form-input"
             required
           />
+          <button
+            style={{
+              backgroundColor: validPasswordObj[passwordStrength],
+            }}
+          >
+            fgf
+          </button>
         </div>
         <input
           type="submit"
