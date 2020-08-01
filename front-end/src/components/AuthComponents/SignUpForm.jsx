@@ -16,7 +16,7 @@ const SignupForm = ({
 
   const validPasswordObj = {
     strong: "#54c144",
-    medium: "#fbc16d",
+    medium: "#fa7500",
     weak: "#f5301f",
   };
 
@@ -24,7 +24,7 @@ const SignupForm = ({
   return (
     <div className="signup-auth-page auth-page">
       <div className="password-rule">
-        <p>Password must contain at</p>
+        <p>Password must contain :</p>
         <p>
           least 1 lowercase alphabetical character The string must contain at
         </p>
@@ -82,9 +82,11 @@ const SignupForm = ({
               width: "90%",
               margin: "8%",
               marginBottom: "-35px",
+              borderRadius: "5px",
+              height: "20px",
             }}
           >
-            {`${passwordStrength}`}
+            {`${passwordStrength} password`}
           </div>
         </div>
         <input
