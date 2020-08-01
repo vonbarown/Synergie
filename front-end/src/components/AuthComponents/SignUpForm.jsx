@@ -74,20 +74,22 @@ const SignupForm = ({
             className="form-input"
             required
           />
-          <div
-            style={{
-              backgroundColor: validPasswordObj[passwordStrength],
-              color: "white",
-              marginTop: "5px",
-              width: "90%",
-              margin: "8%",
-              marginBottom: "-35px",
-              borderRadius: "5px",
-              height: "20px",
-            }}
-          >
-            {`${passwordStrength} password`}
-          </div>
+          {password.length ? (
+            <div
+              style={{
+                backgroundColor: validPasswordObj[passwordStrength],
+                color: "white",
+                marginTop: "5px",
+                width: "90%",
+                margin: "8%",
+                marginBottom: "-35px",
+                borderRadius: "5px",
+                height: "20px",
+              }}
+            >
+              {`${passwordStrength} password`}
+            </div>
+          ) : null}
         </div>
         <input
           disabled={passwordStrength === "strong" ? false : true}
