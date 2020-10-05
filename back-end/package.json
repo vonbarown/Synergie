@@ -22,7 +22,7 @@
     "passport-local": "^1.0.0",
     "pg-promise": "^10.6.2",
     "socket.io": "^2.3.0",
-    "uuid": "^8.3.0"
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
